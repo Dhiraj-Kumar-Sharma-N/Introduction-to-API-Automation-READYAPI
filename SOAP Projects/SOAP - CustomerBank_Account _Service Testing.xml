@@ -1,0 +1,1520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="af79196d-92f1-4bc6-b49f-c5ef8f431829" activeEnvironment="Default environment" name="SOAP - CustomerBank_Account _Service Testing" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" encryptionMode="Not encrypted" updated="3.2.7 2020-05-27T19:48:04Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="08036661-4d0c-4680-be5f-60ce945b3bbf" wsaVersion="NONE" name="accountServiceSoapBinding" type="wsdl" bindingName="{http://www.springframework.org/schema/beans}accountServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/services/accountService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/accountService?wsdl">
+      <con:part>
+        <con:url>http://localhost:8080/services/accountService?wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions name="accountService" targetNamespace="http://www.springframework.org/schema/beans" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.springframework.org/schema/beans" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://www.example.org/AccountService/">
+  <wsdl:import location="http://localhost:8080/services/accountService?wsdl=AccountService.wsdl" namespace="http://www.example.org/AccountService/"></wsdl:import>
+  <wsdl:binding name="accountServiceSoapBinding" type="ns1:AccountService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="withdraw">
+      <soap:operation soapAction="http://www.example.org/AccountService/withdraw" style="document"/>
+      <wsdl:input name="withdraw">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="withdrawResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <soap:operation soapAction="http://www.example.org/AccountService/getBalance" style="document"/>
+      <wsdl:input name="getBalance">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBalanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transfer">
+      <soap:operation soapAction="http://www.example.org/AccountService/transfer" style="document"/>
+      <wsdl:input name="transfer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="transferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deposit">
+      <soap:operation soapAction="http://www.example.org/AccountService/deposit" style="document"/>
+      <wsdl:input name="deposit">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="depositResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="accountService">
+    <wsdl:port binding="tns:accountServiceSoapBinding" name="$Proxy89Port">
+      <soap:address location="http://localhost:8080/services/accountService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+      <con:part>
+        <con:url>http://localhost:8080/services/accountService?wsdl=AccountService.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions name="AccountService" targetNamespace="http://www.example.org/AccountService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.example.org/AccountService/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.example.org/AccountService/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="deposit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="accountNo" type="xs:string"/>
+            <xs:element name="amount" type="xs:double"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="depositResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBalance">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="accountNo" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBalanceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="amount" type="xs:double"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="transfer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sourceAccountNo" type="xs:string"/>
+            <xs:element name="destAccountNo" type="xs:string"/>
+            <xs:element name="amount" type="xs:double"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="transferResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="withdraw">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="accountNo" type="xs:string"/>
+            <xs:element name="amount" type="xs:double"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="withdrawResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="withdraw">
+    <wsdl:part element="ns1:withdraw" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="withdrawResponse">
+    <wsdl:part element="ns1:withdrawResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBalanceResponse">
+    <wsdl:part element="ns1:getBalanceResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transferResponse">
+    <wsdl:part element="ns1:transferResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deposit">
+    <wsdl:part element="ns1:deposit" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBalance">
+    <wsdl:part element="ns1:getBalance" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transfer">
+    <wsdl:part element="ns1:transfer" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="depositResponse">
+    <wsdl:part element="ns1:depositResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AccountService">
+    <wsdl:operation name="withdraw">
+      <wsdl:input message="ns1:withdraw" name="withdraw"></wsdl:input>
+      <wsdl:output message="ns1:withdrawResponse" name="withdrawResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <wsdl:input message="ns1:getBalance" name="getBalance"></wsdl:input>
+      <wsdl:output message="ns1:getBalanceResponse" name="getBalanceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transfer">
+      <wsdl:input message="ns1:transfer" name="transfer"></wsdl:input>
+      <wsdl:output message="ns1:transferResponse" name="transferResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deposit">
+      <wsdl:input message="ns1:deposit" name="deposit"></wsdl:input>
+      <wsdl:output message="ns1:depositResponse" name="depositResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+    </con:endpoints>
+    <con:operation id="51768360-f2e9-4f43-8823-094a04eb2fa4" isOneWay="false" action="http://www.example.org/AccountService/deposit" name="deposit" bindingOperationName="deposit" type="Request-Response" outputName="depositResponse" inputName="deposit" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="974afbb9-b255-4092-8c98-0cc0ea6cf302" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:deposit>\r
+         <acc:accountNo>10010</acc:accountNo>\r
+         <acc:amount>5000</acc:amount>\r
+      </acc:deposit>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="fe9a4261-8317-4f0b-bbbd-8b769a76f63a" isOneWay="false" action="http://www.example.org/AccountService/getBalance" name="getBalance" bindingOperationName="getBalance" type="Request-Response" outputName="getBalanceResponse" inputName="getBalance" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="79f07303-3cd8-4f1a-95b8-83635332c149" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:getBalance>\r
+         <acc:accountNo>10011</acc:accountNo>\r
+      </acc:getBalance>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/getBalance"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="df03a89d-a1df-4c16-ad49-9dc5f149f914" isOneWay="false" action="http://www.example.org/AccountService/transfer" name="transfer" bindingOperationName="transfer" type="Request-Response" outputName="transferResponse" inputName="transfer" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="b2ef4e70-018a-4940-afb3-55b4cb0fa6c3" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>?</acc:sourceAccountNo>\r
+         <acc:destAccountNo>?</acc:destAccountNo>\r
+         <acc:amount>?</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="df78b8f1-0f8b-43b0-8441-4f5f2563441a" isOneWay="false" action="http://www.example.org/AccountService/withdraw" name="withdraw" bindingOperationName="withdraw" type="Request-Response" outputName="withdrawResponse" inputName="withdraw" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="076c2e0c-048a-4427-9794-6c6ad67e1546" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>?</acc:accountNo>\r
+         <acc:amount>?</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:testSuite id="fb672eae-7684-4770-8115-396e2f46dc8e" name="TS_01_For Positive TestCases = LOCAL SERVICES">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="1a703a2d-37a7-4542-8bb9-fa631c4c2f4d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_Check_Balances" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="55f65f63-47bb-4498-906a-d432ded4b06d" name="GetBalance for Account ACC-10010">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>getBalance</con:operation>
+          <con:request name="GetBalance for Account ACC-10010" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="913cc41b-0bd6-469c-b9a2-cd9df4063f73">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:getBalance>
+         <acc:accountNo>ACC-10010</acc:accountNo>
+      </acc:getBalance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="4e002221-6ac7-4b1f-a664-6149230ed2da" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/getBalance"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="27fa36a2-7b5a-4080-8748-5e081c167f6d" name="GetBalance for Account ACC-10011">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>getBalance</con:operation>
+          <con:request name="GetBalance for Account ACC-10011" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="0e556d3e-0b9c-467b-b4b6-5f6f3226bc3c">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:getBalance>
+         <acc:accountNo>ACC-10011</acc:accountNo>
+      </acc:getBalance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="c4fb54d8-a049-42b7-a0a1-0aac767172b5" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/getBalance"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="68acc39a-204e-42a0-8a47-01f5a3ab645c" name="GetBalance for Account ACC-10012">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>getBalance</con:operation>
+          <con:request name="GetBalance for Account ACC-10012" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="0e556d3e-0b9c-467b-b4b6-5f6f3226bc3c">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:getBalance>
+         <acc:accountNo>ACC-10012</acc:accountNo>
+      </acc:getBalance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="c4fb54d8-a049-42b7-a0a1-0aac767172b5" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/getBalance"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="4caa0951-d285-49ad-91ec-ca665f139bbd" name="GetBalance for Account ACC-10013">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>getBalance</con:operation>
+          <con:request name="GetBalance for Account ACC-10013" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="0e556d3e-0b9c-467b-b4b6-5f6f3226bc3c">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:getBalance>
+         <acc:accountNo>ACC-10013</acc:accountNo>
+      </acc:getBalance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="c4fb54d8-a049-42b7-a0a1-0aac767172b5" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/getBalance"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="89afb7f2-9c4f-4e03-a5f3-73b290daee9d" name="GetBalance for Account ACC-10014">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>getBalance</con:operation>
+          <con:request name="GetBalance for Account ACC-10014" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="0e556d3e-0b9c-467b-b4b6-5f6f3226bc3c">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:getBalance>
+         <acc:accountNo>ACC-10010</acc:accountNo>
+      </acc:getBalance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="c4fb54d8-a049-42b7-a0a1-0aac767172b5" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/getBalance"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="6614d005-e423-4af3-8d5e-4b995d878a20" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_02_Check_Deposit" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="22c071cc-5e75-4514-a95c-23aac2c35700" name="Deposit for Account ACC-10010">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>deposit</con:operation>
+          <con:request name="Deposit for Account ACC-10010" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="9b6cc643-33e9-4e8c-b624-77d11f15f540">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:deposit>
+         <acc:accountNo>ACC-10010</acc:accountNo>
+         <acc:amount>10</acc:amount>
+      </acc:deposit>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="04003072-c9d9-4c93-9786-2344d61e6e2d" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="20757a67-cbc9-4b12-89ed-812e0420b71b" name="Deposit for Account ACC-10011">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>deposit</con:operation>
+          <con:request name="Deposit for Account ACC-10011" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="9b6cc643-33e9-4e8c-b624-77d11f15f540">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:deposit>
+         <acc:accountNo>ACC-10011</acc:accountNo>
+         <acc:amount>500</acc:amount>
+      </acc:deposit>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="04003072-c9d9-4c93-9786-2344d61e6e2d" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="ab75fe1f-91b2-4a01-a08f-0e7b9e26c1fe" name="Deposit for Account ACC-10012">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>deposit</con:operation>
+          <con:request name="Deposit for Account ACC-10012" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="9b6cc643-33e9-4e8c-b624-77d11f15f540">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:deposit>\r
+         <acc:accountNo>ACC-10012</acc:accountNo>\r
+         <acc:amount>10</acc:amount>\r
+      </acc:deposit>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="04003072-c9d9-4c93-9786-2344d61e6e2d" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="a1bcdb54-e453-4114-9d0a-79f640468187" name="Deposit for Account ACC-10013">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>deposit</con:operation>
+          <con:request name="Deposit for Account ACC-10013" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="9b6cc643-33e9-4e8c-b624-77d11f15f540">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:deposit>\r
+         <acc:accountNo>ACC-10013</acc:accountNo>\r
+         <acc:amount>10</acc:amount>\r
+      </acc:deposit>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="04003072-c9d9-4c93-9786-2344d61e6e2d" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="f2ff4774-2c98-44fe-9cdb-940111abc020" name="Deposit for Account ACC-10014">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>deposit</con:operation>
+          <con:request name="Deposit for Account ACC-10014" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="9b6cc643-33e9-4e8c-b624-77d11f15f540">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:deposit>\r
+         <acc:accountNo>ACC-10014</acc:accountNo>\r
+         <acc:amount>10</acc:amount>\r
+      </acc:deposit>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="04003072-c9d9-4c93-9786-2344d61e6e2d" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="b85086cd-c1b8-48b2-8c94-b70cfab0dee3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_03_Check_Withdraw" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="0dcde907-f759-45d8-91f2-13f757fc9f6e" name="Check Withdraw  for Account ACC-10010">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>withdraw</con:operation>
+          <con:request name="Check Withdraw  for Account ACC-10010" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="3cd960ba-99d2-45b8-b7f3-8bc42b9838f3">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>ACC-10010</acc:accountNo>\r
+         <acc:amount>100</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="38de9be4-dd83-49ad-98a8-8400f9bcd6c4" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="08773786-a80e-4572-a3a3-0c0b5687c7f3" name="Check Withdraw  for Account ACC-10011">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>withdraw</con:operation>
+          <con:request name="Check Withdraw  for Account ACC-10011" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="3cd960ba-99d2-45b8-b7f3-8bc42b9838f3">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>ACC-10011</acc:accountNo>\r
+         <acc:amount>20</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="38de9be4-dd83-49ad-98a8-8400f9bcd6c4" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="f232edb7-dcc9-40ff-b80f-f58c59309504" name="Check Withdraw  for Account ACC-10012">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>withdraw</con:operation>
+          <con:request name="Check Withdraw  for Account ACC-10012" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="3cd960ba-99d2-45b8-b7f3-8bc42b9838f3">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>ACC-10012</acc:accountNo>\r
+         <acc:amount>100</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="38de9be4-dd83-49ad-98a8-8400f9bcd6c4" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="baacb97a-2ae0-47c8-990f-cd90012832d9" name="Check Withdraw  for Account ACC-10013">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>withdraw</con:operation>
+          <con:request name="Check Withdraw  for Account ACC-10013" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="3cd960ba-99d2-45b8-b7f3-8bc42b9838f3">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>ACC-10013</acc:accountNo>\r
+         <acc:amount>500</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="38de9be4-dd83-49ad-98a8-8400f9bcd6c4" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="80b637ea-75ce-422d-b414-446c92fb6c3b" name="Check Withdraw  for Account ACC-10014">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>withdraw</con:operation>
+          <con:request name="Check Withdraw  for Account ACC-10014" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="3cd960ba-99d2-45b8-b7f3-8bc42b9838f3">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>ACC-10014</acc:accountNo>\r
+         <acc:amount>?</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="38de9be4-dd83-49ad-98a8-8400f9bcd6c4" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="f32dab92-c176-4688-b019-929e2546290b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_04_Check_Funds_Transfer" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="ecd70e08-ac80-455e-8159-aa25967ebc97" name="Check Fund Transfer for Account ACC-10010 from ACC-10011">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Check Fund Transfer for Account ACC-10010 from ACC-10011" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2665598f-d0a4-404c-9baf-6aa6cb79581f">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10011</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10010</acc:destAccountNo>\r
+         <acc:amount>200</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="4a281e40-3b65-4d8f-84b8-f8cd63773b5c" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="69720e93-9268-4f78-9a1a-fa8d9d16750f" name="Check Fund Transfer for Account ACC-10011 from ACC-10012">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Check Fund Transfer for Account ACC-10011 from ACC-10012" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2665598f-d0a4-404c-9baf-6aa6cb79581f">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10012</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10011</acc:destAccountNo>\r
+         <acc:amount>30</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="4a281e40-3b65-4d8f-84b8-f8cd63773b5c" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="5cecd653-325d-4e1f-a84c-a953d9d62cec" name="Check Fund Transfer for Account ACC-10012 from ACC-10013">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Check Fund Transfer for Account ACC-10012 from ACC-10013" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2665598f-d0a4-404c-9baf-6aa6cb79581f">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10012</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10013</acc:destAccountNo>\r
+         <acc:amount>50</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="4a281e40-3b65-4d8f-84b8-f8cd63773b5c" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="a517891e-88aa-4f79-8351-14ba9b2756a4" name="Check Fund Transfer for Account ACC-10013 from ACC-10014">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Check Fund Transfer for Account ACC-10013 from ACC-10014" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2665598f-d0a4-404c-9baf-6aa6cb79581f">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10013</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10014</acc:destAccountNo>\r
+         <acc:amount>70</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="4a281e40-3b65-4d8f-84b8-f8cd63773b5c" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="12879870-cba2-4945-a86d-486433b4829c" name="Check Fund Transfer for Account ACC-10014 from ACC-10010">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Check Fund Transfer for Account ACC-10014 from ACC-10010" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2665598f-d0a4-404c-9baf-6aa6cb79581f">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10014</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10010</acc:destAccountNo>\r
+         <acc:amount>200</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="4a281e40-3b65-4d8f-84b8-f8cd63773b5c" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="5fd61cbf-d992-4c27-82de-af3e505872c7" name="TS_02 for negative test cases = LOCAL SERVICES">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="5bbb4ad5-623a-4023-9b5e-effb750aa328" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_05 Check Balance With Invalid Account" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="7c688b73-08c7-4d3c-a0d4-13a0d9d605fb" name="Check balance With Invalid Account_ACC-10009">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>getBalance</con:operation>
+          <con:request name="Check balance With Invalid Account_ACC-10009" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a9bf31c6-08ba-42e2-ab71-9250e51f2e92">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:getBalance>
+         <acc:accountNo>ACC-10009</acc:accountNo>
+      </acc:getBalance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="523fccf8-a26c-4fc8-8396-e82e2d5fd3a3" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="d966bf9f-8cbb-4fc1-9012-b3f01128d8c7" name="Validating the status Response contains 103 as  StatusCode for Invalid Account  ACC-10009 --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:getBalanceResponse/ns1:status/text( )</path>
+                <content>103</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="4bfbb74d-fa53-4ed1-9982-ba5118979567" name="Checking Balance/Validating Balance = 0.0 for an Invalid Account ACC-10009 --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:getBalanceResponse/ns1:amount/text( )</path>
+                <content>0.0</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="b5bfa2f0-95f7-477d-beb2-7d078f81899b" name="Validating the status Response contains &quot;Account ACC-10009 doesn't exist&quot;  as  Message for Invalid Account  ACC-10009 --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:getBalanceResponse/ns1:message/text( )</path>
+                <content>Account ACC-10009 doesn't exist</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/getBalance"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="53a633d5-8b6c-4f4b-8f2e-188b8c85b976" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_06 Check Deposit With Invalid Account" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="04b6bf8a-e4d9-40be-9d69-3e7f5d85878d" name="Check Deposit  With Invalid Account_ACC-10009">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>deposit</con:operation>
+          <con:request name="Check Deposit  With Invalid Account_ACC-10009" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="5d517169-5553-41d4-a157-6396036dd1af">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:deposit>
+         <acc:accountNo>ACC-10009</acc:accountNo>
+         <acc:amount>50</acc:amount>
+      </acc:deposit>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0d8bec2b-bffa-4f94-b073-e036e5731c6a" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="07879763-f214-4e4d-9ab1-e5720bf8aabb" name="Validating the status Response contains 100 as  StatusCode for Invalid Account  ACC-10009 --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:depositResponse/ns1:status/text( )</path>
+                <content>100</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="2d9409d0-d5d3-422c-b941-0cc7a121fe16" name="Validating the status Response contains &quot;Account ACC-10009 doesn't exist&quot;  as  Message for Invalid Account  ACC-10009 --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:depositResponse/ns1:message/text( )</path>
+                <content>Account ACC-10009 doesn't exist</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="b701a1af-7f75-454d-be98-41e6101a02ee" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_07 Check Deposit With Valid Account &amp; Negative or Zero Amount" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="897652b5-48a9-43b5-af6c-12b6c15fd1b6" name="Check Deposit With Valid Account ACC-10010 Zero Amount(0)">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>deposit</con:operation>
+          <con:request name="Check Deposit With Valid Account ACC-10010 Zero Amount(0)" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="962df112-7fd2-44a9-b7bc-aa55bbbdc7f7">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:deposit>\r
+         <acc:accountNo>ACC-10010</acc:accountNo>\r
+         <acc:amount>00</acc:amount>\r
+      </acc:deposit>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="600d5775-02ed-4736-971b-cc5750199ceb" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="0bc6e4eb-57fe-4cd2-9265-0053b3e1cd2d" name="Validating Check Deposit With a Valid Account ACC-10010 For Negative / Zero Amount to display &quot;Invalid amount &quot; as Message --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:depositResponse/ns1:message/text()</path>
+                <content>Invalid amount</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="805a34fe-45ce-4b9e-a395-338a443d55db" name="Check Deposit With Valid Account ACC-10010 Negative Amount(-90)">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>deposit</con:operation>
+          <con:request name="Check Deposit With Valid Account ACC-10010 Negative Amount(-90)" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="962df112-7fd2-44a9-b7bc-aa55bbbdc7f7">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:deposit>\r
+         <acc:accountNo>ACC-10010</acc:accountNo>\r
+         <acc:amount>-90</acc:amount>\r
+      </acc:deposit>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="600d5775-02ed-4736-971b-cc5750199ceb" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="0bc6e4eb-57fe-4cd2-9265-0053b3e1cd2d" name="Validating Check Deposit With a Valid Account ACC-10010 For Negative / Zero Amount to display &quot;Invalid amount &quot; as Message --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:depositResponse/ns1:message/text()</path>
+                <content>Invalid amount</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/deposit"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="01cfee38-be5e-4142-bb6c-123d19084462" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_08 Check Withdraw With Valid Account Negative or Zero Amount" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="3da66d2f-94e4-4fbd-9d1f-427cbf2fc3a2" name="Check Withdraw With Valid Account ACC-10010  Zero Amount(0)">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>withdraw</con:operation>
+          <con:request name="Check Withdraw With Valid Account ACC-10010  Zero Amount(0)" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a29ad2a0-ab2f-4902-b72a-fa9cc2aaaa8e">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>10010</acc:accountNo>\r
+         <acc:amount>0</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="27fe172f-f357-4a0c-a8a9-dac462bd6deb" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="32b26150-4926-4a6c-be5e-8ad7e22a3ac4" name="Validating Check Withdraw With a Valid Account ACC-10010 For Negative / Zero Amount to display &quot;Invalid amount &quot; as Message --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:withdrawResponse/ns1:message/text()</path>
+                <content>Invalid amount</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="a3fea5b6-4176-41bb-9daf-158e7942ec68" name="Check Withdraw With Valid Account ACC-10010 &amp; Negative  Amount(-90)">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>withdraw</con:operation>
+          <con:request name="Check Withdraw With Valid Account ACC-10010 &amp; Negative  Amount(-90)" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a29ad2a0-ab2f-4902-b72a-fa9cc2aaaa8e">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>10010</acc:accountNo>\r
+         <acc:amount>0</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="27fe172f-f357-4a0c-a8a9-dac462bd6deb" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="32b26150-4926-4a6c-be5e-8ad7e22a3ac4" name="Validating Check Withdraw With a Valid Account ACC-10010 For Negative / Zero Amount to display &quot;Invalid amount &quot; as Message --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:withdrawResponse/ns1:message/text()</path>
+                <content>Invalid amount</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="61684e43-4b79-4b36-a27c-389387ac0a0e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_09 Check Withdraw With Amount More than Balance" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="c6820004-8e92-432f-9b81-cb550f0e2f81" name="Check Withdraw With Amount More than Balance for Acoount ACC-10014">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>withdraw</con:operation>
+          <con:request name="Check Withdraw With Amount More than Balance for Acoount ACC-10014" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="183dd54b-bae8-4871-bc7d-e85d3aa29225">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:withdraw>\r
+         <acc:accountNo>ACC-10014</acc:accountNo>\r
+         <acc:amount>1000</acc:amount>\r
+      </acc:withdraw>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="cfec7fea-442c-4ce4-93bf-f6b7fcdb77df" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="d9843700-2d97-4c59-a4ea-dea0d5a16d39" name="Validating Check Withdraw With a Valid Account ACC-10014 For Negative / Zero Amount to display &quot;Insufficient balance in account ACC-10014 &quot; as Message --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:withdrawResponse/ns1:message/text()</path>
+                <content>Insufficient balance in account ACC-10014</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/withdraw"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="cb9a0997-60ae-4f39-88de-948bf0577387" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_10 Check Transfer With Valid Source a/c &amp; Invalid Destination a/c" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="f82540e5-0cb9-4d50-a51d-8afe16775ef2" name="Check Transfer With Valid Source a/c (ACC-10010) &amp; Invalid Destination a/c (ACC-10090)">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Check Transfer With Valid Source a/c (ACC-10010) &amp; Invalid Destination a/c (ACC-10090)" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="4366849b-8325-4182-a654-fe0c445ab88e">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10010</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10009</acc:destAccountNo>\r
+         <acc:amount>100</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="45843dff-b011-48f5-8eb1-fd06d7063f07" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="06ff9e4c-d7a9-44b9-8bff-373cab2333c9" name="Validate transfer b/w valid  Source a/c (ACC-10010) &amp; Invalid Destination a/c (ACC-10090) displays &quot;Account ACC-10009 doesn't exist&quot; --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:transferResponse/ns1:message/text( )</path>
+                <content>Account ACC-10009 doesn't exist</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="039570a8-4ffe-43cf-afa1-d644cefc54da" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_11 Check Transfer With Invalid Source a/c &amp; Valid Destination a/c" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="245e98fe-35cd-4444-844c-c2ec394d9a69" name="Check Transfer With Invalid Source a/c (ACC-10009) &amp; Valid Destination a/c (ACC-10010)">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Check Transfer With Invalid Source a/c (ACC-10009) &amp; Valid Destination a/c (ACC-10010)" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="d0220ac0-dcbe-4d5f-9cfe-bd96fdc0486d">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10008</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10010</acc:destAccountNo>\r
+         <acc:amount>90</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="1ec2d13d-02f2-4dc8-a385-734493b99e81" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="9a328aa8-9fff-4bfc-89cb-5ab6d294cb04" name="Validate transfer b/w Invalid  Source a/c (ACC-10008) &amp; Valid Destination a/c (ACC-10010) displays &quot;Account ACC-10008 doesn't exist&quot; --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:transferResponse/ns1:message/text( )</path>
+                <content>Account ACC-10008 doesn't exist</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="1fb5163f-8c50-420e-82c9-7f68cd5d4ba5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_12 Check Transfer With Negative or Zero Amount" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="50a5956b-a30d-4f51-8871-ec9d9c065c87" name="Check Transfer With  Zero Amount (0) b/w ACC-10011 &amp; ACC-10012">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Check Transfer With  Zero Amount (0) b/w ACC-10011 &amp; ACC-10012" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="e3546e77-6d06-4184-9876-b7aad4d32872">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10011</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10012</acc:destAccountNo>\r
+         <acc:amount>0</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="e0970c80-1ed0-4245-b05e-20b0541dc011" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="ed09c620-4bd1-4535-86c0-847ce8952d45" name="Validating Check Transfer With a Valid Accounts ACC-100111 &amp; 10012 For Negative / Zero Amount to display &quot;Invalid amount &quot; as Message --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:transferResponse/ns1:message/text( )</path>
+                <content>Invalid amount</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="61542213-95b1-46e8-972c-9e21bfc053b8" name="Copy of Check Transfer With Negative  Amount (-90) b/w ACC-10011 &amp; ACC-10012">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>accountServiceSoapBinding</con:interface>
+          <con:operation>transfer</con:operation>
+          <con:request name="Copy of Check Transfer With Negative  Amount (-90) b/w ACC-10011 &amp; ACC-10012" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="e3546e77-6d06-4184-9876-b7aad4d32872">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/accountService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.example.org/AccountService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:transfer>\r
+         <acc:sourceAccountNo>ACC-10011</acc:sourceAccountNo>\r
+         <acc:destAccountNo>ACC-10012</acc:destAccountNo>\r
+         <acc:amount>-90</acc:amount>\r
+      </acc:transfer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="e0970c80-1ed0-4245-b05e-20b0541dc011" name="Validating Soap Response to be a Valid SOAP response --&lt;SOAP RESPONSE>"/>
+            <con:assertion type="XPath Match" id="ed09c620-4bd1-4535-86c0-847ce8952d45" name="Validating Check Transfer With a Valid Accounts ACC-100111 &amp; 10012 For Negative / Zero Amount to display &quot;Invalid amount &quot; as Message --&lt;XPATH>">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/AccountService/';
+//ns1:transferResponse/ns1:message/text( )</path>
+                <content>Invalid amount</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/AccountService/transfer"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:sensitiveInformation/>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>

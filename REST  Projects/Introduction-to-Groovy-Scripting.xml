@@ -1,0 +1,2792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="db8746c4-ac39-4971-b7ed-2fcfe278ebd4" created="3.2.7" activeEnvironment="Default environment" name="Introduction to Groovy Scripting" updated="3.2.7 2020-05-27T19:48:04Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="621895e6-cd45-4fa1-ae8b-4399d0526950" name="Swagger Petstore" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="https://petstore.swagger.io/v2/swagger.json" basePath="/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:description>This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.</con:description>
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="https://petstore.swagger.io/v2/swagger.json">
+      <con:part>
+        <con:url>https://petstore.swagger.io/v2/swagger.json</con:url>
+        <con:content>{"swagger":"2.0","info":{"description":"This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.","version":"1.0.5","title":"Swagger Petstore","termsOfService":"http://swagger.io/terms/","contact":{"email":"apiteam@swagger.io"},"license":{"name":"Apache 2.0","url":"http://www.apache.org/licenses/LICENSE-2.0.html"}},"host":"petstore.swagger.io","basePath":"/v2","tags":[{"name":"pet","description":"Everything about your Pets","externalDocs":{"description":"Find out more","url":"http://swagger.io"}},{"name":"store","description":"Access to Petstore orders"},{"name":"user","description":"Operations about user","externalDocs":{"description":"Find out more about our store","url":"http://swagger.io"}}],"schemes":["https","http"],"paths":{"/pet/{petId}/uploadImage":{"post":{"tags":["pet"],"summary":"uploads an image","description":"","operationId":"uploadFile","consumes":["multipart/form-data"],"produces":["application/json"],"parameters":[{"name":"petId","in":"path","description":"ID of pet to update","required":true,"type":"integer","format":"int64"},{"name":"additionalMetadata","in":"formData","description":"Additional data to pass to server","required":false,"type":"string"},{"name":"file","in":"formData","description":"file to upload","required":false,"type":"file"}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/ApiResponse"}}},"security":[{"petstore_auth":["write:pets","read:pets"]}]}},"/pet":{"post":{"tags":["pet"],"summary":"Add a new pet to the store","description":"","operationId":"addPet","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"Pet object that needs to be added to the store","required":true,"schema":{"$ref":"#/definitions/Pet"}}],"responses":{"405":{"description":"Invalid input"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]},"put":{"tags":["pet"],"summary":"Update an existing pet","description":"","operationId":"updatePet","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"Pet object that needs to be added to the store","required":true,"schema":{"$ref":"#/definitions/Pet"}}],"responses":{"400":{"description":"Invalid ID supplied"},"404":{"description":"Pet not found"},"405":{"description":"Validation exception"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]}},"/pet/findByStatus":{"get":{"tags":["pet"],"summary":"Finds Pets by status","description":"Multiple status values can be provided with comma separated strings","operationId":"findPetsByStatus","produces":["application/json","application/xml"],"parameters":[{"name":"status","in":"query","description":"Status values that need to be considered for filter","required":true,"type":"array","items":{"type":"string","enum":["available","pending","sold"],"default":"available"},"collectionFormat":"multi"}],"responses":{"200":{"description":"successful operation","schema":{"type":"array","items":{"$ref":"#/definitions/Pet"}}},"400":{"description":"Invalid status value"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]}},"/pet/findByTags":{"get":{"tags":["pet"],"summary":"Finds Pets by tags","description":"Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.","operationId":"findPetsByTags","produces":["application/json","application/xml"],"parameters":[{"name":"tags","in":"query","description":"Tags to filter by","required":true,"type":"array","items":{"type":"string"},"collectionFormat":"multi"}],"responses":{"200":{"description":"successful operation","schema":{"type":"array","items":{"$ref":"#/definitions/Pet"}}},"400":{"description":"Invalid tag value"}},"security":[{"petstore_auth":["write:pets","read:pets"]}],"deprecated":true}},"/pet/{petId}":{"get":{"tags":["pet"],"summary":"Find pet by ID","description":"Returns a single pet","operationId":"getPetById","produces":["application/json","application/xml"],"parameters":[{"name":"petId","in":"path","description":"ID of pet to return","required":true,"type":"integer","format":"int64"}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/Pet"}},"400":{"description":"Invalid ID supplied"},"404":{"description":"Pet not found"}},"security":[{"api_key":[]}]},"post":{"tags":["pet"],"summary":"Updates a pet in the store with form data","description":"","operationId":"updatePetWithForm","consumes":["application/x-www-form-urlencoded"],"produces":["application/json","application/xml"],"parameters":[{"name":"petId","in":"path","description":"ID of pet that needs to be updated","required":true,"type":"integer","format":"int64"},{"name":"name","in":"formData","description":"Updated name of the pet","required":false,"type":"string"},{"name":"status","in":"formData","description":"Updated status of the pet","required":false,"type":"string"}],"responses":{"405":{"description":"Invalid input"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]},"delete":{"tags":["pet"],"summary":"Deletes a pet","description":"","operationId":"deletePet","produces":["application/json","application/xml"],"parameters":[{"name":"api_key","in":"header","required":false,"type":"string"},{"name":"petId","in":"path","description":"Pet id to delete","required":true,"type":"integer","format":"int64"}],"responses":{"400":{"description":"Invalid ID supplied"},"404":{"description":"Pet not found"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]}},"/store/order":{"post":{"tags":["store"],"summary":"Place an order for a pet","description":"","operationId":"placeOrder","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"order placed for purchasing the pet","required":true,"schema":{"$ref":"#/definitions/Order"}}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/Order"}},"400":{"description":"Invalid Order"}}}},"/store/order/{orderId}":{"get":{"tags":["store"],"summary":"Find purchase order by ID","description":"For valid response try integer IDs with value >= 1 and &lt;= 10. Other values will generated exceptions","operationId":"getOrderById","produces":["application/json","application/xml"],"parameters":[{"name":"orderId","in":"path","description":"ID of pet that needs to be fetched","required":true,"type":"integer","maximum":10,"minimum":1,"format":"int64"}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/Order"}},"400":{"description":"Invalid ID supplied"},"404":{"description":"Order not found"}}},"delete":{"tags":["store"],"summary":"Delete purchase order by ID","description":"For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors","operationId":"deleteOrder","produces":["application/json","application/xml"],"parameters":[{"name":"orderId","in":"path","description":"ID of the order that needs to be deleted","required":true,"type":"integer","minimum":1,"format":"int64"}],"responses":{"400":{"description":"Invalid ID supplied"},"404":{"description":"Order not found"}}}},"/store/inventory":{"get":{"tags":["store"],"summary":"Returns pet inventories by status","description":"Returns a map of status codes to quantities","operationId":"getInventory","produces":["application/json"],"parameters":[],"responses":{"200":{"description":"successful operation","schema":{"type":"object","additionalProperties":{"type":"integer","format":"int32"}}}},"security":[{"api_key":[]}]}},"/user/createWithArray":{"post":{"tags":["user"],"summary":"Creates list of users with given input array","description":"","operationId":"createUsersWithArrayInput","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"List of user object","required":true,"schema":{"type":"array","items":{"$ref":"#/definitions/User"}}}],"responses":{"default":{"description":"successful operation"}}}},"/user/createWithList":{"post":{"tags":["user"],"summary":"Creates list of users with given input array","description":"","operationId":"createUsersWithListInput","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"List of user object","required":true,"schema":{"type":"array","items":{"$ref":"#/definitions/User"}}}],"responses":{"default":{"description":"successful operation"}}}},"/user/{username}":{"get":{"tags":["user"],"summary":"Get user by user name","description":"","operationId":"getUserByName","produces":["application/json","application/xml"],"parameters":[{"name":"username","in":"path","description":"The name that needs to be fetched. Use user1 for testing. ","required":true,"type":"string"}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/User"}},"400":{"description":"Invalid username supplied"},"404":{"description":"User not found"}}},"put":{"tags":["user"],"summary":"Updated user","description":"This can only be done by the logged in user.","operationId":"updateUser","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"name":"username","in":"path","description":"name that need to be updated","required":true,"type":"string"},{"in":"body","name":"body","description":"Updated user object","required":true,"schema":{"$ref":"#/definitions/User"}}],"responses":{"400":{"description":"Invalid user supplied"},"404":{"description":"User not found"}}},"delete":{"tags":["user"],"summary":"Delete user","description":"This can only be done by the logged in user.","operationId":"deleteUser","produces":["application/json","application/xml"],"parameters":[{"name":"username","in":"path","description":"The name that needs to be deleted","required":true,"type":"string"}],"responses":{"400":{"description":"Invalid username supplied"},"404":{"description":"User not found"}}}},"/user/login":{"get":{"tags":["user"],"summary":"Logs user into the system","description":"","operationId":"loginUser","produces":["application/json","application/xml"],"parameters":[{"name":"username","in":"query","description":"The user name for login","required":true,"type":"string"},{"name":"password","in":"query","description":"The password for login in clear text","required":true,"type":"string"}],"responses":{"200":{"description":"successful operation","headers":{"X-Expires-After":{"type":"string","format":"date-time","description":"date in UTC when token expires"},"X-Rate-Limit":{"type":"integer","format":"int32","description":"calls per hour allowed by the user"}},"schema":{"type":"string"}},"400":{"description":"Invalid username/password supplied"}}}},"/user/logout":{"get":{"tags":["user"],"summary":"Logs out current logged in user session","description":"","operationId":"logoutUser","produces":["application/json","application/xml"],"parameters":[],"responses":{"default":{"description":"successful operation"}}}},"/user":{"post":{"tags":["user"],"summary":"Create user","description":"This can only be done by the logged in user.","operationId":"createUser","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"Created user object","required":true,"schema":{"$ref":"#/definitions/User"}}],"responses":{"default":{"description":"successful operation"}}}}},"securityDefinitions":{"api_key":{"type":"apiKey","name":"api_key","in":"header"},"petstore_auth":{"type":"oauth2","authorizationUrl":"https://petstore.swagger.io/oauth/authorize","flow":"implicit","scopes":{"read:pets":"read your pets","write:pets":"modify pets in your account"}}},"definitions":{"ApiResponse":{"type":"object","properties":{"code":{"type":"integer","format":"int32"},"type":{"type":"string"},"message":{"type":"string"}}},"Category":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"name":{"type":"string"}},"xml":{"name":"Category"}},"Pet":{"type":"object","required":["name","photoUrls"],"properties":{"id":{"type":"integer","format":"int64"},"category":{"$ref":"#/definitions/Category"},"name":{"type":"string","example":"doggie"},"photoUrls":{"type":"array","xml":{"wrapped":true},"items":{"type":"string","xml":{"name":"photoUrl"}}},"tags":{"type":"array","xml":{"wrapped":true},"items":{"xml":{"name":"tag"},"$ref":"#/definitions/Tag"}},"status":{"type":"string","description":"pet status in the store","enum":["available","pending","sold"]}},"xml":{"name":"Pet"}},"Tag":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"name":{"type":"string"}},"xml":{"name":"Tag"}},"Order":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"petId":{"type":"integer","format":"int64"},"quantity":{"type":"integer","format":"int32"},"shipDate":{"type":"string","format":"date-time"},"status":{"type":"string","description":"Order Status","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"}},"User":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"username":{"type":"string"},"firstName":{"type":"string"},"lastName":{"type":"string"},"email":{"type":"string"},"password":{"type":"string"},"phone":{"type":"string"},"userStatus":{"type":"integer","format":"int32","description":"User Status"}},"xml":{"name":"User"}}},"externalDocs":{"description":"Find out more about Swagger","url":"http://swagger.io"}}</con:content>
+        <con:type>https://swagger.io/swagger2/specification</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://petstore.swagger.io</con:endpoint>
+      <con:endpoint>https://petstore.swagger.io</con:endpoint>
+    </con:endpoints>
+    <con:resource name="/pet/{petId}/uploadImage" path="/pet/{petId}/uploadImage" id="5a308000-4766-404d-b37c-f665ea07ccd1">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>petId</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>ID of pet to update</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="uploadFile" id="0d6974ae-7a9e-4d63-806c-b5b1da8efe48" method="POST">
+        <con:description>uploads an image</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter>
+            <con:name>additionalMetadata</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>Additional data to pass to server</con:description>
+          </con:parameter>
+          <con:parameter>
+            <con:name>file</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>file to upload</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "code" : 0,
+  "type" : "string",
+  "message" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>multipart/form-data</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="9971d4a8-1397-4807-be49-1d25dc5df59c" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/pet" path="/pet" id="928d3a5d-e940-4e23-bd45-b7b53948cae3">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="addPet" id="904cc777-5c33-487f-ba3f-e7b77ae10aa1" method="POST">
+        <con:description>Add a new pet to the store</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="f41db68d-b625-4d5d-8abf-ab1acc948485" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+        <con:request name="Request 2" id="e2b84253-bda1-49b7-9f8e-0c860706760e" mediaType="application/xml" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request><![CDATA[<Pet>\r
+   <id>0</id>\r
+   <Category>\r
+      <id>0</id>\r
+      <name>string</name>\r
+   </Category>\r
+   <name>doggie</name>\r
+   <photoUrlss>\r
+      <photoUrl>string</photoUrl>\r
+   </photoUrlss>\r
+   <tagss>\r
+      <tag>\r
+         <id>0</id>\r
+         <name>string</name>\r
+      </tag>\r
+   </tagss>\r
+   <status>available</status>\r
+</Pet>]]></con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="updatePet" id="17461b0d-c3e7-4e01-86fd-cd7c4f919404" method="PUT">
+        <con:description>Update an existing pet</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="b21d6d8a-1bdb-4626-a5ac-32caccdfc18d" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+        <con:request name="Request 2" id="3236a46b-ba4d-4a80-a2f6-df1cf3d9551b" mediaType="application/xml">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request><![CDATA[<Pet>\r
+   <id>0</id>\r
+   <Category>\r
+      <id>0</id>\r
+      <name>string</name>\r
+   </Category>\r
+   <name>doggie</name>\r
+   <photoUrlss>\r
+      <photoUrl>string</photoUrl>\r
+   </photoUrlss>\r
+   <tagss>\r
+      <tag>\r
+         <id>0</id>\r
+         <name>string</name>\r
+      </tag>\r
+   </tagss>\r
+   <status>available</status>\r
+</Pet>]]></con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/pet/findByStatus" path="/pet/findByStatus" id="3b0630c1-edf1-4621-831f-a7b85ad0f5c6">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="findPetsByStatus" id="35654a62-6699-4bbe-bfca-b7b079616cf3" method="GET">
+        <con:description>Multiple status values can be provided with comma separated strings
+Finds Pets by status</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>status</con:name>
+            <con:style>QUERY</con:style>
+            <con:dataType>array</con:dataType>
+            <con:description>Status values that need to be considered for filter</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="ad829af5-20f4-4c7d-b6db-cda14c6cc9d6" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/pet/findByTags" path="/pet/findByTags" id="f51f53de-f1a0-4771-982c-b344709eaf55">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="findPetsByTags" id="12c9d1dc-a813-4be6-b372-531bd4dfb14f" method="GET">
+        <con:description>Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
+Finds Pets by tags</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>tags</con:name>
+            <con:style>QUERY</con:style>
+            <con:dataType>array</con:dataType>
+            <con:description>Tags to filter by</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="1a9a7148-4caa-4c28-9ba5-4a9102ffa490" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/pet/{petId}" path="/pet/{petId}" id="5fdf39b5-691d-4a6f-9799-681ea92f32e1">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>petId</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>Pet id to delete</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getPetById" id="3cb2b668-a60a-4519-9fe2-c95a9c95021b" method="GET">
+        <con:description>Returns a single pet
+Find pet by ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="f96fc131-8b96-454a-80f5-5981cb8c112d" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="updatePetWithForm" id="adb71921-5b6b-4bd9-a55d-90d9be7bc034" method="POST">
+        <con:description>Updates a pet in the store with form data</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter>
+            <con:name>name</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>Updated name of the pet</con:description>
+          </con:parameter>
+          <con:parameter>
+            <con:name>status</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>Updated status of the pet</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/x-www-form-urlencoded</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="65cc9df0-e81f-4d60-a7e6-ee8cd69bb2e1" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="deletePet" id="d7984e0c-14eb-4a9c-aed7-0761ee051ba5" method="DELETE">
+        <con:description>Deletes a pet</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter>
+            <con:name>api_key</con:name>
+            <con:style>HEADER</con:style>
+            <con:description xsi:nil="true"/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="3551e499-632c-4e39-a5bd-7f916d0a352c" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/store/order" path="/store/order" id="50ec40c4-8169-469d-95ca-ec24e8d5beb4">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="placeOrder" id="f7a6f6eb-0a44-459a-bb1d-f64a61f7d92c" method="POST">
+        <con:description>Place an order for a pet</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "petId" : 0,
+  "quantity" : 0,
+  "shipDate" : "2015-07-20T15:49:04-07:00",
+  "status" : "placed",
+  "complete" : true
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "petId" : 0,
+  "quantity" : 0,
+  "shipDate" : "2015-07-20T15:49:04-07:00",
+  "status" : "placed",
+  "complete" : true
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Order>
+   <id>0</id>
+   <petId>0</petId>
+   <quantity>0</quantity>
+   <shipDate>2015-07-20T15:49:04-07:00</shipDate>
+   <status>placed</status>
+   <complete>true</complete>
+</Order>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="97f34afd-7fc2-4ed1-abe0-97440d40dab1" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{\r
+  "id" : 0,\r
+  "petId" : 0,\r
+  "quantity" : 0,\r
+  "shipDate" : "2015-07-20T15:49:04-07:00",\r
+  "status" : "placed",\r
+  "complete" : true\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/store/order/{orderId}" path="/store/order/{orderId}" id="88c119fc-a5a3-43e6-8ebd-ce65c7b8d284">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>orderId</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>ID of the order that needs to be deleted</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getOrderById" id="fd5039ac-1990-4651-90a7-14768bf22e35" method="GET">
+        <con:description>For valid response try integer IDs with value >= 1 and &lt;= 10. Other values will generated exceptions
+Find purchase order by ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "petId" : 0,
+  "quantity" : 0,
+  "shipDate" : "2015-07-20T15:49:04-07:00",
+  "status" : "placed",
+  "complete" : true
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Order>
+   <id>0</id>
+   <petId>0</petId>
+   <quantity>0</quantity>
+   <shipDate>2015-07-20T15:49:04-07:00</shipDate>
+   <status>placed</status>
+   <complete>true</complete>
+</Order>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="b9b0c00b-1c34-4e71-a9ef-80f713c05f03" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="deleteOrder" id="b0006ed9-fa73-4167-8540-b932746296b2" method="DELETE">
+        <con:description>For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
+Delete purchase order by ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="769ef8f7-299d-459e-a685-94d9773ddf78" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/store/inventory" path="/store/inventory" id="08d2aaaa-fdfe-46f8-ac4a-77717347197b">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="getInventory" id="429e5cc7-38d6-4772-9eec-2c40ee59fa35" method="GET">
+        <con:description>Returns a map of status codes to quantities
+Returns pet inventories by status</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "additionalProp1" : 0,
+  "additionalProp2" : 0,
+  "additionalProp3" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:request name="Request 1" id="835f6a52-3a96-4bce-92ff-3765542fcab7" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/createWithArray" path="/user/createWithArray" id="d93b27c2-d868-40dc-bb8c-1a4c15df5eca">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="createUsersWithArrayInput" id="92a2986c-718f-42d4-b2b1-daefe4bada7e" method="POST">
+        <con:description>Creates list of users with given input array</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="8fee9d25-f886-40dd-8c7c-a9098f3f55b5" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{ }</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/createWithList" path="/user/createWithList" id="92719bb3-e1fa-40d9-ab4a-8daa4a07afee">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="createUsersWithListInput" id="a798ba2e-208a-4921-a513-6b94a49a11b6" method="POST">
+        <con:description>Creates list of users with given input array</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="a7664439-adda-49d3-825b-f8efc77a93c1" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{ }</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/{username}" path="/user/{username}" id="e3d97fc5-cfb3-4664-8bdc-774cb5f9ec98">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>username</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:description>The name that needs to be deleted</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getUserByName" id="1654f4b2-cf60-4ccd-ac31-a67f591c1b93" method="GET">
+        <con:description>Get user by user name</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "username" : "string",
+  "firstName" : "string",
+  "lastName" : "string",
+  "email" : "string",
+  "password" : "string",
+  "phone" : "string",
+  "userStatus" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<User>
+   <id>0</id>
+   <username>string</username>
+   <firstName>string</firstName>
+   <lastName>string</lastName>
+   <email>string</email>
+   <password>string</password>
+   <phone>string</phone>
+   <userStatus>0</userStatus>
+</User>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="12a1a4e4-8b51-4457-9fb9-c2a9686d9108" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="updateUser" id="79e11dc3-9749-4924-b8bc-e7d5693e1999" method="PUT">
+        <con:description>This can only be done by the logged in user.
+Updated user</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "username" : "string",
+  "firstName" : "string",
+  "lastName" : "string",
+  "email" : "string",
+  "password" : "string",
+  "phone" : "string",
+  "userStatus" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="57dd9dc8-d4bd-4440-83e7-8cf355ae0e40" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{\r
+  "id" : 0,\r
+  "username" : "string",\r
+  "firstName" : "string",\r
+  "lastName" : "string",\r
+  "email" : "string",\r
+  "password" : "string",\r
+  "phone" : "string",\r
+  "userStatus" : 0\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="deleteUser" id="e2c6cc15-fb63-400b-b7ea-4a65ccb6197b" method="DELETE">
+        <con:description>This can only be done by the logged in user.
+Delete user</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="492328b4-1133-4c36-9aef-9ad9c3b49cda" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/login" path="/user/login" id="5718fa16-37d4-4351-b6c2-a8cc9419ba6a">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="loginUser" id="07bb6c96-a11b-40e8-ab5e-28c0302d7265" method="GET">
+        <con:description>Logs user into the system</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>username</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>The user name for login</con:description>
+          </con:parameter>
+          <con:parameter required="true">
+            <con:name>password</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>The password for login in clear text</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>"string"</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>&lt;string>string&lt;/string></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="fffdc6ba-e99b-4f57-aa44-760546b3f019" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/logout" path="/user/logout" id="d2352c95-0e43-41e6-8f10-26b30f0f282f">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="logoutUser" id="c2433cf6-4904-43cf-8558-94295b0132ee" method="GET">
+        <con:description>Logs out current logged in user session</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="2d4921a1-547c-4986-9e54-b2aaa672d193" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user" path="/user" id="524211c7-4ed9-4240-8ff2-37329a151b6b">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="createUser" id="25e0ae9f-0733-4e23-b72a-baedc049b676" method="POST">
+        <con:description>This can only be done by the logged in user.
+Create user</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "username" : "string",
+  "firstName" : "string",
+  "lastName" : "string",
+  "email" : "string",
+  "password" : "string",
+  "phone" : "string",
+  "userStatus" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="aa2ea22a-36e7-4d86-90a7-71d760de7d69" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{\r
+  "id" : 0,\r
+  "username" : "string",\r
+  "firstName" : "string",\r
+  "lastName" : "string",\r
+  "email" : "string",\r
+  "password" : "string",\r
+  "phone" : "string",\r
+  "userStatus" : 0\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="a4ea06ae-4841-422d-ae52-704a2cd4b4b1" wsaVersion="NONE" name="BLZServiceSOAP11Binding" type="wsdl" bindingName="{http://thomas-bayer.com/blz/}BLZServiceSOAP11Binding" soapVersion="1_1" anonymous="optional" definition="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl">
+      <con:part>
+        <con:url>http://www.thomas-bayer.com/axis2/services/BLZService?wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://thomas-bayer.com/blz/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://thomas-bayer.com/blz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>BLZService</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://thomas-bayer.com/blz/">
+      <xsd:element name="getBank" type="tns:getBankType"/>
+      <xsd:element name="getBankResponse" type="tns:getBankResponseType"/>
+      <xsd:complexType name="getBankType">
+        <xsd:sequence>
+          <xsd:element name="blz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getBankResponseType">
+        <xsd:sequence>
+          <xsd:element name="details" type="tns:detailsType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="detailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bezeichnung" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="bic" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ort" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="plz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBank">
+    <wsdl:part name="parameters" element="tns:getBank"/>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part name="parameters" element="tns:getBankResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="BLZServicePortType">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="tns:getBank"/>
+      <wsdl:output message="tns:getBankResponse" wsaw:Action="http://thomas-bayer.com/blz/BLZService/getBankResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BLZServiceSOAP11Binding" type="tns:BLZServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceSOAP12Binding" type="tns:BLZServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceHttpBinding" type="tns:BLZServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getBank">
+      <http:operation location="BLZService/getBank"/>
+      <wsdl:input>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BLZService">
+    <wsdl:port name="BLZServiceSOAP11port_http" binding="tns:BLZServiceSOAP11Binding">
+      <soap:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceSOAP12port_http" binding="tns:BLZServiceSOAP12Binding">
+      <soap12:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceHttpport" binding="tns:BLZServiceHttpBinding">
+      <http:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8088/BLZLocalService</con:endpoint>
+      <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:endpoints>
+    <con:operation id="428fd498-7082-4242-b941-88eb0e9dc9a6" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4b6615e4-281f-434d-9d1c-5f5aeee96219" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <blz:getBank>\r
+         <blz:blz>50020300</blz:blz>\r
+      </blz:getBank>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="04c096ca-1e6b-4ebd-9c35-c5c37f5a8cf6" wsaVersion="NONE" name="CalculatorSoap" type="wsdl" bindingName="{http://tempuri.org/}CalculatorSoap" soapVersion="1_1" anonymous="optional" definition="http://www.dneonline.com/calculator.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://www.dneonline.com/calculator.asmx?WSDL">
+      <con:part>
+        <con:url>http://www.dneonline.com/calculator.asmx?WSDL</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intA" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="intB" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Subtract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intA" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="intB" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubtractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubtractResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Multiply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intA" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="intB" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MultiplyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MultiplyResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Divide">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intA" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="intB" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DivideResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DivideResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Add"/>
+  </wsdl:message>
+  <wsdl:message name="AddSoapOut">
+    <wsdl:part name="parameters" element="tns:AddResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubtractSoapIn">
+    <wsdl:part name="parameters" element="tns:Subtract"/>
+  </wsdl:message>
+  <wsdl:message name="SubtractSoapOut">
+    <wsdl:part name="parameters" element="tns:SubtractResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MultiplySoapIn">
+    <wsdl:part name="parameters" element="tns:Multiply"/>
+  </wsdl:message>
+  <wsdl:message name="MultiplySoapOut">
+    <wsdl:part name="parameters" element="tns:MultiplyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DivideSoapIn">
+    <wsdl:part name="parameters" element="tns:Divide"/>
+  </wsdl:message>
+  <wsdl:message name="DivideSoapOut">
+    <wsdl:part name="parameters" element="tns:DivideResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CalculatorSoap">
+    <wsdl:operation name="Add">
+      <wsdl:documentation>Adds two integers. This is a test WebService. ©DNE Online</wsdl:documentation>
+      <wsdl:input message="tns:AddSoapIn"/>
+      <wsdl:output message="tns:AddSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <wsdl:input message="tns:SubtractSoapIn"/>
+      <wsdl:output message="tns:SubtractSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <wsdl:input message="tns:MultiplySoapIn"/>
+      <wsdl:output message="tns:MultiplySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Divide">
+      <wsdl:input message="tns:DivideSoapIn"/>
+      <wsdl:output message="tns:DivideSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorSoap" type="tns:CalculatorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/Add" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap:operation soapAction="http://tempuri.org/Subtract" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <soap:operation soapAction="http://tempuri.org/Multiply" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Divide">
+      <soap:operation soapAction="http://tempuri.org/Divide" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalculatorSoap12" type="tns:CalculatorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/Add" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap12:operation soapAction="http://tempuri.org/Subtract" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <soap12:operation soapAction="http://tempuri.org/Multiply" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Divide">
+      <soap12:operation soapAction="http://tempuri.org/Divide" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Calculator">
+    <wsdl:port name="CalculatorSoap" binding="tns:CalculatorSoap">
+      <soap:address location="http://www.dneonline.com/calculator.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CalculatorSoap12" binding="tns:CalculatorSoap12">
+      <soap12:address location="http://www.dneonline.com/calculator.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://www.dneonline.com/calculator.asmx</con:endpoint>
+    </con:endpoints>
+    <con:operation id="4cb52d57-ecba-46d8-9a99-880dd4abef60" isOneWay="false" action="http://tempuri.org/Add" name="Add" bindingOperationName="Add" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="39cff8b5-6df9-45c7-b869-2fcb66c31e1b" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.dneonline.com/calculator.asmx</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:Add>\r
+         <tem:intA>?</tem:intA>\r
+         <tem:intB>?</tem:intB>\r
+      </tem:Add>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Add"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="b2191c0d-1870-4c43-a77b-a89cda2aa8ea" isOneWay="false" action="http://tempuri.org/Divide" name="Divide" bindingOperationName="Divide" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="e4d5e832-0226-4c50-9216-ea48225b8658" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.dneonline.com/calculator.asmx</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:Divide>\r
+         <tem:intA>?</tem:intA>\r
+         <tem:intB>?</tem:intB>\r
+      </tem:Divide>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Divide"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="b967382e-c25e-4e86-a57b-7bb484753c93" isOneWay="false" action="http://tempuri.org/Multiply" name="Multiply" bindingOperationName="Multiply" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="79cde505-2857-463e-b096-39268e9984bf" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.dneonline.com/calculator.asmx</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:Multiply>\r
+         <tem:intA>?</tem:intA>\r
+         <tem:intB>?</tem:intB>\r
+      </tem:Multiply>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Multiply"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="550fb2ef-a35a-4794-9c91-9feb836d141d" isOneWay="false" action="http://tempuri.org/Subtract" name="Subtract" bindingOperationName="Subtract" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="2cef7821-3bfe-4c66-898f-b3c642dce241" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.dneonline.com/calculator.asmx</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:Subtract>\r
+         <tem:intA>?</tem:intA>\r
+         <tem:intB>?</tem:intB>\r
+      </tem:Subtract>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Subtract"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:testSuite id="f2aa0056-cb39-410a-b979-5c5b8ad75563" name="TS_01_Groovy Script Basics">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="918de7d1-b6f0-41cf-9628-b05846253ead" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_01_Groovy Variables" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="groovy" name="Groovy Script" id="003d0e9b-98da-4888-b708-9b30e290c456">
+        <con:settings/>
+        <con:config>
+          <script>// Variable Declaratio in Groovy 
+
+def Name;
+String Firstname,Lastname ,Country;
+int Age;
+double Salary;
+
+Firstname = ' Dhiraj ';
+Lastname = ' Kumar ';
+Age = 26;
+Salary = 10000.25;
+
+log.info ' FIRSTNAME = ' +Firstname;
+
+log.info ' LASTNAME = ' +Lastname;
+
+log.warn "AGE = $Age";
+
+log.error "SALARY = $Salary";</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="44222ea8-524d-4d66-b604-e8e6fb8bd2f8" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_02_Groovy Conditions" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="groovy" name="Groovy Script" id="a0e4cb62-2c2f-410b-b8e8-1bde5172b65d">
+        <con:settings/>
+        <con:config>
+          <script>boolean isPassed
+String grade
+
+isPassed = true
+
+//if i am passed in exam my dad will buy me a bike
+
+if (isPassed == true){ //evaluates a boolean expression
+	log.info 'Congratulations!!!'
+}else{
+	log.error 'Better luck next time!!!'
+}
+
+//How can handle multiple scenerios/conditions?
+// A - Car, B - Bike C  - Nothing
+grade = 'B'
+
+if(grade =='A'){
+	log.info ' You got Car!!'
+}else if(grade=='B'){
+	log.warn 'You got a Bike!!!'
+}else{
+	log.error 'You got Nothing!!!'
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="5fddda43-4d07-4235-bf9d-9ecf18b63f87" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_03_Groovy List" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="groovy" name="Groovy Script" id="6f2bf4f1-88fb-453a-b197-4daa270ac91a">
+        <con:settings/>
+        <con:config>
+          <script>String fruit
+
+fruit ='Apple'
+fruit ='Banana'
+
+def fruits =['Apple','Banana','Grapes','Mango']
+
+log.info "Fruit name  = $fruit"
+
+log.info "Fruits = $fruits"
+
+//Reading one by one entry in the list?
+
+fruits.each{
+	
+	fruitName ->
+	
+	log.info "Name is $fruitName"
+}
+
+//i want to find out whether my fruit list contains a fruit?
+
+String fruitIamLookingFor = 'Papaya'
+
+boolean hasFruitInsideIt = fruits.contains(fruitIamLookingFor)
+
+if(hasFruitInsideIt == true){
+	
+	log.info "Gotcha!! found  $fruitIamLookingFor  in the fruit list"
+	
+}else{
+	
+	log.error "Can't find fruit $fruitIamLookingFor in the fruit list"
+}
+
+//During run time , can I add a fruit to the existing list?
+
+fruits.add('Papaya')
+
+fruits &lt;&lt; 'Pomegranate'
+
+hasFruitInsideIt = fruits.contains(fruitIamLookingFor)
+
+log.info '------------------------------------------------------------------------------  AFTER ADDING  ----------------------------------------------------------------------------------------'
+
+if(hasFruitInsideIt == true){
+	
+	log.info "Gotcha!! found  $fruitIamLookingFor  in the fruit list"
+	
+}else{
+	
+	log.error "Can't find fruit $fruitIamLookingFor in the fruit list"
+}
+
+//Remove papaya from list
+
+fruits.remove('Papaya')
+
+hasFruitInsideIt = fruits.contains(fruitIamLookingFor)
+
+log.info '------------------------------------------------------------------------------  AFTER REMOVING  ----------------------------------------------------------------------------------------'
+
+if(hasFruitInsideIt == true){
+	
+	log.info "Gotcha!! found  $fruitIamLookingFor  in the fruit list"
+	
+}else{
+	
+	log.error "Can't find fruit $fruitIamLookingFor in the fruit list"
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="df058dbe-24b9-449f-acff-d59df246c0f1" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_04_Groovy Maps" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="groovy" name="Groovy Script" id="9814efca-9476-4507-953e-d257c0ba371b">
+        <con:settings/>
+        <con:config>
+          <script>def countries = ['IND':'India',
+			  'USA':'United States Of America',
+			  'SIN':'Singapore',
+			  'AUS':'Australia',
+			  'RUS':'Russia'
+			 ]
+//find a country in the map?
+
+String countryIamLookingFor = 'SIN'
+
+boolean foundCountry = countries.containsKey(countryIamLookingFor)
+
+log.info "Found country $countryIamLookingFor  : $foundCountry"
+
+//how can i get the country name for the given country code?
+
+//   get(Key)
+
+String countryName = countries.get(countryIamLookingFor)
+
+if(foundCountry==true){
+	
+	log.info "Country name is $countryName"	
+	
+}else{
+	
+	log.error "Sorry can't find the country"	
+}
+
+//ADDING AN ENTRY TO MAP?
+
+//put('key','Value')
+
+countries.put('GB','Great Britian')
+
+log.info countries</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="c07cf620-5ddc-40d0-8419-dd3b6dfa8814" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_05_Groovy Assertions" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="b8cb350e-c250-47f0-a9a2-768a76f0f19a">
+        <con:settings/>
+        <con:config>
+          <script>expectedName = 'Jhon'
+actualName = 'Jhon'
+
+int a,b,c
+a=10
+b=10
+
+c = a+b
+
+log.info 'before assertion'
+
+// assert &lt;expected Value> == &lt;Actual value> , "String to be displayed on fail"
+
+assert expectedName == actualName,"names are not matching expected name is $expectedName but actual name was $actualName"
+
+//java.lang.AssertionError: names are not matching expected name is Jhon but actual name was John. Expression: (expectedName == actualName).
+//							Values: expectedName = Jhon, actualName = John error at line: 14
+
+assert 20== c
+
+log.info 'after assertion'
+
+def fruits =['Apple','Banana','Grapes','Mango']
+
+assert true == fruits.contains('Apple'), "Can't find Apple in the list"</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="472f59d3-4dea-42f7-8d82-e8505a83e344" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_06_Reading Project ArtIfacts/Properties" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="87853fe2-e43d-4539-98be-3a337823fdd7">
+        <con:settings/>
+        <con:config>
+          <script>//RETRIEVE  CURRENT TESTCASE NAME
+
+log.info testRunner.testCase.name
+
+//RETRIEVE  CURRENT TESTCASE NAME
+
+log.info testRunner.testCase.testSuite.name
+
+//RETRIEVE  CURRENT PROJECT NAME
+
+log.info testRunner.testCase.testSuite.project.name
+
+//RETRIEVE  CURRENT WORKSPACE  NAME
+
+log.info testRunner.testCase.testSuite.project.workspace.name
+
+//how to access a test case from  same  test suite?
+
+log.info testRunner.testCase.testSuite.getTestCaseByName('TC_06_Groovy Assertions').name
+							
+//How to get hold of all test suites in project?
+
+log.info 'no of test suites :' + testRunner.testCase.testSuite.project.testSuites.size()
+
+//how to get child element of TestCase/TestSuite/Project 
+
+log.info testRunner.testCase.testSuite.project.children.name
+
+log.info testRunner.testCase.testSuite.children.name
+
+log.info testRunner.testCase.children.name
+
+//hoe to get total number of TC in a TS
+
+log.info testRunner.testCase.testSuite.getTestCaseCount()
+
+//Retrieve Property Names as a List
+
+log.info testRunner.testCase.testSuite.getPropertyList().name
+
+log.info "test"
+
+def MapOfProperties = log.info testRunner.testCase.testSuite.getProperties()
+
+MapOfProperties.each{
+	tsEnt ->
+	log.info tsEnt
+}
+log.info "test"
+
+//I want to loop through all the test cases  and print their names?
+
+def testCaseMap = testRunner.testCase.testSuite.testCases
+
+//loop through the map and print the values.
+
+testCaseMap.each{
+	tsEntry ->
+	log.info tsEntry.key
+}
+log.info 'Done'
+log.error 'DONE EXECUTING '+ testRunner.runContext.currentStep.name</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="2cef827a-ed08-4104-8a17-a6fa72a64367" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_07_Assert web service response using XmlSlurper" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="8021b1af-5fd7-4bee-a23a-ba72f84f6da6" name="GetBank" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="GetBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a8bad895-52a0-45b5-8328-682608cf6819">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>50020300</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="c24c02a1-559f-4509-a379-5f8e753c8977" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="2a1ddde2-a50d-40c5-ad6d-2f0a419d8b75" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="808ba029-2ad0-46be-959a-acc6931b37ed" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="1fc738a0-b4f9-4774-beee-be2d75cf5178" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="Groovy Script" id="b94147a5-af72-4440-bd96-d5a618fa1e24">
+        <con:settings/>
+        <con:config>
+          <script>import groovy.util.XmlSlurper
+
+// Note down the test step that need to be run
+
+String str = 'GetBank'
+
+//Run  Request Test Step
+
+def TestStep  = testRunner.testCase.getTestStepByName(str).run(testRunner,context)
+
+// Object of reference is logged 
+
+log.info TestStep
+
+//create instance of XmlSlurper 
+
+def xmlslurperObj = new XmlSlurper();
+
+//Parse the Response to a text as a XML Content
+
+def Envelope = xmlslurperObj.parseText(TestStep.responseContentAsXml);
+
+log.info Envelope
+
+//Retrieve bezeichnung from the Parsed value by tranversing from parent node to child node 
+
+String Actualbezeichnung = Envelope.Body.getBankResponse.details.bezeichnung
+
+log.info Actualbezeichnung
+
+String Expectedbezeichnung = 'KBC Bank Deutschland'
+
+//Assert  Expected value to the retrieved value from response using  Groovy
+
+assert Expectedbezeichnung == Actualbezeichnung," BEZEICHNUNG MISMATCH "
+
+log.warn "ASSERTION PASSED"</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="e226f361-85af-4e51-991f-0bf543a9b82e" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_08_Reading data from File" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="aec84390-e199-4a16-9e4f-6ac5e69ce90a">
+        <con:settings/>
+        <con:config>
+          <script>//Read bank service data from File
+
+def Fileloc  = "C:\\Users\\dsharman2\\Music\\Introduction to API Testing - ReadyAPI\\REST  Projects\\BLZ_TestData.txt"
+
+//loop through file and read the content
+
+File Fileobj = new File(Fileloc)
+
+String blz,ort,plz,bic,bezeichnung;
+
+Fileobj.eachLine(){
+	lineContent->
+//	log.info lineContent
+
+//Split String into a list of data using , seperator
+
+	def SplitData = lineContent.split(',');
+
+	blz = SplitData[0]
+		bezeichnung = SplitData[1]
+			bic = SplitData[2]
+				ort = SplitData[3]
+					plz = SplitData[4]
+					
+	log.info "BLZCODE = $blz , BEZEICHNUNG = $bezeichnung  , BIC =$bic , ORT = $ort , PLZ = $plz"	
+
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="8cb375f8-6174-4ea9-bb88-0da16903f05b" name="GetBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="GetBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a8bad895-52a0-45b5-8328-682608cf6819">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55010111</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="c24c02a1-559f-4509-a379-5f8e753c8977" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="2a1ddde2-a50d-40c5-ad6d-2f0a419d8b75" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="808ba029-2ad0-46be-959a-acc6931b37ed" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="1fc738a0-b4f9-4774-beee-be2d75cf5178" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>8cb375f8-6174-4ea9-bb88-0da16903f05b</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="a9e797d5-3e57-4bf0-a3be-cf90105bf639" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_09_ E2E_Read data >Call Web service>assert response" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="4f8cb768-8fa0-4324-881c-e46e10bbd3cb">
+        <con:settings/>
+        <con:config>
+          <script>import com.eviware.soapui.support.GroovyUtils
+
+//Read bank service data from File
+
+def Fileloc  = "C:\\Users\\dsharman2\\Music\\Introduction to API Testing - ReadyAPI\\REST  Projects\\BLZ_TestData.txt"
+
+//loop through file and read the content
+
+File Fileobj = new File(Fileloc)
+
+String blz,ort,plz,bic,bezeichnung;
+String Res_blz,Res_ort,Res_plz,Res_bic,Res_bezeichnung;
+
+//create instance of GroovyUtils class.
+def groovyUtilsobj = new GroovyUtils(context)
+
+def requestXmlHolder,responseXmlHolder
+
+Fileobj.eachLine(){
+	lineContent->
+//	log.info lineContent
+
+//Split String into a list of data using , seperator
+
+	def SplitData = lineContent.split(',');
+
+	blz = SplitData[0]
+		bezeichnung = SplitData[1]
+			bic = SplitData[2]
+				ort = SplitData[3]
+					plz = SplitData[4]
+					
+//	log.info "BLZCODE = $blz , BEZEICHNUNG = $bezeichnung  , BIC =$bic , ORT = $ort , PLZ = $plz"	
+
+//Update BLZ code in GETBANK Request
+
+//use Request property and store it in Holder 
+
+requestXmlHolder = groovyUtilsobj.getXmlHolder("GetBank#Request");
+
+//requestXmlHolder["//blz:blz"]= blz
+
+requestXmlHolder.setNodeValue("//blz:blz", blz);
+
+requestXmlHolder.updateProperty();
+
+//After Update call for the method to run
+
+testRunner.testCase.getTestStepByName("GetBank").run(testRunner,context);
+
+//Retrieve values from Response to ASSERT
+
+responseXmlHolder = groovyUtilsobj.getXmlHolder("GetBank#Response");
+
+Res_bezeichnung = responseXmlHolder.getNodeValue("//ns1:bezeichnung");
+
+Res_ort = responseXmlHolder.getNodeValue("//ns1:ort");
+
+Res_plz = responseXmlHolder.getNodeValue("//ns1:plz");
+
+Res_bic = responseXmlHolder.getNodeValue("//ns1:bic");
+
+assert bezeichnung == Res_bezeichnung," BEZEICHNUNG MISMATCH"
+
+assert ort == Res_ort,"ORT MISMATCH"
+
+assert plz == Res_plz," PLZ MISMATCH"
+
+assert bic == Res_bic ," BIC MISMATCH"
+
+log.info " Request send for $blz and Response Asserted"
+}
+
+log.error " ALL ASSERTION PASSSED "</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="60c27ef4-cc68-4df4-9457-d749c1a14809" name="GetBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="GetBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a8bad895-52a0-45b5-8328-682608cf6819">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55020500</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="c24c02a1-559f-4509-a379-5f8e753c8977" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="2a1ddde2-a50d-40c5-ad6d-2f0a419d8b75" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="808ba029-2ad0-46be-959a-acc6931b37ed" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="1fc738a0-b4f9-4774-beee-be2d75cf5178" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>8cb375f8-6174-4ea9-bb88-0da16903f05b</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="90aeec5f-7b11-4ef2-9024-98e491eb190d" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_10_Working with REST API using JSonSlurper" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="f44bc030-c2b3-494e-9884-82ccebfd367a">
+        <con:settings/>
+        <con:config>
+          <script>import groovy.json.JsonSlurper
+
+String Res_ID,Res_Name,Res_Status;
+
+//create instance of Json Slurper
+
+def jsonslurperobj = new JsonSlurper();
+
+//Read the Webservice Response
+
+def Response = context.expand('${GetDetails#Response}')
+
+//Parse the json Response
+
+def ParsedData = jsonslurperobj.parseText(Response)
+
+log.info ParsedData
+
+Res_ID =  ParsedData.id
+
+Res_Name =  ParsedData.name
+
+Res_Status  = ParsedData.status
+
+
+assert Res_ID == '10' ," ID MISMATCH"
+
+assert Res_Name == 'doggie' ,"NAME MISMATCH"
+
+assert Res_Status == 'available',"STATUS MISMATCH"
+
+log.error "ALL ASSERTION PASSED"</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="GetDetails" id="cf9d716e-76fe-47d9-a6d7-f6a0a4879fab">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet" methodName="addPet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="GetDetails" id="e2b84253-bda1-49b7-9f8e-0c860706760e" mediaType="application/xml" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request><![CDATA[<Pet>\r
+   <id>10</id>\r
+   <Category>\r
+      <id>0</id>\r
+      <name>string</name>\r
+   </Category>\r
+   <name>doggie</name>\r
+   <photoUrlss>\r
+      <photoUrl>string</photoUrl>\r
+   </photoUrlss>\r
+   <tagss>\r
+      <tag>\r
+         <id>0</id>\r
+         <name>string</name>\r
+      </tag>\r
+   </tagss>\r
+   <status>available</status>\r
+</Pet>]]></con:request>
+            <con:originalUri>http://petstore.swagger.io/v2/pet</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="b0b47e5d-9933-4a7d-b384-e003e62f3a02" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="ff591af1-68bc-4bfa-ba32-3eeeb151d37d" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="a522e62d-ac28-42e2-9ddb-73e6ef4a7abe" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_11_Reading Data from Excel" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="f71df8bf-626c-489f-996a-f87f5f628802">
+        <con:settings/>
+        <con:config>
+          <script>import jxl.*
+//Create a file instance
+def excelFilePath = "C:\\Users\\dsharman2\\Music\\Introduction to API Testing - ReadyAPI\\REST  Projects\\BLZ_Data.xls"
+File excelFile = new File(excelFilePath)
+//Create workbook instace
+jxl.Workbook workbook = jxl.Workbook.getWorkbook(excelFile)
+//Load the sheet
+jxl.Sheet sheet = workbook.getSheet(0)
+//I want to read the data in the sheet
+int noOfRows = sheet.getRows()-1 //number of rows in the excel
+log.info "noOfRows = $noOfRows"
+//need to loop through the records and print data
+def blz,bic,bez,ort,plz
+for(int rowIdx in 1..noOfRows){
+	//read the contents of the cell.
+	log.warn '-----------------------------------------'
+	blz = sheet.getCell(0,rowIdx).getContents() 
+	bez = sheet.getCell(1,rowIdx).getContents()
+	bic = sheet.getCell(2,rowIdx).getContents()
+	ort =  sheet.getCell(3,rowIdx).getContents()
+	plz =  sheet.getCell(4,rowIdx).getContents()
+	log.info "blz=$blz , bez = $bez, bic= $bic , ort= $ort , plz= $plz"
+
+}
+//close it
+workbook.close()</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="30793d7c-9079-4188-b188-5414be96f325" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_12_Custom Methods in Groovy" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script- ExamResults" id="b08a1bf4-4e8d-4c5c-bad4-c90c22b0dc2a">
+        <con:settings/>
+        <con:config>
+          <script>boolean isPassed
+String grade
+isPassed = false
+grade='A'
+
+
+printExamResult(isPassed,grade)
+
+
+//prints message based on exam result
+
+def void printExamResult(boolean isPassed,String grade){
+	if (isPassed == true){ //evaluates a boolean expression
+		log.info 'Congratulations!!!'
+		//consider the grade only when passsed
+		printGradeMessage(grade)
+	}else{
+		log.error 'Better luck next time!!!'
+	}
+}
+
+//prints message for the given grade
+
+def void printGradeMessage(String grade){
+	if(grade =='A'){
+		log.info ' You got Car!!'
+	}else if(grade=='B'){
+		log.warn 'You got a Bike!!!'
+	}else{
+		log.error 'You got Nothing!!!'
+	}
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="Groovy Script - Addition" id="330890de-7ddc-4621-99a8-7b7de3c75c86">
+        <con:settings/>
+        <con:config>
+          <script>def int addNumbers(int a,int b){
+	return a+b
+}
+def int subtractNumbers(int a,int b){
+	return a-b
+}
+def int divideNumbers(int a,int b){
+	return a/b
+}
+def int multiplyNumbers(int a,int b){
+	return a*b
+}
+int result
+
+result = addNumbers(10,20)
+log.info "result = $result"
+
+result = addNumbers(20,20)
+log.info "result = $result"
+
+result = multiplyNumbers(20,20)
+log.warn "result = $result"</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="f939268f-a670-4af5-a93d-8037451cd3e9" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_13_Retrieve Data from Excel Sheet &amp; Execute Request" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="33174007-d070-4b39-af50-754c9deada93">
+        <con:settings/>
+        <con:config>
+          <script>import jxl.*
+
+import jxl.write.*
+
+//Create a file instance
+
+def excelFilePath = "C:\\Users\\dsharman2\\Music\\Introduction to API Testing - ReadyAPI\\REST  Projects\\PetData.xls";
+File excelFile = new File(excelFilePath);
+
+//Create workbook instace
+Workbook workbook = Workbook.getWorkbook(excelFile);
+
+//Load the sheet
+jxl.Sheet sheet = workbook.getSheet(0);
+
+//I want to read the data in the sheet
+
+int noOfRows = sheet.getRows()-1; //number of rows in the excel
+
+log.info "noOfRows = $noOfRows";
+
+//need to loop through the records and print data
+
+def petId,petName;
+
+for(int i = 1; i &lt;= noOfRows ; i++ ) {
+
+	//read the contents of the cell.
+	
+	petId = sheet.getCell(0,i).getContents();
+	
+	petName = sheet.getCell(1,i).getContents();
+	
+	log.info "Setting petId=$petId , petName = $petName to test case properties";
+	
+	testRunner.testCase.setPropertyValue('PET_ID',petId);
+	
+	testRunner.testCase.setPropertyValue('PET_NAME',petName);
+	
+	Thread.sleep(2000);
+	
+	//execute the addPet operation dynamically through groovy
+
+	testRunner.testCase.getTestStepByName('AddPet').run(testRunner,context);
+
+		Thread.sleep(2000);
+
+		log.info " Pets Added Successfully ";
+
+	testRunner.testCase.getTestStepByName('RetrievePetByID').run(testRunner,context);
+
+	log.info " Pets Validated Successfully ";
+	
+}
+
+/*             ========================================== ALTERNATIVE FOR LOOP =============================================
+          
+ * for(int rowIdx in 1..noOfRows) {
+ 
+	//read the contents of the cell.
+	
+	petId = sheet.getCell(0,rowIdx).getContents() 
+	
+	petName = sheet.getCell(1,rowIdx).getContents()
+	
+	log.info "Setting petId=$petId , petName = $petName to test case properties"
+	
+	testRunner.testCase.setPropertyValue('pet_id',petId)
+	
+	testRunner.testCase.setPropertyValue('pet_name',petName)
+	
+	Thread.sleep(2000)
+	
+	//execute the addPet operation dynamically through groovy
+	
+	testRunner.testCase.getTestStepByName('addPet').run(testRunner,context)
+}
+
+*/
+//close it
+workbook.close()</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="AddPet" id="5e08eab1-059a-4fa2-8ae9-cd11f5f629f2" disabled="true">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet" methodName="addPet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="AddPet" id="f41db68d-b625-4d5d-8abf-ab1acc948485" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request>{
+  "id": ${#TestCase#PET_ID},
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "${#TestCase#PET_NAME}",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}</con:request>
+            <con:originalUri>http://petstore.swagger.io/v2/pet</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="93dacf39-c6d9-4a6f-b968-25ddaf472eb5" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="6dc7177f-63a3-4b86-b768-ba5726a750f3" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="RetrievePetByID" id="2b4339cd-7b27-4a01-97d3-379203287861" disabled="true">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet/{petId}" methodName="getPetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="RetrievePetByID" id="f96fc131-8b96-454a-80f5-5981cb8c112d" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/pet/102</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="63744339-a1cb-4dd7-a57d-55250261f401" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="c393781d-d3e7-4887-a92c-59bbe83c5722" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="642ed9cb-c7e3-46f6-b6ed-278650b14a9c" name="JSONPath Match">
+              <con:configuration>
+                <path>$['name']</path>
+                <content>${#TestCase#PET_NAME}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="petId" value="${#TestCase#PET_ID}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>PET_ID</con:name>
+          <con:value>102</con:value>
+        </con:property>
+        <con:property>
+          <con:name>PET_NAME</con:name>
+          <con:value>My Pet Dog</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="4beeefcd-8f76-4a0c-bed8-b2241867f5e8" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_14_Reading data from Database Table" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="groovy" name="Groovy Script" id="cfb4a6b6-90b8-474a-a09b-c4c8ce506c05">
+        <con:settings/>
+        <con:config>
+          <script>import groovy.sql.*
+
+//def databaseUrl = 'jdbc:mysql://localhost:3306/demo'
+
+def databaseUrl = 'jdbc:microsoft:sqlserver://localhost:3306:;databaseName=AdventureWorks2014user=root&amp;password=root'
+
+def username = 'root'
+
+def password ='root'
+
+def drivername= 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+
+def sql = Sql.newInstance(databaseUrl, username, password,drivername)  
+
+    sql.eachRow('select * from BLZ_DATA'){
+    	
+    	row ->  
+
+    	 log.info row[0] 
+    }</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties>
+      <con:property>
+        <con:name>Custom Property</con:name>
+        <con:value>Dhiraj</con:value>
+      </con:property>
+    </con:properties>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="aacb78c8-47d6-45ff-a186-52f97c6d0f19" name="TS_02_Groovy Assignment">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="32792e35-2fef-40b3-8ecc-0bf4afd008f9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_validate Add operation" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="0bfea260-e2cb-4e58-9c0e-28aa4b7294b4">
+        <con:settings/>
+        <con:config>
+          <script>import groovy.util.XmlSlurper
+
+String ReqestTeststepname = 'Addition_of_two_Positive_Numbers';
+
+//Write groovy code to call the "Add" operation.
+
+def TestStepRun = testRunner.testCase.getTestStepByName(ReqestTeststepname).run(testRunner,context)
+
+//Parse the "Add" operation response using "xmlSlurper" object.
+
+
+def xmlslurperObj = new XmlSlurper();
+
+def Envelope = xmlslurperObj.parseText(TestStepRun.responseContentAsXml);
+
+log.info Envelope
+
+//Write assertion for the "result".
+
+def Result = '60'
+
+assert Envelope == Result," TOTAL MISMATCH"
+
+log.warn " ASSERTION PASSED"</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="957d3a59-8759-4c10-ab14-c969cb9bbe5e" name="Addition_of_two_Positive_Numbers">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>CalculatorSoap</con:interface>
+          <con:operation>Add</con:operation>
+          <con:request name="Addition_of_two_Positive_Numbers" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="9ffc62d7-c0c8-4506-8933-ceaca61406ea">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.dneonline.com/calculator.asmx</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:Add>
+         <tem:intA>40</tem:intA>
+         <tem:intB>20</tem:intB>
+      </tem:Add>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="3f721d12-264b-42ab-ba01-b29d7df9eee7" name="SOAP Response"/>
+            <con:assertion type="Simple Contains" id="68401a38-e15c-4dc0-b34d-247bed20293a" name="Validate_total_of_20_&amp;_40_is_60(_CONTAINS_)">
+              <con:configuration>
+                <token>60</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple NotContains" id="eaed3490-7b5c-4312-83dc-04e6152c49af" name="Validate_total_of_20_&amp;_40_is_not_70(_NOTCONTAINS_)">
+              <con:configuration>
+                <token/>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="e90c7db3-ad08-4dd5-8035-a1f4deb62865" name="Validate_AddResult_Node_is_70(_XPATH_)">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://tempuri.org/';
+//ns1:AddResponse/ns1:AddResult</path>
+                <content>60</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Add"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="a206b80f-9200-410f-9e47-785d0353de9d" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_02_TC_writing methods in groovy" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="groovy" name="Groovy Script" id="4a715731-8245-418b-a442-3dfbea5eb977">
+        <con:settings/>
+        <con:config>
+          <script>//Write a method to calculate area of a circle for the given radius (Formula : areOfCircle = 3.14 * radius *radius)
+
+//Name the method as "calculateAreaOfCircle", input param should be "radius" of type "double" and return type also should be "double"
+
+def Result ;
+
+def double  calculateAreaOfCircle( double Radius){
+	
+Result = 3.14*Radius*Radius
+
+	return Result
+}
+
+//Call the method and print the result on log window using "log.info".
+
+log.info calculateAreaOfCircle(1);
+
+log.info calculateAreaOfCircle(1.5);
+
+log.info calculateAreaOfCircle(7.77);</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:endpointStrategy xsi:type="con:DefaultEndpointStrategy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:endpoint mode="OVERRIDE">http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+  </con:endpointStrategy>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to SoapUI Pro tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>

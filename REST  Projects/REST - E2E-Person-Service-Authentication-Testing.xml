@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="848df1c2-93eb-4ef6-9cc4-cb7dde204bb1" created="3.2.7" activeEnvironment="Default environment" name="REST - E2E Person Service Authentication Testing" resourceRoot="" updated="3.2.7 2020-05-27T19:48:04Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="eeabb8ae-e260-4f05-be8b-97e83bf9ab57" name="Smart Bytes Sample Services" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="http://localhost:8080/v2/api-docs" basePath="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:description>Rest Services</con:description>
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8080/v2/api-docs"/>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080</con:endpoint>
+    </con:endpoints>
+    <con:resource name="/api/person/add" path="/api/person/add" id="2cd0ef7e-617e-401f-b1c7-47175eb5668e">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="savePersonUsingPOST" id="610b382f-b8ef-44d8-87ca-c6bc63cfd5e7" method="POST">
+        <con:description>Add a person</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>X-Auth-Token</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "age" : 0,
+  "id" : 0,
+  "name" : "string",
+  "salary" : 1.100000023841858
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="33feabaa-a520-46cc-a583-7c132a237b08" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "age" : 18,\r
+  "id" : 01,\r
+  "name" : "Vishal Kumar",\r
+  "salary" : 125\r
+}</con:request>
+          <con:originalUri>http://localhost/api/person/add</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry>X-Auth-Token</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/person/delete/{id}" path="/api/person/delete/{id}" id="67ac8e59-9c47-4b43-b3f7-b3c29e02b7d1">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="deleteUsingDELETE" id="e1c08905-dec1-4527-999d-218f74b06b35" method="DELETE">
+        <con:description>Delete a person</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>X-Auth-Token</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>204</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="337c702c-ef08-42e8-a6a1-69344f59ad7b" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry>id</con:entry>
+            <con:entry>X-Auth-Token</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/person/list" path="/api/person/list" id="0cb16407-d429-417e-b653-f8fb77775f2d">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="listUsingGET" id="09aafefb-d677-4b15-864d-b89a4829180e" method="GET">
+        <con:description>View a list of available persons</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>X-Auth-Token</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="928d7a95-90bd-4b64-85f2-7ee21cbf7e0a" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry>X-Auth-Token</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/person/show/{id}" path="/api/person/show/{id}" id="0286ac6c-c0b2-4029-ab32-f1d59643b6f3">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="showPersonUsingGET" id="a2c4566b-6247-476d-bb07-422223afea3d" method="GET">
+        <con:description>Search a person with an ID</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>X-Auth-Token</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "age" : 0,
+  "id" : 0,
+  "name" : "string",
+  "salary" : 1.100000023841858
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="5a2e69da-4fb4-43a3-860d-5c412b0323a6" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry>id</con:entry>
+            <con:entry>X-Auth-Token</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/person/update/{id}" path="/api/person/update/{id}" id="1cd48d75-5206-40a8-bb3e-92ff9c9c8b1e">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="updatePersonUsingPUT" id="22b12f20-8f0f-462e-9c0f-2125aa2e0e6b" method="PUT">
+        <con:description>Update a person</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>X-Auth-Token</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "age" : 0,
+  "id" : 0,
+  "name" : "string",
+  "salary" : 1.100000023841858
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="be1278fa-5042-4a28-8249-324ac2ddc128" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "age" : 0,\r
+  "id" : 0,\r
+  "name" : "string",\r
+  "salary" : 1.100000023841858\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry>id</con:entry>
+            <con:entry>X-Auth-Token</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product/add" path="/api/product/add" id="9d2dafe3-a67d-40f8-99dd-57dc5bf43dab">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="saveProductUsingPOST" id="dd3af142-0c5d-44e6-a6d7-d85998879af7" method="POST">
+        <con:description>Add a product</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "description" : "string",
+  "id" : 0,
+  "imageUrl" : "string",
+  "price" : 1.5,
+  "productId" : "string",
+  "version" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="3be48dea-6c9b-44bd-acd5-9f6d0e4e2a6b" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "description" : "string",\r
+  "id" : 0,\r
+  "imageUrl" : "string",\r
+  "price" : 1.5,\r
+  "productId" : "string",\r
+  "version" : 0\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product/delete/{id}" path="/api/product/delete/{id}" id="48738d9e-0cab-4435-a8a0-fdfcd31d8dae">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="deleteUsingDELETE_1" id="823ceb01-4ad6-4809-b174-b0b0e172b92a" method="DELETE">
+        <con:description>Delete a product</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>204</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="0a2f63ca-f91d-4b52-975b-0dc8acb35bd0" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry>id</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product/list" path="/api/product/list" id="bc23d6d5-2800-4830-ad0f-0fa6d180aa5d">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="listUsingGET_1" id="bfa9eb61-e8f6-4406-a23c-6736af636597" method="GET">
+        <con:description>View a list of available products</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="b1c9c4f0-d44c-4138-bf47-51bb06faa6bc" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product/show/{id}" path="/api/product/show/{id}" id="0bc339f4-6e4b-4f16-8a6d-28b3e92d42f1">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="showProductUsingGET" id="44e1c5d1-91d1-4fa2-a729-34caa595ebd3" method="GET">
+        <con:description>Search a product with an ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "description" : "string",
+  "id" : 0,
+  "imageUrl" : "string",
+  "price" : 1.5,
+  "productId" : "string",
+  "version" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="1f5dcad4-b233-4bcd-b45c-1ddc57a16e54" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product/update/{id}" path="/api/product/update/{id}" id="98f997fe-fd45-4240-8098-3770b38e22d3">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="updateProductUsingPUT" id="39dc3f79-4f37-4258-a5f5-425ee339b01b" method="PUT">
+        <con:description>Update a product</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "description" : "string",
+  "id" : 0,
+  "imageUrl" : "string",
+  "price" : 1.5,
+  "productId" : "string",
+  "version" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="f6832769-fea9-40fc-8b56-e4f3295d7d93" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "description" : "string",\r
+  "id" : 0,\r
+  "imageUrl" : "string",\r
+  "price" : 1.5,\r
+  "productId" : "string",\r
+  "version" : 0\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/user/login" path="/api/user/login" id="c751113b-40ee-4214-b9cb-3d72a7dc9cb7">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="loginUsingPOST" id="c35ae630-f361-44cf-afae-a928b96b1aad" method="POST">
+        <con:description>Cretes authentication token. Pass X-Username and X-Password as header parameters</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>X-Username</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+          <con:parameter required="true">
+            <con:name>X-Password</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>"string"</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="e10ebf10-4387-4935-9ad2-920897c6678e" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/api/user/login</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="X-Username" value="admin"/>
+            <con:entry key="X-Password" value="admin"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>X-Username</con:entry>
+            <con:entry>X-Password</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/user/logout" path="/api/user/logout" id="f8b6ba85-218b-41cc-b009-eceb20adb65e">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="logoutUsingPOST" id="94b55d4d-4979-4a58-8005-6622f3664692" method="POST">
+        <con:description>logout</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="ee242c9d-6762-4c35-acb0-7146ecae0bf0" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry/>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="df44ea65-4c55-40b6-a26f-fb4cb490beaa" name="TS_01_E2E Person Data Authentication = HEADER PARAM">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="98417299-3074-488d-b3bf-4e4e94efeea6" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_01_Person Data E2E with HEADER PARAM AUTH" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="login" id="f8ccedcb-a675-4ca3-8361-79130e5bbdb8">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/user/login" methodName="loginUsingPOST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="login" id="e10ebf10-4387-4935-9ad2-920897c6678e" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/user/login</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="51dec678-453c-4718-aafa-538769c1310e" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="HTTP Header Exists" id="8f7082b9-6708-4c02-88c3-6f2c7e8cafa5" name="Validate HTTP Header of Response contains a Key X-Auth-Token &lt;--HTTP HEADER EXISTS>">
+              <con:configuration>
+                <Header>X-Auth-Token</Header>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="HTTP Header Equals" id="45ad7fb3-32c1-4cf3-9152-985459989e34" name="HTTP Header Equals" disabled="true">
+              <con:configuration>
+                <Header>X-Auth-Token</Header>
+                <Value>[a-zA-Z0-9]</Value>
+                <ignoreCase>true</ignoreCase>
+                <useRegEx>true</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="X-Username" value="${#TestCase#USERNAME}"/>
+              <con:entry key="X-Password" value="${#TestCase#PASSWORD}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>X-Username</con:entry>
+              <con:entry>X-Password</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="Groovy Script - Retrieve Token" id="b008bd8a-f016-4580-9178-75615a810772">
+        <con:settings/>
+        <con:config>
+          <script>String Token = testRunner.testCase.testSteps['login'].testRequest.response.responseHeaders['X-Auth-Token'][0]
+
+testRunner.testCase.setPropertyValue('XAUTH-TOKEN', Token);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="AddPerson" id="a33afceb-399e-41b1-8111-8fa903967b2b">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/person/add" methodName="savePersonUsingPOST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="AddPerson" id="33feabaa-a520-46cc-a583-7c132a237b08" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{
+  "age": 18,
+  "id": 15,
+  "name": "Rajesh",
+  "salary": 125.00
+}</con:request>
+            <con:originalUri>http://localhost/api/person/add</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="bf082c3d-3ce9-46f1-90bb-1e176f3b43d3" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="X-Auth-Token" value="${#TestCase#XAUTH-TOKEN}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>X-Auth-Token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="listAllPeople/Persons - After Addition" id="3e80f182-21d5-4228-a26d-404e7901b9ab">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/person/list" methodName="listUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="listAllPeople/Persons - After Addition" id="928d7a95-90bd-4b64-85f2-7ee21cbf7e0a" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/person/list</con:originalUri>
+            <con:assertion type="Simple Contains" id="6ce776a5-2577-4f06-b893-4f07af0e2c42" name="Validate User Name Exists in AllPersonList &lt;--CONTAINS-->">
+              <con:configuration>
+                <token>Vishal</token>
+                <ignoreCase>true</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="X-Auth-Token" value="${#TestCase#XAUTH-TOKEN}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>X-Auth-Token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer - ID" id="b684542b-0e15-491b-9a3b-4f1e9e806e30">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>PersonID</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>listAllPeople/Persons - After Addition</con:sourceStep>
+            <con:sourcePath>$.[-1].id</con:sourcePath>
+            <con:targetType>ID</con:targetType>
+            <con:targetStep>#TestCase#</con:targetStep>
+            <con:targetPath/>
+            <con:type>JSONPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="updatePerson" id="f7b113e9-7cda-4deb-82f1-b12753c6133c">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/person/update/{id}" methodName="updatePersonUsingPUT" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="updatePerson" id="be1278fa-5042-4a28-8249-324ac2ddc128" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{\r
+  "age" : 26,\r
+  "id" : ${#TestCase#ID},\r
+  "name" : "Kumar",\r
+  "salary" : 2.100000023841858\r
+}</con:request>
+            <con:originalUri>http://localhost/api/person/update/5</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="d80ea549-c6d0-4a84-8fbe-e14a563e1a7b" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200,500</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="X-Auth-Token" value="${#TestCase#XAUTH-TOKEN}"/>
+              <con:entry key="id" value="${#TestCase#ID}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>id</con:entry>
+              <con:entry>X-Auth-Token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="listAllPeople/Persons -After Updation" id="7213eec7-0db1-47f5-9590-dba9dd26379d">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/person/list" methodName="listUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="listAllPeople/Persons -After Updation" id="928d7a95-90bd-4b64-85f2-7ee21cbf7e0a" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/person/list</con:originalUri>
+            <con:assertion type="JsonPath Match" id="7086b472-038a-4f77-b3b6-126139464b17" name="Validate Updated User Exist in AllPerson List Response &lt;--JSON PATH MATCH-->">
+              <con:configuration>
+                <path>$.[-1]</path>
+                <content>${updatePerson#RawRequest}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="X-Auth-Token" value="${#TestCase#XAUTH-TOKEN}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>X-Auth-Token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="deletePerson" id="9a3618ce-3d0a-48b5-b9b9-8e18ed86222b">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/person/delete/{id}" methodName="deleteUsingDELETE" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="deletePerson" id="337c702c-ef08-42e8-a6a1-69344f59ad7b" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/person/delete/5</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="af10e3b7-2e9f-4af7-9162-c4f66459f7aa" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="X-Auth-Token" value="${#TestCase#XAUTH-TOKEN}"/>
+              <con:entry key="id" value="${#TestCase#ID}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>id</con:entry>
+              <con:entry>X-Auth-Token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="listAllPeople/Persons -After Deletion" id="119a7d2d-2a94-4a09-846c-6baf83cb599c">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/person/list" methodName="listUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="listAllPeople/Persons -After Deletion" id="928d7a95-90bd-4b64-85f2-7ee21cbf7e0a" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/person/list</con:originalUri>
+            <con:assertion type="Simple NotContains" id="b154d67a-5eee-404e-8848-6177559bcd22" name="Validate Update User Name does not exists in the Allperson List &lt;--NOT CONTAINS-->">
+              <con:configuration>
+                <token>Kumar</token>
+                <ignoreCase>true</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="X-Auth-Token" value="${#TestCase#XAUTH-TOKEN}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>X-Auth-Token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="showPerson" id="970543d3-e5e4-4ae3-ad9d-0c923f934a46">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/person/show/{id}" methodName="showPersonUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="showPerson" id="5a2e69da-4fb4-43a3-860d-5c412b0323a6" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/person/show/14</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="08867ed1-7240-441a-a556-3b9d7cb29fa3" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="X-Auth-Token" value="${#TestCase#XAUTH-TOKEN}"/>
+              <con:entry key="id" value="${#TestCase#ID}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>id</con:entry>
+              <con:entry>X-Auth-Token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="logout" id="21ae43ff-f240-4d65-a9db-f577e73ba45e">
+        <con:settings/>
+        <con:config service="Smart Bytes Sample Services" resourcePath="/api/user/logout" methodName="logoutUsingPOST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="logout" id="ee242c9d-6762-4c35-acb0-7146ecae0bf0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/user/logout</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="48e5fb1a-0711-4176-89cf-42f769601a7f" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+            <con:parameterOrder>
+              <con:entry/>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>USERNAME</con:name>
+          <con:value>admin</con:value>
+        </con:property>
+        <con:property>
+          <con:name>PASSWORD</con:name>
+          <con:value>admin</con:value>
+        </con:property>
+        <con:property>
+          <con:name>XAUTH-TOKEN</con:name>
+          <con:value>WkgGWi8acpXNtOU2YygIBZRbDAbG35/sfDda7RgyPOU=</con:value>
+        </con:property>
+        <con:property>
+          <con:name>ID</con:name>
+          <con:value>15</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>b008bd8a-f016-4580-9178-75615a810772</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>b684542b-0e15-491b-9a3b-4f1e9e806e30</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>a33afceb-399e-41b1-8111-8fa903967b2b</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>119a7d2d-2a94-4a09-846c-6baf83cb599c</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>970543d3-e5e4-4ae3-ad9d-0c923f934a46</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
+    <con:xmlTemplates/>
+    <con:parameters/>
+    <con:parameters/>
+  </con:reporting>
+  <con:reporting/>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to SoapUI Pro tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>

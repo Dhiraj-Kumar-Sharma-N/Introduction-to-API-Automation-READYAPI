@@ -1,0 +1,5 @@
+55010111,SEB,ESSEDE5F550,Mainz a Rhein,55116
+55010424,Aareal Bank,AARBDE5W550,Mainz a Rhein,55027
+55010800,Investitions- und Strukturbank RP,ISBRDE51XXX,Mainz a Rhein,55015
+55020100,Bausparkasse Mainz,BKMZDE51XXX,Mainz a Rhein,55004
+55020500,Sozialbank,BFSWDE33MNZ,Mainz a Rhein,55004

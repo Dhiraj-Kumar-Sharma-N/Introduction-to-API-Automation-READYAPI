@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="5d1261ae-9598-4d17-b713-bf9bdaf0b1f2" activeEnvironment="Default environment" name="SOAP - Banking Services Testing" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" encryptionMode="Not encrypted" updated="3.2.7 2020-05-27T19:48:04Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="f8255453-4b19-4696-a1c9-99d85f93a4da" wsaVersion="NONE" name="BLZServiceSOAP11Binding" type="wsdl" bindingName="{http://thomas-bayer.com/blz/}BLZServiceSOAP11Binding" soapVersion="1_1" anonymous="optional" definition="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl">
+      <con:part>
+        <con:url>http://www.thomas-bayer.com/axis2/services/BLZService?wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://thomas-bayer.com/blz/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://thomas-bayer.com/blz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>BLZService</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://thomas-bayer.com/blz/">
+      <xsd:element name="getBank" type="tns:getBankType"/>
+      <xsd:element name="getBankResponse" type="tns:getBankResponseType"/>
+      <xsd:complexType name="getBankType">
+        <xsd:sequence>
+          <xsd:element name="blz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getBankResponseType">
+        <xsd:sequence>
+          <xsd:element name="details" type="tns:detailsType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="detailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bezeichnung" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="bic" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ort" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="plz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBank">
+    <wsdl:part name="parameters" element="tns:getBank"/>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part name="parameters" element="tns:getBankResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="BLZServicePortType">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="tns:getBank"/>
+      <wsdl:output message="tns:getBankResponse" wsaw:Action="http://thomas-bayer.com/blz/BLZService/getBankResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BLZServiceSOAP11Binding" type="tns:BLZServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceSOAP12Binding" type="tns:BLZServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceHttpBinding" type="tns:BLZServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getBank">
+      <http:operation location="BLZService/getBank"/>
+      <wsdl:input>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BLZService">
+    <wsdl:port name="BLZServiceSOAP11port_http" binding="tns:BLZServiceSOAP11Binding">
+      <soap:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceSOAP12port_http" binding="tns:BLZServiceSOAP12Binding">
+      <soap12:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceHttpport" binding="tns:BLZServiceHttpBinding">
+      <http:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8088/BLZLocalService</con:endpoint>
+      <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:endpoints>
+    <con:operation id="ca0baf98-4b31-45a8-bf6a-d690d47ddcba" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4c2b60c8-5c35-4f2e-b3a4-2d4a24b501bf" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <blz:getBank>\r
+         <blz:blz>50020300</blz:blz>\r
+      </blz:getBank>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="25fbe4f1-872d-4949-b99c-073847be61fe" wsaVersion="NONE" name="BLZServiceSOAP12Binding" type="wsdl" bindingName="{http://thomas-bayer.com/blz/}BLZServiceSOAP12Binding" soapVersion="1_2" anonymous="optional" definition="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl">
+      <con:part>
+        <con:url>http://www.thomas-bayer.com/axis2/services/BLZService?wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://thomas-bayer.com/blz/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://thomas-bayer.com/blz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>BLZService</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://thomas-bayer.com/blz/">
+      <xsd:element name="getBank" type="tns:getBankType"/>
+      <xsd:element name="getBankResponse" type="tns:getBankResponseType"/>
+      <xsd:complexType name="getBankType">
+        <xsd:sequence>
+          <xsd:element name="blz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getBankResponseType">
+        <xsd:sequence>
+          <xsd:element name="details" type="tns:detailsType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="detailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bezeichnung" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="bic" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ort" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="plz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBank">
+    <wsdl:part name="parameters" element="tns:getBank"/>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part name="parameters" element="tns:getBankResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="BLZServicePortType">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="tns:getBank"/>
+      <wsdl:output message="tns:getBankResponse" wsaw:Action="http://thomas-bayer.com/blz/BLZService/getBankResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BLZServiceSOAP11Binding" type="tns:BLZServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceSOAP12Binding" type="tns:BLZServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceHttpBinding" type="tns:BLZServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getBank">
+      <http:operation location="BLZService/getBank"/>
+      <wsdl:input>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BLZService">
+    <wsdl:port name="BLZServiceSOAP11port_http" binding="tns:BLZServiceSOAP11Binding">
+      <soap:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceSOAP12port_http" binding="tns:BLZServiceSOAP12Binding">
+      <soap12:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceHttpport" binding="tns:BLZServiceHttpBinding">
+      <http:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:endpoints>
+    <con:operation id="2a33e0b7-48c9-4a4e-aaa1-5b8b7d0d6a5f" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="ea98b7c8-6c59-444b-8287-310cd208b3dd" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <blz:getBank>\r
+         <blz:blz>?</blz:blz>\r
+      </blz:getBank>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:testSuite id="80d424ba-6759-43ed-a6f4-ac9dd719565f" name="TS_01_Test GetBank Operation = BASICS">
+    <con:settings>
+      <con:setting id="IncludeOverview">true</con:setting>
+      <con:setting id="IncludeResults">true</con:setting>
+      <con:setting id="FlowLayout">false</con:setting>
+      <con:setting id="ErrorDetails">true</con:setting>
+      <con:setting id="IncludeCoverage">true</con:setting>
+      <con:setting id="GeneratableAllureReport@Folder">C:\Users\dsharman2\OneDrive - DXC Production\Desktop\New folder</con:setting>
+    </con:settings>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="6f5dfc22-d831-4eeb-9a7b-85b6e4ababfb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_Test_GetBank_Operation - 50020300" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="1f99991a-ca65-4147-8dc2-50420718d49a" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>${#TestCase#BlzCode}</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:username>${#Project#username}</con:username>
+              <con:password>dhirajkumar</con:password>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BlzCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="c7423f4e-b1bd-4786-9804-f6c7d74f304b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_02_Test_GetBank_Operation - 57090900" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="4a273ff9-37d4-4390-b1d5-c01950b64627" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="187cbaff-5e90-4fa1-a9e7-f83d2db9a2eb">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>57090900</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="05baadb4-bdff-40c5-9e03-a5a5835230c2" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="3eb02b2a-8973-4699-960b-84af624d2b4e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_03_Test_GetBank_Operation - 82064038" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="be098ad8-e097-42a8-a45a-8e60b1c1f0a1" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="5a16cf02-6202-4f1a-9064-5838b6ae858c">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>82064038</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="ca37d77f-7726-45cd-8816-0c2358e0af6f" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="cbd4fe56-00ad-423a-b87b-abe81cfe220e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_04_Test_GetBank_Operation - 35070024" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="32b7160b-bfde-4b71-b997-fb38bcf238d3" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="92534077-0d31-4fa9-adeb-7084d281ff40">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>35070024</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="df5663b9-632d-4879-ae76-453d337b1fe7" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="4f1995b3-570d-4307-8491-0de16d711666" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_05_Test_GetBank_Operation - 55010111" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="b750c00a-6d97-4fc1-836b-9a96fc6f1ae3" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="92534077-0d31-4fa9-adeb-7084d281ff40">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55010111</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="df5663b9-632d-4879-ae76-453d337b1fe7" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="718c5a41-a9a8-4b47-818f-fd3528b10afb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_06_Test_GetBank_Operation - 55010424" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="628fb62f-ffc4-4167-b905-36b5a89de96a" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="92534077-0d31-4fa9-adeb-7084d281ff40">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55010424</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="df5663b9-632d-4879-ae76-453d337b1fe7" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="f4ac444c-3993-4081-b6b8-e45a4a4ab76c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_07_Test_GetBank_Operation - 55010800" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="97eeb040-0273-4f9c-a014-b5e16d0ab842" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="92534077-0d31-4fa9-adeb-7084d281ff40">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55010800</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="df5663b9-632d-4879-ae76-453d337b1fe7" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="606260ac-b1af-43fd-820d-31aaad658f96" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_08_Test_GetBank_Operation - 55020100" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="9d70cedc-582d-4c8f-8d0e-70a5a78edafe" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="92534077-0d31-4fa9-adeb-7084d281ff40">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55020100</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="df5663b9-632d-4879-ae76-453d337b1fe7" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="f1a26e6f-24d0-4d22-8244-93ab49142f34" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_09_Test_GetBank_Operation - 55020500" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="aa472ee9-95e0-454a-8a5b-30ef052e9fee" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="92534077-0d31-4fa9-adeb-7084d281ff40">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55020500</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="df5663b9-632d-4879-ae76-453d337b1fe7" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="89dd494c-2d10-4c49-8b8c-28d3401a75e4" name="TS_02_TestSuite_to_Practise = PROPERTY TRANSFER">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="0dcc393f-dd35-470a-8509-2dce53fa031b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_Transfer Bank Details - 50020300" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="36a4a269-b49c-47aa-9f51-dfcaec31b0c5" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>50020300</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="32b1aba8-6d52-4a80-9129-34c8b73dfa24">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="24aab47e-fb96-4fb9-84b3-e2d1680c5298">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>50020300</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>KBC Bank Deutschland</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>BANVDEHB500</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Frankfurt am Main</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>60038</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="4778c3ef-61d3-47a9-b7ea-4502c91b1a3a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_02_Transfer Bank Details - 57090900" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="e334120b-c4cd-4ce9-89c0-2bd60b5832f1" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>57090900</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="8219fb5d-0e0f-40a3-a1e9-5307f4718821">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="b165e344-c2ce-4b78-8194-382d41a4c8ac">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>57090900</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>PSD Bank Koblenz</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>GENODEF1P12</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Koblenz am Rhein</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>56068</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="9944e168-a23b-42d5-ae01-6adb89815d5c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_03_Transfer Bank Details - 82064038" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="afd82f30-cec7-4b77-97ad-1c093aa3975d" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>82064038</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="7df9e492-9531-4629-9747-d81e996cc788">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="02ee717c-118e-4db9-94ac-3d5e119d3717">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>82064038</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>VR Bank Westthüringen</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>GENODEF1MU2</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Mühlhausen /Thüringen</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>99974</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="81faf2f8-cba0-451b-a63c-b1056d06e7f9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_04_Transfer Bank Details - 35070024" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="1cf02ca0-b897-42cc-b32c-dd8c7c76f1d6" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>35070024</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="a88fbf59-b7ed-4a9d-a0e6-5cbe38cbfeb6">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="af611e55-deb4-4314-9f4c-7f3b822e70b8">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>35070024</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>Deutsche Bank Privat und Geschäftskunden</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>DEUTDEDB350</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Duisburg</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>47003</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="ea198200-4589-48e6-94e3-726fc0c79087" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_05_Transfer Bank Details - 55010111" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="4b0f7c8e-8a2c-433f-a8dd-8cbd4b63e8f7" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55010111</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="d73dce41-2e5d-4d2f-9c04-dc8c07e982d5">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="dca7dca8-a99b-4f98-ae7e-5e95575ad604">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>55010111</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>SEB</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>ESSEDE5F550</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Mainz a Rhein</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>55116</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="bb6f063d-37f1-4911-9d06-22420959c979" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_06_Transfer Bank Details - 55010424" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="c3838842-7109-422a-8e7e-deaecbf2ac8e" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55010424</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="1cdae89b-3eef-4440-8377-ff27066ced66">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="52bf73ca-48c5-4ae6-9c38-3ca67eb33e3e">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>55010424</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>Aareal Bank</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>AARBDE5W550</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Mainz a Rhein</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>55027</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="d0489658-87e1-46d0-8688-c75da491836d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_07_Transfer Bank Details - 55010800" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="083aa88d-73f4-4e89-9286-c8ef8f597e19" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55010800</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="07fdb968-8982-49b4-adde-364f3bd3a4b4">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="01884abe-755b-4fc1-8c26-1391f5ff3233">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>55010800</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>Investitions- und Strukturbank RP</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>ISBRDE51XXX</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Mainz a Rhein</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>55015</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="bf3aa988-c55f-4ff0-bace-1adfa55aded8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_08_Transfer Bank Details - 55020100" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="858e252f-efc0-414c-96b9-102cc6fdef08" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55020100</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="8defd019-e9ed-40e7-bac5-329f8a3faa23">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="e3b27d81-6941-433f-afbe-d9d72e13051b">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>55020100</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>Bausparkasse Mainz</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>BKMZDE51XXX</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Mainz a Rhein</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>55004</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="761b7047-6c21-4bbf-91c4-47137cb526ca" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_09_Transfer Bank Details - 55020500" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="122623f4-689e-493d-90b6-7c6209c71ece" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55020500</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="796391e0-f840-42c1-831c-dab0eccc957c">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_BLZCode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>BIZCode</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bezeichnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bezeichnung/text( )</con:sourcePath>
+            <con:targetType>Bezeichnung</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:bic/text( )</con:sourcePath>
+            <con:targetType>Bic</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort/text( )</con:sourcePath>
+            <con:targetType>Ort</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Transfer_Plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>getBank</con:sourceStep>
+            <con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:plz/text( )</con:sourcePath>
+            <con:targetType>Plz</con:targetType>
+            <con:targetStep>Transfered_Properties</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Transfered_Properties" id="3a005e51-87b5-40dc-b74f-df9ad861b00a">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>BIZCode</con:name>
+              <con:value>55020500</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bezeichnung</con:name>
+              <con:value>Sozialbank</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Bic</con:name>
+              <con:value>BFSWDE33MNZ</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Ort</con:name>
+              <con:value>Mainz a Rhein</con:value>
+            </con:property>
+            <con:property>
+              <con:name>Plz</con:name>
+              <con:value>55004</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>BLZCode</con:name>
+          <con:value>50020300</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="7ca152de-68df-42d4-b2bb-635aa9e27431" name="TS_03_TestSuite_to_Practise = ASSERTIONS">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="436b3047-5d3a-4f16-8b49-39566de0d25f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_Test_GetBank_Operation Assertions -SAMPLE" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="a4eae162-aa02-489a-8992-711696b17523" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="66a9c4af-22fb-49f6-a630-11fec561bfd4">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>55010800</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0366951b-49b5-4189-9a89-600f5119f628" name="SOAP Response_Default_Assertion_to_Validate_response_is_a_Valid_SoapResponse(--COMPLIANCE--)"/>
+            <con:assertion type="Simple Contains" id="e3358f39-10c9-44f0-b672-98dbbb511349" name="Validate_Mainz a Rhein_Exist_in_MetaData(--CONTAINS--)">
+              <con:configuration>
+                <token>Mainz a Rhein</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple NotContains" id="0bc07a56-bf3e-454a-bb3a-6be5ea609d4a" name="Validate_xxxxxxxxxxxxxx_Doesnot_Exist_in_MetaData(--NOT CONTAINS--)">
+              <con:configuration>
+                <token>xxxxxxxxxxxxxx</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="f0f88336-4856-4bb9-a511-7afb07407284" name="Validating_or_Retrieving_ORT_Node_from_Response(--XPATH_EXPRESSION--)">
+              <con:configuration>
+                <path>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse/ns1:details/ns1:ort</path>
+                <content>Mainz a Rhein</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Not SOAP Fault Assertion" id="4da1dd05-3286-4b6c-8ac8-05aac3c9f330" name="Validate if the Response is a Invalid SOAP Response/Fault ( --SOAP Fault--)" disabled="true"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="bfd96f3c-2eca-42ba-ae21-53f2e918b019" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_02_Test_GetBank_Operation Assertions - SOAPFAULT" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="0c3a95b8-cf4e-4818-9b66-175befc83bd2" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="187cbaff-5e90-4fa1-a9e7-f83d2db9a2eb">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>570909009</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="05baadb4-bdff-40c5-9e03-a5a5835230c2" name="Validate Response is a SOAP Response &lt;--SOAP RESPONSE-->"/>
+            <con:assertion type="Not SOAP Fault Assertion" id="7f219797-1e41-4ea1-93eb-d729a68cd6ab" name="Validate Response is a SOAPFAULT&lt;--SOAP FAULT-->"/>
+            <con:assertion type="XPath Match" id="fdbd75b1-5b2d-4596-963d-e523efb0aadd" name="Validate Fault String for SOAPRESPONSE &lt;--XPATH MATCH-->">
+              <con:configuration>
+                <path>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+//soapenv:Envelope/soapenv:Body/soapenv:Fault/faultstring</path>
+                <content>Keine Bank zur BLZ 570909009 gefunden!</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:endpointStrategy xsi:type="con:DefaultEndpointStrategy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:endpoint mode="OVERRIDE">http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+  </con:endpointStrategy>
+  <con:requirements/>
+  <con:properties>
+    <con:property>
+      <con:name>username</con:name>
+      <con:value>Dhiraj</con:value>
+    </con:property>
+    <con:property>
+      <con:name>password</con:name>
+      <con:value>dhirajkumar</con:value>
+    </con:property>
+  </con:properties>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:sensitiveInformation/>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>

@@ -1,0 +1,1302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="aa49ba7f-c263-43ed-a0a9-e5bde981cb66" created="3.2.7" activeEnvironment="Default environment" name="Introduction to Data Driven Testing" resourceRoot="" updated="3.2.7 2020-05-27T19:48:04Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="a6d35c6f-9f82-46fb-87a5-645c41598c96" wsaVersion="NONE" name="BLZServiceSOAP11Binding" type="wsdl" bindingName="{http://thomas-bayer.com/blz/}BLZServiceSOAP11Binding" soapVersion="1_1" anonymous="optional" definition="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl">
+      <con:part>
+        <con:url>http://www.thomas-bayer.com/axis2/services/BLZService?wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://thomas-bayer.com/blz/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://thomas-bayer.com/blz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>BLZService</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://thomas-bayer.com/blz/">
+      <xsd:element name="getBank" type="tns:getBankType"/>
+      <xsd:element name="getBankResponse" type="tns:getBankResponseType"/>
+      <xsd:complexType name="getBankType">
+        <xsd:sequence>
+          <xsd:element name="blz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getBankResponseType">
+        <xsd:sequence>
+          <xsd:element name="details" type="tns:detailsType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="detailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bezeichnung" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="bic" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ort" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="plz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBank">
+    <wsdl:part name="parameters" element="tns:getBank"/>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part name="parameters" element="tns:getBankResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="BLZServicePortType">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="tns:getBank"/>
+      <wsdl:output message="tns:getBankResponse" wsaw:Action="http://thomas-bayer.com/blz/BLZService/getBankResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BLZServiceSOAP11Binding" type="tns:BLZServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceSOAP12Binding" type="tns:BLZServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceHttpBinding" type="tns:BLZServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getBank">
+      <http:operation location="BLZService/getBank"/>
+      <wsdl:input>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BLZService">
+    <wsdl:port name="BLZServiceSOAP11port_http" binding="tns:BLZServiceSOAP11Binding">
+      <soap:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceSOAP12port_http" binding="tns:BLZServiceSOAP12Binding">
+      <soap12:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceHttpport" binding="tns:BLZServiceHttpBinding">
+      <http:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:endpoints>
+    <con:operation id="c2bf2527-a66e-4d6d-8f6c-038c6e59df92" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d5f4960c-6425-4c28-9327-8e1f62af6438" name="getBank Request">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>?</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="29695f60-60c7-4668-9fbd-02f3cb9be113" wsaVersion="NONE" name="BLZServiceSOAP12Binding" type="wsdl" bindingName="{http://thomas-bayer.com/blz/}BLZServiceSOAP12Binding" soapVersion="1_2" anonymous="optional" definition="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/>
+    <con:endpoints>
+      <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:endpoints>
+    <con:operation id="cc4bf789-18c3-4fe5-83fb-39d864b10f4c" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="b86e88bc-cfa3-45d9-9298-367ce53aafac" name="getBank Request">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <blz:getBank>\r
+         <blz:blz>?</blz:blz>\r
+      </blz:getBank>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:testSuite id="839a6da8-a4b9-4942-950f-773c4028ee6a" name="TS_01_Data Driven TestSuite">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="075cc677-b1c8-4839-9919-cfe4346260a6" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_01_DataSource from GRID" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="datasource" name="DataSource-GRID" id="b0c4cf96-da16-4e18-a03c-03afde726012">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="Grid">
+            <con:configuration>
+              <check><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry></xml-fragment>]]></check>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">55010111</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">SEB</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">ESSEDE5F550</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Mainz a Rhein</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">55116</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">55010424</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Aareal Bank</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">AARBDE5W550</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Mainz a Rhein</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">55027</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">55010800</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Investitions- und Strukturbank RP</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">ISBRDE51XXX</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Mainz a Rhein</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">55015</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">55020100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Bausparkasse Mainz</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BKMZDE51XXX</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Mainz a Rhein</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">55004</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">55020500</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Sozialbank</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BFSWDE33MNZ</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Mainz a Rhein</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">55004</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+              <recognizeAsPlainText>true</recognizeAsPlainText>
+            </con:configuration>
+          </con:dataSource>
+          <con:shared>true</con:shared>
+          <con:restartShared>true</con:restartShared>
+          <con:property>BLZ Code</con:property>
+          <con:property>bezeichnung</con:property>
+          <con:property>bic</con:property>
+          <con:property>ort</con:property>
+          <con:property>plz</con:property>
+          <con:completeLastOperation>true</con:completeLastOperation>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="266271dc-7bfc-460d-861c-f4f511dc6cea" name="SOAP Request">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="SOAP Request" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aeea15ef-f96f-4853-af7b-53c5ad5ba5d0">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>${DataSource-GRID#BLZ Code}</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="061834c0-639f-487d-b89d-3e2f472ef774" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="df58529f-98d1-40ca-b03b-e67444f543ae" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="e70ac600-31cb-437c-a753-f679940e35a5" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="d9e46dd4-c241-441e-93a7-4c421a5027ae" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="53ef846f-a741-4c02-be53-1dc0791386f9" name="XPath Match - Validate Bezechnung">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</path>
+                <content>${DataSource-GRID#bezeichnung}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="735be0d9-599a-49ad-be77-e068310767fa" name="XPath Match - Validate Bic">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bic[1]</path>
+                <content>${DataSource-GRID#bic}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="3ee36e2d-3b05-4e48-bcb3-d85d7d410928" name="XPath Match - Validate Ort">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:ort[1]</path>
+                <content>${DataSource-GRID#ort}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="2ed97211-2c65-4d8a-854b-8ab8f45d10d4" name="XPath Match -Validate Plz">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:plz[1]</path>
+                <content>${DataSource-GRID#plz}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasourceloop" name="DataSource Loop" id="4373ff49-8bb4-4a02-8771-434dd3743268">
+        <con:settings/>
+        <con:config>
+          <dataSourceStep>DataSource-GRID</dataSourceStep>
+          <targetStep>SOAP Request</targetStep>
+          <discardResults>true</discardResults>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>4373ff49-8bb4-4a02-8771-434dd3743268</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="cbe9f49a-6574-4744-bb55-c6c4e58d677c" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_02_DataSource from EXCEL" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="datasource" name="DataSource-EXCEL" id="509f1130-0a07-4c37-a15f-3636b24d91b7">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="Excel">
+            <con:configuration>
+              <file>C:/Users/dsharman2/Music/Introduction to API Testing - ReadyAPI/REST  Projects/BLZ_Data.xls</file>
+              <worksheet>Data for BLZService</worksheet>
+              <cell>A2</cell>
+              <ignoreEmpty>false</ignoreEmpty>
+              <evaluateFormulas>false</evaluateFormulas>
+            </con:configuration>
+          </con:dataSource>
+          <con:shared>true</con:shared>
+          <con:restartShared>true</con:restartShared>
+          <con:property>BLZ Code</con:property>
+          <con:property>bezeichnung</con:property>
+          <con:property>bic</con:property>
+          <con:property>ort</con:property>
+          <con:property>plz</con:property>
+          <con:completeLastOperation>true</con:completeLastOperation>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="e638d777-87e1-4a81-a1e7-c426cdb355ea" name="SOAP Request">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="SOAP Request" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aeea15ef-f96f-4853-af7b-53c5ad5ba5d0">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>${DataSource-EXCEL#BLZ Code}</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="061834c0-639f-487d-b89d-3e2f472ef774" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="df58529f-98d1-40ca-b03b-e67444f543ae" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="e70ac600-31cb-437c-a753-f679940e35a5" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="d9e46dd4-c241-441e-93a7-4c421a5027ae" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="53ef846f-a741-4c02-be53-1dc0791386f9" name="XPath Match - Validate Bezechnung">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</path>
+                <content>${DataSource-EXCEL#bezeichnung}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="735be0d9-599a-49ad-be77-e068310767fa" name="XPath Match - Validate Bic">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bic[1]</path>
+                <content>${DataSource-EXCEL#bic}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="3ee36e2d-3b05-4e48-bcb3-d85d7d410928" name="XPath Match - Validate Ort">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:ort[1]</path>
+                <content>${DataSource-EXCEL#ort}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="2ed97211-2c65-4d8a-854b-8ab8f45d10d4" name="XPath Match -Validate Plz">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:plz[1]</path>
+                <content>${DataSource-EXCEL#plz}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasourceloop" name="DataSource Loop" id="0b52a146-ea21-4b56-9fc7-f7177ca013c8">
+        <con:settings/>
+        <con:config>
+          <dataSourceStep>DataSource-EXCEL</dataSourceStep>
+          <targetStep>SOAP Request</targetStep>
+          <discardResults>true</discardResults>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>4373ff49-8bb4-4a02-8771-434dd3743268</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="4a0ea745-0b0d-4d30-b40a-c4b4595f5929" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_03_DataSource from FILE" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="datasource" name="DataSource-FILE" id="93f9e552-0ed5-4af3-a333-72a7137195dc">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="File">
+            <con:configuration>
+              <fileName>C:/Users/dsharman2/Music/Introduction to API Testing - ReadyAPI/REST  Projects/BLZ_TestData.txt</fileName>
+              <separator>,</separator>
+              <trim>true</trim>
+              <charset>Cp1252</charset>
+              <quotedValues>false</quotedValues>
+            </con:configuration>
+          </con:dataSource>
+          <con:shared>true</con:shared>
+          <con:restartShared>true</con:restartShared>
+          <con:property>blz code</con:property>
+          <con:property>bezechnung</con:property>
+          <con:property>bic</con:property>
+          <con:property>ort</con:property>
+          <con:property>plz</con:property>
+          <con:completeLastOperation>true</con:completeLastOperation>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="6ba6bf38-645b-458c-aaa8-8e08f4ca2f2d" name="SOAP Request">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="SOAP Request" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aeea15ef-f96f-4853-af7b-53c5ad5ba5d0">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>${DataSource-FILE#BLZ Code}</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="061834c0-639f-487d-b89d-3e2f472ef774" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="df58529f-98d1-40ca-b03b-e67444f543ae" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="e70ac600-31cb-437c-a753-f679940e35a5" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="d9e46dd4-c241-441e-93a7-4c421a5027ae" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="53ef846f-a741-4c02-be53-1dc0791386f9" name="XPath Match - Validate Bezechnung">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</path>
+                <content>${DataSource-FILE#bezechnung}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="735be0d9-599a-49ad-be77-e068310767fa" name="XPath Match - Validate Bic">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bic[1]</path>
+                <content>${DataSource-FILE#bic}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="3ee36e2d-3b05-4e48-bcb3-d85d7d410928" name="XPath Match - Validate Ort">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:ort[1]</path>
+                <content>${DataSource-FILE#ort}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="2ed97211-2c65-4d8a-854b-8ab8f45d10d4" name="XPath Match -Validate Plz">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:plz[1]</path>
+                <content>${DataSource-FILE#plz}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasourceloop" name="DataSource Loop" id="8a2f15a5-1013-4120-a09d-c38c29178bd0">
+        <con:settings/>
+        <con:config>
+          <dataSourceStep>DataSource-FILE</dataSourceStep>
+          <targetStep>SOAP Request</targetStep>
+          <discardResults>true</discardResults>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>4373ff49-8bb4-4a02-8771-434dd3743268</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="fd9fe21a-382b-4d72-8982-e6ef423c8ed1" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_04_DataSource from GROOVY" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="datasource" name="DataSource-FILE" id="3804e8b3-461f-46d9-b5a9-b764d7406c8b">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="File">
+            <con:configuration>
+              <fileName>C:/Users/dsharman2/Music/Introduction to API Testing - ReadyAPI/REST  Projects/BLZ_TestData.txt</fileName>
+              <separator>,</separator>
+              <trim>true</trim>
+              <charset>Cp1252</charset>
+              <quotedValues>false</quotedValues>
+            </con:configuration>
+          </con:dataSource>
+          <con:shared>true</con:shared>
+          <con:restartShared>true</con:restartShared>
+          <con:property>blz code</con:property>
+          <con:property>bezechnung</con:property>
+          <con:property>bic</con:property>
+          <con:property>ort</con:property>
+          <con:property>plz</con:property>
+          <con:completeLastOperation>true</con:completeLastOperation>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasource" name="DataSource-GROOVY" id="f86c01c1-7814-424a-9c5c-f5f7c1d4743d">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="Groovy">
+            <con:configuration>
+              <script>// A sample groovy data source script.
+// This groovy data source script generates property values by executing a groovy script.
+// To get the output value, use the built-in result map object.
+
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context)
+def projectPath = groovyUtils.projectPath
+def directoryName = projectPath
+def row = testRunner.testCase.testSteps["DataSource-FILE"].currentRow
+def allFiles = []
+new File( directoryName ).eachFile() { file ->
+	if( file.name =~ /BLZ_TestData..txt/ ) {
+		allFiles.add( file.name )	}
+}
+if ( (row + 1) &lt;= allFiles.size ) {
+	// output to the test step property called inputData
+	result["inputData"] = new File( directoryName + "/" + allFiles[row] ).text
+
+	log.info allFiles
+}</script>
+            </con:configuration>
+          </con:dataSource>
+          <con:shared>true</con:shared>
+          <con:restartShared>true</con:restartShared>
+          <con:property>blz code</con:property>
+          <con:property>bezechnung</con:property>
+          <con:property>bic</con:property>
+          <con:property>ort</con:property>
+          <con:property>plz</con:property>
+          <con:completeLastOperation>true</con:completeLastOperation>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="a08ddd05-60a1-4722-8feb-9cc732a67246" name="SOAP Request">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="SOAP Request" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aeea15ef-f96f-4853-af7b-53c5ad5ba5d0">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>${#[TS_01_Data Driven TestSuite#TC_03_DataSource from FILE#DataSource-FILE]#blz code}</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="061834c0-639f-487d-b89d-3e2f472ef774" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="df58529f-98d1-40ca-b03b-e67444f543ae" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="e70ac600-31cb-437c-a753-f679940e35a5" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="d9e46dd4-c241-441e-93a7-4c421a5027ae" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="53ef846f-a741-4c02-be53-1dc0791386f9" name="XPath Match - Validate Bezechnung" disabled="true">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</path>
+                <content>${DataSource-GROOVY#bezechnung}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="735be0d9-599a-49ad-be77-e068310767fa" name="XPath Match - Validate Bic">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bic[1]</path>
+                <content>${DataSource-GROOVY#bic}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="3ee36e2d-3b05-4e48-bcb3-d85d7d410928" name="XPath Match - Validate Ort">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:ort[1]</path>
+                <content>${DataSource-GROOVY#ort}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="2ed97211-2c65-4d8a-854b-8ab8f45d10d4" name="XPath Match -Validate Plz">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:plz[1]</path>
+                <content>${DataSource-GROOVY#plz}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasourceloop" name="DataSource Loop" id="89e129f7-bfbd-4498-bde1-b1afeaa63b96">
+        <con:settings/>
+        <con:config>
+          <dataSourceStep>DataSource-FILE</dataSourceStep>
+          <targetStep>SOAP Request</targetStep>
+          <discardResults>true</discardResults>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>4373ff49-8bb4-4a02-8771-434dd3743268</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>3804e8b3-461f-46d9-b5a9-b764d7406c8b</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="894466ee-e04c-4d5d-b0f7-49c91c587c82" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_05_DATAGEN" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="datagen" name="DataGen" id="87b54c53-9033-45c4-a763-c77a35c3e435">
+        <con:settings/>
+        <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:property type="List">
+            <con:configuration>
+              <value>55010111</value>
+              <value>55010424</value>
+              <value>55010800</value>
+              <value>55020100</value>
+              <value>55020500</value>
+              <random>true</random>
+            </con:configuration>
+            <con:name>blz_code = LIST</con:name>
+            <con:mode>STEP</con:mode>
+            <con:shared>false</con:shared>
+          </con:property>
+          <con:property type="Number">
+            <con:configuration>
+              <start>100</start>
+              <end>999</end>
+              <step>2</step>
+              <pattern/>
+              <random>false</random>
+              <persist>true</persist>
+              <current>150</current>
+            </con:configuration>
+            <con:name>Sequence_Number = NUMBER</con:name>
+            <con:mode>STEP</con:mode>
+            <con:shared>false</con:shared>
+          </con:property>
+          <con:property type="Script">
+            <con:configuration>
+              <script>import java.text.SimpleDateFormat
+def date = new Date()
+
+sdf = new SimpleDateFormat("MM/dd/yyyy")
+
+def value = sdf.format(date)
+
+return value</script>
+            </con:configuration>
+            <con:name>Getcurrent Date = Script</con:name>
+            <con:mode>STEP</con:mode>
+            <con:shared>false</con:shared>
+          </con:property>
+          <con:property type="Template">
+            <con:configuration>
+              <template>For BLZ code ${DataGen#blz_code = LIST} on ${DataGen#Getcurrent Date = Script} response is ${DataGen#Sequence_Number = NUMBER}</template>
+              <entitize>false</entitize>
+            </con:configuration>
+            <con:name>Comment= TEMPLATE</con:name>
+            <con:mode>STEP</con:mode>
+            <con:shared>false</con:shared>
+          </con:property>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="22aa39ba-ae56-44b7-9538-784024084d30" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="6f08edf4-a973-4c58-961e-799cda697f43">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>${DataGen#blz_code = LIST}</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="109b202e-2a26-4209-8da5-e488d8217959" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="a33765b0-aa7a-4bb2-b5f0-d406e3974b46" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_06_DataSink into EXCEL" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="datasource" name="DataSource-EXCEL" id="e804bd28-d12f-4756-8f0a-691aacaea85c">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="Excel">
+            <con:configuration>
+              <file>C:/Users/dsharman2/Music/Introduction to API Testing - ReadyAPI/REST  Projects/BLZ_Data.xls</file>
+              <worksheet>Data for BLZService</worksheet>
+              <cell>A2</cell>
+              <ignoreEmpty>false</ignoreEmpty>
+              <evaluateFormulas>false</evaluateFormulas>
+            </con:configuration>
+          </con:dataSource>
+          <con:shared>true</con:shared>
+          <con:restartShared>true</con:restartShared>
+          <con:property>BLZ Code</con:property>
+          <con:property>bezeichnung</con:property>
+          <con:property>bic</con:property>
+          <con:property>ort</con:property>
+          <con:property>plz</con:property>
+          <con:completeLastOperation>true</con:completeLastOperation>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="802e4d5d-2bb3-4609-93d8-fff62904dbb5" name="SOAP Request">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="SOAP Request" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aeea15ef-f96f-4853-af7b-53c5ad5ba5d0">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>${DataSource-EXCEL#BLZ Code}</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="061834c0-639f-487d-b89d-3e2f472ef774" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="df58529f-98d1-40ca-b03b-e67444f543ae" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="e70ac600-31cb-437c-a753-f679940e35a5" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="d9e46dd4-c241-441e-93a7-4c421a5027ae" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="53ef846f-a741-4c02-be53-1dc0791386f9" name="XPath Match - Validate Bezechnung">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</path>
+                <content>${DataSource-EXCEL#bezeichnung}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="735be0d9-599a-49ad-be77-e068310767fa" name="XPath Match - Validate Bic">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bic[1]</path>
+                <content>${DataSource-EXCEL#bic}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="3ee36e2d-3b05-4e48-bcb3-d85d7d410928" name="XPath Match - Validate Ort">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:ort[1]</path>
+                <content>${DataSource-EXCEL#ort}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="2ed97211-2c65-4d8a-854b-8ab8f45d10d4" name="XPath Match -Validate Plz">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:plz[1]</path>
+                <content>${DataSource-EXCEL#plz}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="ca03c48b-6bc9-4b71-8ac0-c7167b15f8b0">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Res_bezechnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</con:sourcePath>
+            <con:targetType>Trans_bezechnung</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:targetPath/>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Res_bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bic[1]</con:sourcePath>
+            <con:targetType>trans_bic</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Res_ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:ort[1]</con:sourcePath>
+            <con:targetType>trans_ort</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Res_plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:plz[1]</con:sourcePath>
+            <con:targetType>trans_plz</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasink" name="DataSink" id="81c29561-449a-4601-8c22-312f1f11d0f2">
+        <con:settings/>
+        <con:config xsi:type="con:DataSinkStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSink type="Excel">
+            <con:configuration>
+              <file/>
+              <outfile>C:/Users/dsharman2/Music/Introduction to API Testing - ReadyAPI/REST  Projects/BLZ_Data.xls</outfile>
+              <worksheet>Sheet2</worksheet>
+              <cell>B2</cell>
+              <evaluateFormulas>false</evaluateFormulas>
+              <append>false</append>
+            </con:configuration>
+          </con:dataSink>
+          <con:properties>
+            <con:property>
+              <con:name>Trans_bezechnung</con:name>
+              <con:value>Sozialbank</con:value>
+            </con:property>
+            <con:property>
+              <con:name>trans_bic</con:name>
+              <con:value>BFSWDE33MNZ</con:value>
+            </con:property>
+            <con:property>
+              <con:name>trans_ort</con:name>
+              <con:value>Mainz a Rhein</con:value>
+            </con:property>
+            <con:property>
+              <con:name>trans_plz</con:name>
+              <con:value/>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasourceloop" name="DataSource Loop" id="4dab5287-18f4-49f5-88f0-0a3c62a70361">
+        <con:settings/>
+        <con:config>
+          <dataSourceStep>DataSource-EXCEL</dataSourceStep>
+          <targetStep>SOAP Request</targetStep>
+          <discardResults>true</discardResults>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>4373ff49-8bb4-4a02-8771-434dd3743268</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>81c29561-449a-4601-8c22-312f1f11d0f2</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>ca03c48b-6bc9-4b71-8ac0-c7167b15f8b0</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="a1831397-a46a-451a-ab32-95915df2bc15" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_07_DataSink into FILE" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="datasource" name="DataSource-EXCEL" id="9d1c98ac-d259-4b93-ab40-e771b1ce8e6c">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="Excel">
+            <con:configuration>
+              <file>C:/Users/dsharman2/Music/Introduction to API Testing - ReadyAPI/REST  Projects/BLZ_Data.xls</file>
+              <worksheet>Data for BLZService</worksheet>
+              <cell>A2</cell>
+              <ignoreEmpty>false</ignoreEmpty>
+              <evaluateFormulas>false</evaluateFormulas>
+            </con:configuration>
+          </con:dataSource>
+          <con:shared>true</con:shared>
+          <con:restartShared>true</con:restartShared>
+          <con:property>BLZ Code</con:property>
+          <con:property>bezeichnung</con:property>
+          <con:property>bic</con:property>
+          <con:property>ort</con:property>
+          <con:property>plz</con:property>
+          <con:completeLastOperation>true</con:completeLastOperation>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="3334911b-1af5-4fda-876a-a02963febd8d" name="SOAP Request">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="SOAP Request" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aeea15ef-f96f-4853-af7b-53c5ad5ba5d0">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>${DataSource-EXCEL#BLZ Code}</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="061834c0-639f-487d-b89d-3e2f472ef774" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="df58529f-98d1-40ca-b03b-e67444f543ae" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="e70ac600-31cb-437c-a753-f679940e35a5" name="Not SOAP Fault"/>
+            <con:assertion type="Schema Compliance" id="d9e46dd4-c241-441e-93a7-4c421a5027ae" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="53ef846f-a741-4c02-be53-1dc0791386f9" name="XPath Match - Validate Bezechnung">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</path>
+                <content>${DataSource-EXCEL#bezeichnung}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="735be0d9-599a-49ad-be77-e068310767fa" name="XPath Match - Validate Bic">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bic[1]</path>
+                <content>${DataSource-EXCEL#bic}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="3ee36e2d-3b05-4e48-bcb3-d85d7d410928" name="XPath Match - Validate Ort">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:ort[1]</path>
+                <content>${DataSource-EXCEL#ort}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="2ed97211-2c65-4d8a-854b-8ab8f45d10d4" name="XPath Match -Validate Plz">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:plz[1]</path>
+                <content>${DataSource-EXCEL#plz}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="0eae1e00-6aef-4ed3-800c-47212465c96a">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Req_Blzcode</con:name>
+            <con:sourceType>RawRequest</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace blz='http://thomas-bayer.com/blz/';
+//blz:getBank[1]/blz:blz[1]</con:sourcePath>
+            <con:targetType>trans_blz</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Res_bezechnung</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</con:sourcePath>
+            <con:targetType>Trans_bezechnung</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:targetPath/>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Res_bic</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bic[1]</con:sourcePath>
+            <con:targetType>trans_bic</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Res_ort</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:ort[1]</con:sourcePath>
+            <con:targetType>trans_ort</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Res_plz</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>SOAP Request</con:sourceStep>
+            <con:sourcePath>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:plz[1]</con:sourcePath>
+            <con:targetType>trans_plz</con:targetType>
+            <con:targetStep>DataSink</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasink" name="DataSink" id="7401534e-6031-4a38-88b9-b98cd6250a2a">
+        <con:settings/>
+        <con:config xsi:type="con:DataSinkStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSink type="File">
+            <con:configuration>
+              <fileName>C:/Users/dsharman2/Music/Introduction to API Testing - ReadyAPI/REST  Projects/Transfered_Data-DataSink.txt</fileName>
+              <separator>,</separator>
+              <escape>"</escape>
+              <quote>false</quote>
+              <trim>true</trim>
+              <append>true</append>
+              <encoding>Cp1252</encoding>
+            </con:configuration>
+          </con:dataSink>
+          <con:properties>
+            <con:property>
+              <con:name>Trans_bezechnung</con:name>
+              <con:value>Sozialbank</con:value>
+            </con:property>
+            <con:property>
+              <con:name>trans_bic</con:name>
+              <con:value>BFSWDE33MNZ</con:value>
+            </con:property>
+            <con:property>
+              <con:name>trans_ort</con:name>
+              <con:value>Mainz a Rhein</con:value>
+            </con:property>
+            <con:property>
+              <con:name>trans_plz</con:name>
+              <con:value>55004</con:value>
+            </con:property>
+            <con:property>
+              <con:name>trans_blz</con:name>
+              <con:value>55020500</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasourceloop" name="DataSource Loop" id="93cc921e-e5ec-48b6-8344-48851c25b8b8">
+        <con:settings/>
+        <con:config>
+          <dataSourceStep>DataSource-EXCEL</dataSourceStep>
+          <targetStep>SOAP Request</targetStep>
+          <discardResults>true</discardResults>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>4373ff49-8bb4-4a02-8771-434dd3743268</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>81c29561-449a-4601-8c22-312f1f11d0f2</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>ca03c48b-6bc9-4b71-8ac0-c7167b15f8b0</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer>
+    <con:databaseConnection>
+      <con:name>MYDATABASE</con:name>
+      <con:driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</con:driver>
+      <con:connectionString>jdbc:sqlserver://127.0.0.1:1433;databaseName=AdventureWorks2014;user=dsharman2;password=PASS_VALUE</con:connectionString>
+      <con:password>Iforgot@143</con:password>
+      <con:connectionProperties/>
+    </con:databaseConnection>
+  </con:databaseConnectionContainer>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
+    <con:xmlTemplates/>
+    <con:parameters/>
+    <con:parameters/>
+  </con:reporting>
+  <con:reporting/>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to SoapUI Pro tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>

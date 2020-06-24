@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7cf863f0-50b3-4d53-80a7-190dadf5e80d" activeEnvironment="Default environment" name="REST - GoogleAPI_Mock Service Testing" resourceRoot="${projectDir}" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" encryptionMode="Not encrypted" updated="3.2.7 2020-05-27T19:48:04Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="bea35bd9-85dd-482f-9c83-78f8a2ccd5b1" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://maps.googleapis.com" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart=""/>
+    <con:endpoints>
+      <con:endpoint>https://maps.googleapis.com</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Json" path="/maps/api/geocode/json" id="e385192e-3d2a-43b0-a427-11758162cc33">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>address</con:name>
+          <con:value>Hyderabad</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>Hyderabad</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Json 1" id="0bbb07b3-f601-4803-8012-4cec7c333bc8" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="https://maps.googleapis.com/maps/api/geocode/json">json:Response</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="https://maps.googleapis.com/maps/api/geocode/json">json:Response</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="https://maps.googleapis.com/maps/api/geocode/json">json:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="20e65c7d-fbbe-4096-913c-9b055e6c6505" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>https://maps.googleapis.com</con:endpoint>
+          <con:request/>
+          <con:originalUri>https://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry>address</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:interface xsi:type="con:RestService" id="b27b37e8-b298-4457-a336-c539292f745d" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8090" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart=""/>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8090</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Json" path="/maps/api/geocode/json" id="fdfb6519-e7cc-4134-bf4a-c9e88e92abb1">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>city</con:name>
+          <con:value>Hyderabad</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>Hyderabad</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Json 1" id="e876ea98-60e5-43be-a927-4e52b511d219" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>text/html; charset=iso-8859-1</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="http://localhost/maps/api/geocode/json">json:Response</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="http://localhost/maps/api/geocode/json">json:Response</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json;charset=utf-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="http://localhost/maps/api/geocode/json">json:Response</con:element>
+        </con:representation>
+        <con:request name="Request-Hyderabad" id="91981b44-5f83-49b9-a451-865ec3fe134a" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8089</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/maps/api/geocode/json</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters>
+            <entry key="city" value="Hyderabad" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>city</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="06ce76be-c57a-4c6e-8079-2146755c04ae" name="TS_01_GoogleAPI -SearchByCity -8089 MockService">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="b44c4c84-88af-4542-a079-766571a8baf0" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_SearchCityDetails - Hyderabad" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="Request" id="44841617-a753-41a4-a3d3-42790f775b83">
+        <con:settings/>
+        <con:config service="http://localhost:8090" resourcePath="/maps/api/geocode/json" methodName="Json 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Request" id="91981b44-5f83-49b9-a451-865ec3fe134a" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8089</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/maps/api/geocode/json</con:originalUri>
+            <con:assertion type="JsonPath Match" id="788e56d4-aee4-4d51-9c2d-acc78f01867e" name="Validate Place ID value from the REST RESPONSE &lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$[results][0][place_id]</path>
+                <content>"ChIJ2eUgeAK6j4ARbn5u_wAGqWA"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" name="Validate Status value from the REST RESPONSE &lt;--JSONPATH MATCH-->" id="2edca143-efdf-4883-815d-5cabf126f8fd">
+              <con:configuration>
+                <path>$.status</path>
+                <content>"OK"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="36aaa268-cb25-4efc-8334-736bd32ad70d" name="Validate LongName value from the REST RESPONSE &lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$.results[0].address_components[1].long_name</path>
+                <content>"Hyderabad"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Schema Compliance" id="534dd1f6-571e-48dc-96d9-9361ff469802" name="Schema Compliance">
+              <con:configuration/>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+            <con:parameterOrder>
+              <con:entry>city</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="a68baf65-1ebf-42f5-867f-4b65f9b08adc" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_02_SearchCityDetails - Mumbai" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="Request" id="f19494e5-d6da-41e0-832d-7d3189bc07c8">
+        <con:settings/>
+        <con:config service="http://localhost:8090" resourcePath="/maps/api/geocode/json" methodName="Json 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Request" id="91981b44-5f83-49b9-a451-865ec3fe134a" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8089</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/maps/api/geocode/json</con:originalUri>
+            <con:assertion type="JsonPath Match" id="788e56d4-aee4-4d51-9c2d-acc78f01867e" name="Validate Place ID value from the REST RESPONSE &lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$[results][0][place_id]</path>
+                <content>"ChIJ2eUgeAK6j4ARbn5u_wAGqWA"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" name="Validate Status value from the REST RESPONSE &lt;--JSONPATH MATCH-->" id="2edca143-efdf-4883-815d-5cabf126f8fd">
+              <con:configuration>
+                <path>$.status</path>
+                <content>"OK"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="e31f4433-e1f2-42ef-8aa1-113960eb88c6" name="Validate formatted_addressfrom the REST RESPONSE &lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$.results[0].formatted_address</path>
+                <content>"1600 Amphitheatre Parkway, Mumbai, CA 94043, USA"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <con:entry key="city" value="Mumbai"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>city</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:restMockService id="840ed6c0-d43c-406c-96ff-9e50d4e8d4bb" port="8089" path="/" host="localhost" name="Google API Mock Service - 8089" docroot="">
+    <con:settings/>
+    <con:properties/>
+    <con:constraints>
+      <con:congestion>0</con:congestion>
+      <con:inputBandwidth>-1</con:inputBandwidth>
+      <con:outputBandwidth>-1</con:outputBandwidth>
+      <con:maxThreadPoolCapacity>20</con:maxThreadPoolCapacity>
+      <con:coreThreadPoolCapacity>5</con:coreThreadPoolCapacity>
+      <con:virtError>
+        <con:start>0</con:start>
+        <con:endless>true</con:endless>
+      </con:virtError>
+    </con:constraints>
+    <con:headerValidator type="NONE"/>
+    <con:restMockAction name="/maps/api/geocode/json" method="GET" resourcePath="/maps/api/geocode/json" id="d85ce6cc-fc2b-41eb-843a-fb1cb82f2ad1">
+      <con:settings/>
+      <con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchPath>// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("Hyderabad") )
+{
+    // return the name of the response you want to dispatch
+    return "Hyderabad"
+}
+else if( queryString.contains("Mumbai") )
+{
+    // return the name of the response you want to dispatch
+    return "Mumbai"
+}</con:dispatchPath>
+      <con:dispatchXPath/>
+      <con:routeScript/>
+      <con:response name="Hyderabad" id="a23a7988-aafa-45b6-a7aa-72d887ddad11" httpResponseStatus="200" mediaType="application/json" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent>{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "1600",
+               "short_name" : "1600",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Santa Clara County",
+               "short_name" : "Santa Clara County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "California",
+               "short_name" : "CA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "94043",
+               "short_name" : "94043",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "1600 Amphitheatre Parkway, Hyderabad, CA 94043, USA",
+         "geometry" : {
+            "location" : {
+               "lat" : 17.4224764,
+               "lng" : -12.0842499
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.4238253802915,
+                  "lng" : -122.0829009197085
+               },
+               "southwest" : {
+                  "lat" : 37.4211274197085,
+                  "lng" : -122.0855988802915
+               }
+            }
+         },
+         "place_id" : "ChIJ2eUgeAK6j4ARbn5u_wAGqWA",
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+        <con:header>
+          <con:name>Transfer-Encoding</con:name>
+          <con:value>chunked</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Server</con:name>
+          <con:value>mafe</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Alt-Svc</con:name>
+          <con:value>quic=":443"; ma=2592000; v="44,43,39,35"</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Access-Control-Allow-Origin</con:name>
+          <con:value>*</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Pragma</con:name>
+          <con:value>no-cache</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Date</con:name>
+          <con:value>Mon, 26 Nov 2018 10:53:34 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-Frame-Options</con:name>
+          <con:value>SAMEORIGIN</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Cache-Control</con:name>
+          <con:value>no-cache, must-revalidate</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Content-Encoding</con:name>
+          <con:value>gzip</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Vary</con:name>
+          <con:value>Accept-Language</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Expires</con:name>
+          <con:value>Fri, 01 Jan 1990 00:00:00 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-XSS-Protection</con:name>
+          <con:value>1; mode=block</con:value>
+        </con:header>
+      </con:response>
+      <con:response name="Mumbai" id="f51bd6f9-a84d-42f5-ac5e-80ca117690d7" httpResponseStatus="200" mediaType="application/json" dataSource="">
+        <con:settings/>
+        <con:responseContent>{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "1600",
+               "short_name" : "1600",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Mumbai",
+               "short_name" : "Mumbai",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Mumbai",
+               "short_name" : "Mumbai",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Santa Clara County",
+               "short_name" : "Santa Clara County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "California",
+               "short_name" : "CA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "94043",
+               "short_name" : "94043",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "1600 Amphitheatre Parkway, Mumbai, CA 94043, USA",
+         "geometry" : {
+            "location" : {
+               "lat" : 37.4224764,
+               "lng" : -122.0842499
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.4238253802915,
+                  "lng" : -122.0829009197085
+               },
+               "southwest" : {
+                  "lat" : 37.4211274197085,
+                  "lng" : -122.0855988802915
+               }
+            }
+         },
+         "place_id" : "ChIJ2eUgeAK6j4ARbn5u_wAGqWA",
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+      </con:response>
+    </con:restMockAction>
+  </con:restMockService>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:authRepository/>
+  <con:tags/>
+  <con:sensitiveInformation/>
+</con:soapui-project>

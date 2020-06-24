@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="6a92dd7d-9423-439f-93b0-9402f4438a65" activeEnvironment="Default environment" name="REST - OAuth2-Token Gen with Groovy Testing" resourceRoot="${projectDir}" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" encryptionMode="Not encrypted" updated="3.2.7 2020-05-27T19:48:04Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="1720154c-0a78-4df8-9c4b-427a618b0f76" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:9091" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart=""/>
+    <con:endpoints>
+      <con:endpoint>http://localhost:9091</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Message" path="/api/message" id="4a6131a9-9363-498c-a864-13f2c22652bb">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="Message 1" id="ce54ad15-817a-4a03-ac23-fa2e33fe0ee3" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:mes="http://localhost/api/message">mes:Response</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+          <con:element xmlns:mes="http://localhost/api/message">mes:Fault</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="4bacfb5e-1122-466b-a579-ba30f73617ab" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:9091</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+          <con:parameterOrder/>
+        </con:request>
+        <con:request name="Request 2" id="4bacfb5e-1122-466b-a579-ba30f73617ab" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:9091</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+          <con:parameterOrder/>
+        </con:request>
+        <con:request name="Request 3" id="4bacfb5e-1122-466b-a579-ba30f73617ab" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:9091</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/api/message</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>GroupOne_FB</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+          <con:parameterOrder/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:interface xsi:type="con:RestService" id="fd8ff301-b98d-40e8-95c8-e40562612074" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:9091" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart=""/>
+    <con:endpoints>
+      <con:endpoint>http://localhost:9091</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Token" path="/api/oauth/token" id="82c01809-aef1-4fbd-808a-e571f90a84dc">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>grant_type</con:name>
+          <con:value/>
+          <con:style>QUERY</con:style>
+          <con:default/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>token_name</con:name>
+          <con:value/>
+          <con:style>QUERY</con:style>
+          <con:default/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>scope</con:name>
+          <con:value/>
+          <con:style>QUERY</con:style>
+          <con:default/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>username</con:name>
+          <con:value/>
+          <con:style>QUERY</con:style>
+          <con:default/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>password</con:name>
+          <con:value/>
+          <con:style>QUERY</con:style>
+          <con:default/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Token 1" id="15d1bd22-233a-4036-9f51-d7b2fa2fa7c2" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+          <con:element xmlns:tok="http://localhost/api/oauth/token">tok:Fault</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:tok="http://localhost/api/oauth/token">tok:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="51e0c08b-2040-4def-84fb-1df9c70c2dc5" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:9091</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters>
+            <con:entry key="grant_type" value="password"/>
+            <con:entry key="scope" value="read"/>
+            <con:entry key="token_name" value="access_token"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>grant_type</con:entry>
+            <con:entry>token_name</con:entry>
+            <con:entry>scope</con:entry>
+            <con:entry>username</con:entry>
+            <con:entry>password</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="d015733d-1316-4535-8ad2-ca37dff6729e" name="TS_01_0AUTH_2.0 Authentication">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="276c1172-3d5a-4ffb-8b36-58eb39b3b702" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_Generate Token Using Groovy Script" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Generate Token" id="5452a876-f006-4ad1-9a19-60415c784329">
+        <con:settings/>
+        <con:config>
+          <script><![CDATA[import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
+import java.net.URL;
+import java.util.Base64;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+def token = getResourceCredentials("admin","admin")
+//set this token to custom property
+testRunner.testCase.setPropertyValue("access_token",token)
+
+log.info "token =$token"
+
+//method to generate token
+def getResourceCredentials(String userName, String password) {
+	Pattern pat = Pattern.compile(".*\"access_token\"\\s*:\\s*\"([^\"]+)\".*");
+	def clientId = "smartbytes";//clientId
+	def clientSecret = "secret";//client secret
+	def tokenUrl = "http://localhost:9091/api/oauth/token";
+	def auth = clientId + ":" + clientSecret;
+	def authentication = Base64.getEncoder().encodeToString(auth.getBytes());
+     def content = "grant_type=password&token_name=access_token&scope=read&username=" + userName + "&password=" + password;
+     def reader = null;
+     def connection = null;
+     def accessToken = "";
+    try {
+        URL url = new URL(tokenUrl);
+        connection = url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Authorization", "Basic " + authentication);
+        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setRequestProperty("Accept", "application/json");
+        def os = new PrintStream(connection.getOutputStream());
+        os.print(content);
+        os.close();
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        def line = null;
+        def out = new StringWriter(connection.getContentLength() > 0 ? connection.getContentLength() : 2048);
+        while ((line = reader.readLine()) != null) {
+            out.append(line);
+        }
+        def response = out.toString();
+        Matcher matcher = pat.matcher(response);
+        if (matcher.matches() && matcher.groupCount() > 0) {
+            accessToken = matcher.group(1);
+        }
+    } catch (Exception e) {
+        log.error "Error : " + e.getMessage();
+    } finally {
+        if (reader != null) {
+            try {
+                reader.close();
+            } catch (IOException e) {
+            }
+        }
+        if(connection!=null)
+        connection.disconnect();
+    }
+    //return token value
+    return accessToken;
+}]]></script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="readMessage with Token as Query Param" id="c15340a7-7eda-443d-bef2-7e709d302590">
+        <con:settings/>
+        <con:config service="http://localhost:9091" resourcePath="/api/message" methodName="Message 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="readMessage with Token as Query Param" id="4bacfb5e-1122-466b-a579-ba30f73617ab" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Username" value="admin"/>
+  &lt;con:entry key="Password" value="admin"/>
+&lt;/xml-fragment></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:9091</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/message</con:originalUri>
+            <con:assertion type="JsonPath Match" id="b20f8ba9-2741-48dc-b97b-30659518d42b" name="JSONPath Match">
+              <con:configuration>
+                <path>$.message</path>
+                <content>"Congratulations.. you managed to call with OAuth2 Token"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>SmartBytes</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+            <con:parameterOrder/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="readMessage without Access Token" id="944b42f6-810a-47a7-9f05-642a0cbdf96a">
+        <con:settings/>
+        <con:config service="http://localhost:9091" resourcePath="/api/message" methodName="Message 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="readMessage without Access Token" id="4bacfb5e-1122-466b-a579-ba30f73617ab" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:9091</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/message</con:originalUri>
+            <con:assertion type="Simple NotContains" id="cd95bf6d-f1b1-4c5b-8490-ea826111d176" name="Not Contains">
+              <con:configuration>
+                <token>Congratulations</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>SmartBytes</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+            <con:parameterOrder/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>access_token</con:name>
+          <con:value>731eaffb-36f6-4f0d-b634-814687807cea</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="67b65389-084c-4a24-ac52-93d23d1a7f9e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_02_Generate Token Using POST method" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="Read Token using POST" id="39e542f8-6eda-4bb3-b3a1-5a8d5ef7fe6e">
+        <con:settings/>
+        <con:config service="http://localhost:9091" resourcePath="/api/oauth/token" methodName="Token 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Read Token using POST" id="51e0c08b-2040-4def-84fb-1df9c70c2dc5" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:9091</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/oauth/token</con:originalUri>
+            <con:assertion type="JsonPath Existence Match" id="dd970be9-0dd4-42cc-9d22-5c0c70f7ca46" name="Validate Access_token tag exists in Response &lt;--JSON PATH EXISTANCE MATCH-->">
+              <con:configuration>
+                <path>$.access_token</path>
+                <content>true</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>smartbytes</con:username>
+              <con:password>secret</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:preemptive>true</con:preemptive>
+              <con:authType>Preemptive</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <con:entry key="password" value="admin"/>
+              <con:entry key="grant_type" value="password"/>
+              <con:entry key="scope" value="read"/>
+              <con:entry key="token_name" value="access_token"/>
+              <con:entry key="username" value="admin"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>grant_type</con:entry>
+              <con:entry>token_name</con:entry>
+              <con:entry>scope</con:entry>
+              <con:entry>username</con:entry>
+              <con:entry>password</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer -Access Token" id="7a9a8fd2-42bd-4bc8-8dc8-9ffee225e8bb">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>Token Value</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Read Token using POST</con:sourceStep>
+            <con:sourcePath>$.access_token</con:sourcePath>
+            <con:targetType>access_token</con:targetType>
+            <con:targetStep>readMessage with Token from POST Request</con:targetStep>
+            <con:targetPath/>
+            <con:type>JSONPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="readMessage with Token from POST Request" id="1d551a3f-0aaf-4c63-b363-c4c065d5bebe">
+        <con:settings/>
+        <con:config service="http://localhost:9091" resourcePath="/api/message" methodName="Message 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="readMessage with Token from POST Request" id="4bacfb5e-1122-466b-a579-ba30f73617ab" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Username" value="admin"/>
+  &lt;con:entry key="Password" value="admin"/>
+&lt;/xml-fragment></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:9091</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/message</con:originalUri>
+            <con:assertion type="JsonPath Match" id="b20f8ba9-2741-48dc-b97b-30659518d42b" name="Validate Message with Congratulations is Displayed &lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$.message</path>
+                <content>"Congratulations.. you managed to call with OAuth2 Token"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>SmartBytes</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+            <con:parameterOrder/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>7a9a8fd2-42bd-4bc8-8dc8-9ffee225e8bb</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="5b5a5057-a8b6-41ba-aeb3-291654592546" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_03_Generate Token Using OAUTH_2.0" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="GetMessages with OAUTH_2.0" id="b235d2ea-2eb7-4afd-a7e3-632bec725a4e">
+        <con:settings/>
+        <con:config service="http://localhost:9091" resourcePath="/api/message" methodName="Message 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="GetMessages with OAUTH_2.0" id="4bacfb5e-1122-466b-a579-ba30f73617ab" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:9091</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/message</con:originalUri>
+            <con:assertion type="JsonPath Match" name="JSONPath Match" id="92a7d918-0048-4efb-94fa-15e5694ee43b">
+              <con:configuration>
+                <path>$.message</path>
+                <content>"Congratulations.. you managed to call with OAuth2 Token"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>GroupOne_FB</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+            <con:parameterOrder/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>7a9a8fd2-42bd-4bc8-8dc8-9ffee225e8bb</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer>
+    <con:oAuth2Profile>
+      <con:name>SmartBytes</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:clientID>smartbytes</con:clientID>
+      <con:clientSecret>secret</con:clientSecret>
+      <con:accessTokenURI>http://localhost:9091/api/oauth/token</con:accessTokenURI>
+      <con:accessToken/>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:oAuth2Flow>RESOURCE_OWNER_PASSWORD_CREDENTIALS</con:oAuth2Flow>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+      <con:refreshToken>de62cf05-ce7c-4698-9e91-e05bfcf03485</con:refreshToken>
+      <con:scope>read</con:scope>
+      <con:accessTokenStartingStatus>ENTERED_MANUALLY</con:accessTokenStartingStatus>
+      <con:accessTokenExpirationTime>9983</con:accessTokenExpirationTime>
+      <con:accessTokenIssuedTime>1578467593</con:accessTokenIssuedTime>
+      <con:resourceOwnerName>admin</con:resourceOwnerName>
+      <con:resourceOwnerPassword>admin</con:resourceOwnerPassword>
+      <con:jwtConfiguration/>
+      <con:responseType>id_token</con:responseType>
+    </con:oAuth2Profile>
+    <con:oAuth2Profile>
+      <con:name>GroupOne_FB</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:accessTokenURI>http://localhost:9091/api/oauth/token</con:accessTokenURI>
+      <con:accessToken>731eaffb-36f6-4f0d-b634-814687807cea</con:accessToken>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:accessTokenStartingStatus>RETRIEVED_FROM_SERVER</con:accessTokenStartingStatus>
+      <con:accessTokenIssuedTime>1591792855</con:accessTokenIssuedTime>
+      <con:clientID>smartbytes</con:clientID>
+      <con:resourceOwnerName>admin</con:resourceOwnerName>
+      <con:resourceOwnerPassword>admin</con:resourceOwnerPassword>
+      <con:clientSecret>secret</con:clientSecret>
+      <con:oAuth2Flow>RESOURCE_OWNER_PASSWORD_CREDENTIALS</con:oAuth2Flow>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+      <con:refreshToken>47083e17-c261-415f-9834-039a9437f1c9</con:refreshToken>
+      <con:scope>read</con:scope>
+      <con:accessTokenExpirationTime>8777</con:accessTokenExpirationTime>
+      <con:jwtConfiguration/>
+      <con:responseType>id_token</con:responseType>
+    </con:oAuth2Profile>
+  </con:oAuth2ProfileContainer>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:sensitiveInformation/>
+  <con:authRepository>
+    <con:oAuth20AuthEntry>
+      <con:name>GroupOne_FB</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:accessTokenURI>http://localhost:9091/api/oauth/token</con:accessTokenURI>
+      <con:accessToken>731eaffb-36f6-4f0d-b634-814687807cea</con:accessToken>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:accessTokenStartingStatus>RETRIEVED_FROM_SERVER</con:accessTokenStartingStatus>
+      <con:accessTokenIssuedTime>1591792855</con:accessTokenIssuedTime>
+      <con:clientID>smartbytes</con:clientID>
+      <con:resourceOwnerName>admin</con:resourceOwnerName>
+      <con:resourceOwnerPassword>admin</con:resourceOwnerPassword>
+      <con:clientSecret>secret</con:clientSecret>
+      <con:oAuth2Flow>RESOURCE_OWNER_PASSWORD_CREDENTIALS</con:oAuth2Flow>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+      <con:refreshToken>47083e17-c261-415f-9834-039a9437f1c9</con:refreshToken>
+      <con:scope>read</con:scope>
+      <con:accessTokenExpirationTime>8777</con:accessTokenExpirationTime>
+      <con:jwtConfiguration/>
+      <con:responseType>id_token</con:responseType>
+    </con:oAuth20AuthEntry>
+  </con:authRepository>
+  <con:tags/>
+</con:soapui-project>

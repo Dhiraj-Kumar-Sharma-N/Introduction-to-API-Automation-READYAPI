@@ -1,0 +1,2095 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="0ac56775-02eb-4040-9fd9-ac98f6c6549a" created="3.2.7" activeEnvironment="Default environment" name="REST - PetStore Swagger Service Testing" resourceRoot="" updated="3.2.7 2020-05-27T19:48:04Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="c3337939-6856-43aa-972e-ca536260e785" name="Swagger Petstore" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="https://petstore.swagger.io/v2/swagger.json" basePath="/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:description>This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.</con:description>
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="https://petstore.swagger.io/v2/swagger.json">
+      <con:part>
+        <con:url>https://petstore.swagger.io/v2/swagger.json</con:url>
+        <con:content>{"swagger":"2.0","info":{"description":"This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.","version":"1.0.5","title":"Swagger Petstore","termsOfService":"http://swagger.io/terms/","contact":{"email":"apiteam@swagger.io"},"license":{"name":"Apache 2.0","url":"http://www.apache.org/licenses/LICENSE-2.0.html"}},"host":"petstore.swagger.io","basePath":"/v2","tags":[{"name":"pet","description":"Everything about your Pets","externalDocs":{"description":"Find out more","url":"http://swagger.io"}},{"name":"store","description":"Access to Petstore orders"},{"name":"user","description":"Operations about user","externalDocs":{"description":"Find out more about our store","url":"http://swagger.io"}}],"schemes":["https","http"],"paths":{"/pet/{petId}/uploadImage":{"post":{"tags":["pet"],"summary":"uploads an image","description":"","operationId":"uploadFile","consumes":["multipart/form-data"],"produces":["application/json"],"parameters":[{"name":"petId","in":"path","description":"ID of pet to update","required":true,"type":"integer","format":"int64"},{"name":"additionalMetadata","in":"formData","description":"Additional data to pass to server","required":false,"type":"string"},{"name":"file","in":"formData","description":"file to upload","required":false,"type":"file"}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/ApiResponse"}}},"security":[{"petstore_auth":["write:pets","read:pets"]}]}},"/pet":{"post":{"tags":["pet"],"summary":"Add a new pet to the store","description":"","operationId":"addPet","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"Pet object that needs to be added to the store","required":true,"schema":{"$ref":"#/definitions/Pet"}}],"responses":{"405":{"description":"Invalid input"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]},"put":{"tags":["pet"],"summary":"Update an existing pet","description":"","operationId":"updatePet","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"Pet object that needs to be added to the store","required":true,"schema":{"$ref":"#/definitions/Pet"}}],"responses":{"400":{"description":"Invalid ID supplied"},"404":{"description":"Pet not found"},"405":{"description":"Validation exception"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]}},"/pet/findByStatus":{"get":{"tags":["pet"],"summary":"Finds Pets by status","description":"Multiple status values can be provided with comma separated strings","operationId":"findPetsByStatus","produces":["application/json","application/xml"],"parameters":[{"name":"status","in":"query","description":"Status values that need to be considered for filter","required":true,"type":"array","items":{"type":"string","enum":["available","pending","sold"],"default":"available"},"collectionFormat":"multi"}],"responses":{"200":{"description":"successful operation","schema":{"type":"array","items":{"$ref":"#/definitions/Pet"}}},"400":{"description":"Invalid status value"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]}},"/pet/findByTags":{"get":{"tags":["pet"],"summary":"Finds Pets by tags","description":"Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.","operationId":"findPetsByTags","produces":["application/json","application/xml"],"parameters":[{"name":"tags","in":"query","description":"Tags to filter by","required":true,"type":"array","items":{"type":"string"},"collectionFormat":"multi"}],"responses":{"200":{"description":"successful operation","schema":{"type":"array","items":{"$ref":"#/definitions/Pet"}}},"400":{"description":"Invalid tag value"}},"security":[{"petstore_auth":["write:pets","read:pets"]}],"deprecated":true}},"/pet/{petId}":{"get":{"tags":["pet"],"summary":"Find pet by ID","description":"Returns a single pet","operationId":"getPetById","produces":["application/json","application/xml"],"parameters":[{"name":"petId","in":"path","description":"ID of pet to return","required":true,"type":"integer","format":"int64"}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/Pet"}},"400":{"description":"Invalid ID supplied"},"404":{"description":"Pet not found"}},"security":[{"api_key":[]}]},"post":{"tags":["pet"],"summary":"Updates a pet in the store with form data","description":"","operationId":"updatePetWithForm","consumes":["application/x-www-form-urlencoded"],"produces":["application/json","application/xml"],"parameters":[{"name":"petId","in":"path","description":"ID of pet that needs to be updated","required":true,"type":"integer","format":"int64"},{"name":"name","in":"formData","description":"Updated name of the pet","required":false,"type":"string"},{"name":"status","in":"formData","description":"Updated status of the pet","required":false,"type":"string"}],"responses":{"405":{"description":"Invalid input"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]},"delete":{"tags":["pet"],"summary":"Deletes a pet","description":"","operationId":"deletePet","produces":["application/json","application/xml"],"parameters":[{"name":"api_key","in":"header","required":false,"type":"string"},{"name":"petId","in":"path","description":"Pet id to delete","required":true,"type":"integer","format":"int64"}],"responses":{"400":{"description":"Invalid ID supplied"},"404":{"description":"Pet not found"}},"security":[{"petstore_auth":["write:pets","read:pets"]}]}},"/store/order":{"post":{"tags":["store"],"summary":"Place an order for a pet","description":"","operationId":"placeOrder","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"order placed for purchasing the pet","required":true,"schema":{"$ref":"#/definitions/Order"}}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/Order"}},"400":{"description":"Invalid Order"}}}},"/store/order/{orderId}":{"get":{"tags":["store"],"summary":"Find purchase order by ID","description":"For valid response try integer IDs with value >= 1 and &lt;= 10. Other values will generated exceptions","operationId":"getOrderById","produces":["application/json","application/xml"],"parameters":[{"name":"orderId","in":"path","description":"ID of pet that needs to be fetched","required":true,"type":"integer","maximum":10,"minimum":1,"format":"int64"}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/Order"}},"400":{"description":"Invalid ID supplied"},"404":{"description":"Order not found"}}},"delete":{"tags":["store"],"summary":"Delete purchase order by ID","description":"For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors","operationId":"deleteOrder","produces":["application/json","application/xml"],"parameters":[{"name":"orderId","in":"path","description":"ID of the order that needs to be deleted","required":true,"type":"integer","minimum":1,"format":"int64"}],"responses":{"400":{"description":"Invalid ID supplied"},"404":{"description":"Order not found"}}}},"/store/inventory":{"get":{"tags":["store"],"summary":"Returns pet inventories by status","description":"Returns a map of status codes to quantities","operationId":"getInventory","produces":["application/json"],"parameters":[],"responses":{"200":{"description":"successful operation","schema":{"type":"object","additionalProperties":{"type":"integer","format":"int32"}}}},"security":[{"api_key":[]}]}},"/user/createWithArray":{"post":{"tags":["user"],"summary":"Creates list of users with given input array","description":"","operationId":"createUsersWithArrayInput","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"List of user object","required":true,"schema":{"type":"array","items":{"$ref":"#/definitions/User"}}}],"responses":{"default":{"description":"successful operation"}}}},"/user/createWithList":{"post":{"tags":["user"],"summary":"Creates list of users with given input array","description":"","operationId":"createUsersWithListInput","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"List of user object","required":true,"schema":{"type":"array","items":{"$ref":"#/definitions/User"}}}],"responses":{"default":{"description":"successful operation"}}}},"/user/{username}":{"get":{"tags":["user"],"summary":"Get user by user name","description":"","operationId":"getUserByName","produces":["application/json","application/xml"],"parameters":[{"name":"username","in":"path","description":"The name that needs to be fetched. Use user1 for testing. ","required":true,"type":"string"}],"responses":{"200":{"description":"successful operation","schema":{"$ref":"#/definitions/User"}},"400":{"description":"Invalid username supplied"},"404":{"description":"User not found"}}},"put":{"tags":["user"],"summary":"Updated user","description":"This can only be done by the logged in user.","operationId":"updateUser","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"name":"username","in":"path","description":"name that need to be updated","required":true,"type":"string"},{"in":"body","name":"body","description":"Updated user object","required":true,"schema":{"$ref":"#/definitions/User"}}],"responses":{"400":{"description":"Invalid user supplied"},"404":{"description":"User not found"}}},"delete":{"tags":["user"],"summary":"Delete user","description":"This can only be done by the logged in user.","operationId":"deleteUser","produces":["application/json","application/xml"],"parameters":[{"name":"username","in":"path","description":"The name that needs to be deleted","required":true,"type":"string"}],"responses":{"400":{"description":"Invalid username supplied"},"404":{"description":"User not found"}}}},"/user/login":{"get":{"tags":["user"],"summary":"Logs user into the system","description":"","operationId":"loginUser","produces":["application/json","application/xml"],"parameters":[{"name":"username","in":"query","description":"The user name for login","required":true,"type":"string"},{"name":"password","in":"query","description":"The password for login in clear text","required":true,"type":"string"}],"responses":{"200":{"description":"successful operation","headers":{"X-Expires-After":{"type":"string","format":"date-time","description":"date in UTC when token expires"},"X-Rate-Limit":{"type":"integer","format":"int32","description":"calls per hour allowed by the user"}},"schema":{"type":"string"}},"400":{"description":"Invalid username/password supplied"}}}},"/user/logout":{"get":{"tags":["user"],"summary":"Logs out current logged in user session","description":"","operationId":"logoutUser","produces":["application/json","application/xml"],"parameters":[],"responses":{"default":{"description":"successful operation"}}}},"/user":{"post":{"tags":["user"],"summary":"Create user","description":"This can only be done by the logged in user.","operationId":"createUser","consumes":["application/json"],"produces":["application/json","application/xml"],"parameters":[{"in":"body","name":"body","description":"Created user object","required":true,"schema":{"$ref":"#/definitions/User"}}],"responses":{"default":{"description":"successful operation"}}}}},"securityDefinitions":{"api_key":{"type":"apiKey","name":"api_key","in":"header"},"petstore_auth":{"type":"oauth2","authorizationUrl":"https://petstore.swagger.io/oauth/authorize","flow":"implicit","scopes":{"read:pets":"read your pets","write:pets":"modify pets in your account"}}},"definitions":{"ApiResponse":{"type":"object","properties":{"code":{"type":"integer","format":"int32"},"type":{"type":"string"},"message":{"type":"string"}}},"Category":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"name":{"type":"string"}},"xml":{"name":"Category"}},"Pet":{"type":"object","required":["name","photoUrls"],"properties":{"id":{"type":"integer","format":"int64"},"category":{"$ref":"#/definitions/Category"},"name":{"type":"string","example":"doggie"},"photoUrls":{"type":"array","xml":{"wrapped":true},"items":{"type":"string","xml":{"name":"photoUrl"}}},"tags":{"type":"array","xml":{"wrapped":true},"items":{"xml":{"name":"tag"},"$ref":"#/definitions/Tag"}},"status":{"type":"string","description":"pet status in the store","enum":["available","pending","sold"]}},"xml":{"name":"Pet"}},"Tag":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"name":{"type":"string"}},"xml":{"name":"Tag"}},"Order":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"petId":{"type":"integer","format":"int64"},"quantity":{"type":"integer","format":"int32"},"shipDate":{"type":"string","format":"date-time"},"status":{"type":"string","description":"Order Status","enum":["placed","approved","delivered"]},"complete":{"type":"boolean"}},"xml":{"name":"Order"}},"User":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"username":{"type":"string"},"firstName":{"type":"string"},"lastName":{"type":"string"},"email":{"type":"string"},"password":{"type":"string"},"phone":{"type":"string"},"userStatus":{"type":"integer","format":"int32","description":"User Status"}},"xml":{"name":"User"}}},"externalDocs":{"description":"Find out more about Swagger","url":"http://swagger.io"}}</con:content>
+        <con:type>https://swagger.io/swagger2/specification</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://petstore.swagger.io</con:endpoint>
+      <con:endpoint>https://petstore.swagger.io</con:endpoint>
+    </con:endpoints>
+    <con:resource name="/pet/{petId}/uploadImage" path="/pet/{petId}/uploadImage" id="77f23713-cfb7-42f9-9b22-944ea92e2f96">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>petId</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>ID of pet to update</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="uploadFile" id="229bdd8b-bc50-4185-b104-882d25a0c9c6" method="POST">
+        <con:description>uploads an image</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter>
+            <con:name>additionalMetadata</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>Additional data to pass to server</con:description>
+          </con:parameter>
+          <con:parameter>
+            <con:name>file</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>file to upload</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "code" : 0,
+  "type" : "string",
+  "message" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>multipart/form-data</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="fdab2ede-8b9b-4e55-bc42-8baae1eb1f61" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/pet" path="/pet" id="14c98a16-9c1f-4fcc-af7e-48fb26425a71">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="addPet" id="b226ec6b-c7e2-4b39-b028-dcb0e51ab709" method="POST">
+        <con:description>Add a new pet to the store</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="5ab6c4ba-db8f-40a6-87ef-b94ae0c41a79" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+        <con:request name="Request 2" id="3e14dde3-29df-4f29-9984-1fcb5a825f62" mediaType="application/xml" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request><![CDATA[<Pet>\r
+   <id>0</id>\r
+   <Category>\r
+      <id>0</id>\r
+      <name>string</name>\r
+   </Category>\r
+   <name>doggie</name>\r
+   <photoUrlss>\r
+      <photoUrl>string</photoUrl>\r
+   </photoUrlss>\r
+   <tagss>\r
+      <tag>\r
+         <id>0</id>\r
+         <name>string</name>\r
+      </tag>\r
+   </tagss>\r
+   <status>available</status>\r
+</Pet>]]></con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="updatePet" id="017fbdcc-9d59-48c8-8248-21f7ede9c589" method="PUT">
+        <con:description>Update an existing pet</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="8e1e4b60-ac4a-4147-9976-9c12747885dd" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+        <con:request name="Request 2" id="b25b7817-c866-472a-9abc-74ff7d14d277" mediaType="application/xml" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request><![CDATA[<Pet>\r
+   <id>0</id>\r
+   <Category>\r
+      <id>0</id>\r
+      <name>string</name>\r
+   </Category>\r
+   <name>doggie</name>\r
+   <photoUrlss>\r
+      <photoUrl>string</photoUrl>\r
+   </photoUrlss>\r
+   <tagss>\r
+      <tag>\r
+         <id>0</id>\r
+         <name>string</name>\r
+      </tag>\r
+   </tagss>\r
+   <status>available</status>\r
+</Pet>]]></con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/pet/findByStatus" path="/pet/findByStatus" id="712a4ee3-ce1c-4c31-b676-36ad37af6245">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="findPetsByStatus" id="d68332f2-40f4-4549-8e8d-d1f302aee612" method="GET">
+        <con:description>Multiple status values can be provided with comma separated strings
+Finds Pets by status</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>status</con:name>
+            <con:style>QUERY</con:style>
+            <con:dataType>array</con:dataType>
+            <con:description>Status values that need to be considered for filter</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="3edcde74-c9fc-40f1-aede-f95a34c26363" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://petstore.swagger.io/v2/pet/findByStatus</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="status" value="available"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/pet/findByTags" path="/pet/findByTags" id="5fb67f43-bcf5-4835-9a54-67460b2f905c">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="findPetsByTags" id="4bb48be3-8c99-4845-8489-141905fae122" method="GET">
+        <con:description>Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
+Finds Pets by tags</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>tags</con:name>
+            <con:style>QUERY</con:style>
+            <con:dataType>array</con:dataType>
+            <con:description>Tags to filter by</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="82186e64-d3a5-4e67-8f5c-400e5026af73" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://petstore.swagger.io/v2/pet/findByTags</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="tags" value="string"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/pet/{petId}" path="/pet/{petId}" id="86a9704e-784c-4537-9f2f-36e3bed67dc9">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>petId</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>Pet id to delete</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getPetById" id="a81fa5c4-cd02-4980-bc15-85430e899e0f" method="GET">
+        <con:description>Returns a single pet
+Find pet by ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>doggie</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="fc5dfa40-c367-4fef-b55d-ccb5f1615e94" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://petstore.swagger.io/v2/pet/2</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="petId" value="2"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+      <con:method name="updatePetWithForm" id="112233a1-1e4a-406c-9773-cafb10f62cb3" method="POST">
+        <con:description>Updates a pet in the store with form data</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter>
+            <con:name>name</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>Updated name of the pet</con:description>
+          </con:parameter>
+          <con:parameter>
+            <con:name>status</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>Updated status of the pet</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>405</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/x-www-form-urlencoded</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="8c912d9f-3d94-4ce6-8515-978f7f212f7c" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="deletePet" id="4bee01dc-e7f6-4f0e-8363-d63b823cddcd" method="DELETE">
+        <con:description>Deletes a pet</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter>
+            <con:name>api_key</con:name>
+            <con:style>HEADER</con:style>
+            <con:description xsi:nil="true"/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="c715547b-1da7-438b-8f2d-9fc4ea61c75a" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/store/order" path="/store/order" id="d8a32464-095b-400b-bfcf-76382efdede7">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="placeOrder" id="50af56cc-0047-401a-9fec-93171e3a5731" method="POST">
+        <con:description>Place an order for a pet</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "petId" : 0,
+  "quantity" : 0,
+  "shipDate" : "2015-07-20T15:49:04-07:00",
+  "status" : "placed",
+  "complete" : true
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "petId" : 0,
+  "quantity" : 0,
+  "shipDate" : "2015-07-20T15:49:04-07:00",
+  "status" : "placed",
+  "complete" : true
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Order>
+   <id>0</id>
+   <petId>0</petId>
+   <quantity>0</quantity>
+   <shipDate>2015-07-20T15:49:04-07:00</shipDate>
+   <status>placed</status>
+   <complete>true</complete>
+</Order>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="56dcc358-08c0-47b6-a27c-daea4a02cd56" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{\r
+  "id" : 0,\r
+  "petId" : 0,\r
+  "quantity" : 0,\r
+  "shipDate" : "2015-07-20T15:49:04-07:00",\r
+  "status" : "placed",\r
+  "complete" : true\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/store/order/{orderId}" path="/store/order/{orderId}" id="dade2aa0-e0d0-4a59-8561-061a762ca0bf">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>orderId</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>ID of the order that needs to be deleted</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getOrderById" id="1a817b35-45f9-44be-a4ed-a1b1baa22c50" method="GET">
+        <con:description>For valid response try integer IDs with value >= 1 and &lt;= 10. Other values will generated exceptions
+Find purchase order by ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "petId" : 0,
+  "quantity" : 0,
+  "shipDate" : "2015-07-20T15:49:04-07:00",
+  "status" : "placed",
+  "complete" : true
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<Order>
+   <id>0</id>
+   <petId>0</petId>
+   <quantity>0</quantity>
+   <shipDate>2015-07-20T15:49:04-07:00</shipDate>
+   <status>placed</status>
+   <complete>true</complete>
+</Order>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="accdd687-4711-4e67-a906-2fa606f224c9" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="deleteOrder" id="0618bb47-94ec-45ac-9764-7955a4f2059f" method="DELETE">
+        <con:description>For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
+Delete purchase order by ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="cb08c521-f443-46df-ba5c-e739c9d5b69c" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/store/inventory" path="/store/inventory" id="43d5b8a0-3078-46d3-996e-1ff10034413c">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="getInventory" id="482022fc-7861-4cb5-9532-3433452331a8" method="GET">
+        <con:description>Returns a map of status codes to quantities
+Returns pet inventories by status</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "additionalProp1" : 0,
+  "additionalProp2" : 0,
+  "additionalProp3" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:request name="Request 1" id="c054ad73-5fe1-421f-9667-d898bac96742" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://petstore.swagger.io/v2/store/inventory</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/createWithArray" path="/user/createWithArray" id="8c4b90ff-e408-4461-82b5-31c84616bbbf">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="createUsersWithArrayInput" id="a2f3cd8e-6aec-4667-8b8c-6ab1ed8b3af0" method="POST">
+        <con:description>Creates list of users with given input array</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="f0e8ce50-5ecc-4401-a227-a463f20d96f3" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>[
+  {
+    "id": 0,
+    "username": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "email": "string",
+    "password": "string",
+    "phone": "string",
+    "userStatus": 0
+  }
+]</con:request>
+          <con:originalUri>http://petstore.swagger.io/v2/user/createWithArray</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/createWithList" path="/user/createWithList" id="f5db1528-f1f7-4702-a89b-0d0177ea3c0d">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="createUsersWithListInput" id="b5c014c8-7a92-4e96-a0ec-707a48be30ae" method="POST">
+        <con:description>Creates list of users with given input array</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="e1a65460-ccfc-4d44-b968-60802cfd33e0" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{ }</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/{username}" path="/user/{username}" id="4e233f04-e7ec-4e33-b8a3-44aea395e0ed">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>username</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:description>The name that needs to be deleted</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getUserByName" id="24eeadb9-a8d6-416b-9c65-55a21d7ebf0f" method="GET">
+        <con:description>Get user by user name</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "username" : "string",
+  "firstName" : "string",
+  "lastName" : "string",
+  "email" : "string",
+  "password" : "string",
+  "phone" : "string",
+  "userStatus" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<User>
+   <id>0</id>
+   <username>string</username>
+   <firstName>string</firstName>
+   <lastName>string</lastName>
+   <email>string</email>
+   <password>string</password>
+   <phone>string</phone>
+   <userStatus>0</userStatus>
+</User>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="a7d52c9e-47f6-47dc-a737-b26413c8eaa1" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="updateUser" id="e87753e1-3e7f-40ff-919d-edeb6e3369d5" method="PUT">
+        <con:description>This can only be done by the logged in user.
+Updated user</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "username" : "string",
+  "firstName" : "string",
+  "lastName" : "string",
+  "email" : "string",
+  "password" : "string",
+  "phone" : "string",
+  "userStatus" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="d0ef11e3-2db6-4556-baa7-a0b99dae1ffd" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{\r
+  "id" : 0,\r
+  "username" : "string",\r
+  "firstName" : "string",\r
+  "lastName" : "string",\r
+  "email" : "string",\r
+  "password" : "string",\r
+  "phone" : "string",\r
+  "userStatus" : 0\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="deleteUser" id="ef926b29-3cb2-401c-b6d0-96449bb90fee" method="DELETE">
+        <con:description>This can only be done by the logged in user.
+Delete user</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="2f491acf-f89e-4299-bcdd-fa30812419c9" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/login" path="/user/login" id="1aa4421e-fbdd-4a0a-960d-88f9955818c1">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="loginUser" id="19134c03-1298-4408-a76f-e646d4a5ccdb" method="GET">
+        <con:description>Logs user into the system</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>username</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>The user name for login</con:description>
+          </con:parameter>
+          <con:parameter required="true">
+            <con:name>password</con:name>
+            <con:style>QUERY</con:style>
+            <con:description>The password for login in clear text</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>"string"</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>&lt;string>string&lt;/string></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="e60bd077-c39f-46b8-902c-6cde1e65ab58" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user/logout" path="/user/logout" id="bb07527b-ca44-4cc2-be30-b6d3ac7ab563">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="logoutUser" id="aa6792e4-8271-4d73-b563-a0e032dbcb79" method="GET">
+        <con:description>Logs out current logged in user session</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="44f9bb72-7607-49f7-b282-7f9c0b37d42a" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/user" path="/user" id="29e226d8-ddac-466b-80ba-267415d3f50c">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="createUser" id="3348a517-1e7d-4345-87d9-6ea763ab9b4e" method="POST">
+        <con:description>This can only be done by the logged in user.
+Create user</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "id" : 0,
+  "username" : "string",
+  "firstName" : "string",
+  "lastName" : "string",
+  "email" : "string",
+  "password" : "string",
+  "phone" : "string",
+  "userStatus" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status/>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="7b35337b-e8e2-48c8-b2c1-408683e61add" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request>{\r
+  "id" : 0,\r
+  "username" : "string",\r
+  "firstName" : "string",\r
+  "lastName" : "string",\r
+  "email" : "string",\r
+  "password" : "string",\r
+  "phone" : "string",\r
+  "userStatus" : 0\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="9d4cb9d3-fd18-462b-9403-382ab4c96d46" name="TS_01_Creation-Deletion E2E Scenarios">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="0b2c900e-8ff8-45f2-96fa-87213418aaa7" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_01_Pet Data E2E - CURD Operations" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="addPet" id="31e1626d-c125-4b9d-b4ae-e84f22ad5bcd">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet" methodName="addPet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="addPet" id="3e14dde3-29df-4f29-9984-1fcb5a825f62" mediaType="application/xml" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request><![CDATA[<Pet>\r
+   <id>007</id>\r
+   <Category>\r
+      <id>007</id>\r
+      <name>Tommy</name>\r
+   </Category>\r
+   <name>doggie</name>\r
+   <photoUrlss>\r
+      <photoUrl>https://google.com/Dogs</photoUrl>\r
+   </photoUrlss>\r
+   <tagss>\r
+      <tag>\r
+         <id>0</id>\r
+         <name>string</name>\r
+      </tag>\r
+   </tagss>\r
+   <status>available</status>\r
+</Pet>]]></con:request>
+            <con:originalUri>http://petstore.swagger.io/v2/pet</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="991fda55-27ad-4abc-abf4-5c0f7cf52f14" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getPetById - After Addition" id="af437001-a939-4a26-af6b-a3a9ff65c9e6">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet/{petId}" methodName="getPetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getPetById - After Addition" id="fc5dfa40-c367-4fef-b55d-ccb5f1615e94" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/pet/007</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="0e733777-222e-42c5-aa5a-84cac1345487" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="c59c5481-c312-49a2-80ab-4b1a63ffb2f1" name="Response SLA">
+              <con:configuration>
+                <SLA>20000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="a769f813-e040-48f3-890b-94ca436a1a85" name="Validate Content of POST Response Matches with the GET Response &lt;-- JSON PATCH MATCH--> ">
+              <con:configuration>
+                <path>$</path>
+                <content>${addPet#Response#$}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="petId" value="007"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="updatePet" id="b66de07a-632b-4eff-b3f0-59966374bdfb">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet" methodName="updatePet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="updatePet" id="b25b7817-c866-472a-9abc-74ff7d14d277" mediaType="application/xml" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request><![CDATA[<Pet>\r
+   <id>007</id>\r
+   <Category>\r
+      <id>007</id>\r
+      <name>string</name>\r
+   </Category>\r
+   <name>Catty</name>\r
+   <photoUrlss>\r
+      <photoUrl>string</photoUrl>\r
+   </photoUrlss>\r
+   <tagss>\r
+      <tag>\r
+         <id>0</id>\r
+         <name>Jerry</name>\r
+      </tag>\r
+   </tagss>\r
+   <status>Not-available</status>\r
+</Pet>]]></con:request>
+            <con:originalUri>http://petstore.swagger.io/v2/pet</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="e3e8428c-6c50-4d9c-8f24-2e3c61fc9eb0" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getPetById - After Updation" id="18aa12d9-beb0-451b-83e5-9db390d360e6">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet/{petId}" methodName="getPetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getPetById - After Updation" id="fc5dfa40-c367-4fef-b55d-ccb5f1615e94" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/pet/777</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="0e733777-222e-42c5-aa5a-84cac1345487" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="c59c5481-c312-49a2-80ab-4b1a63ffb2f1" name="Response SLA">
+              <con:configuration>
+                <SLA>2000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="167a7fd1-38a8-4da8-a657-450bd65da78c" name="Validate Content of PUT Response Matches with the GET Response &lt;-- JSON PATCH MATCH--> ">
+              <con:configuration>
+                <path>$</path>
+                <content>${updatePet#Response#$}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="5b7029da-63ee-4661-b3a7-7d148a043b98" name="Validate Name of PUT Response Matches with the GET Response &lt;-- JSON PATCH MATCH--> ">
+              <con:configuration>
+                <path>$.name</path>
+                <content>${updatePet#Response#$.name}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="petId" value="007"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="deletePet" id="d032b0fa-26c0-4a5c-b443-b93a973454eb">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet/{petId}" methodName="deletePet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="deletePet" id="c715547b-1da7-438b-8f2d-9fc4ea61c75a" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/pet/</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="9e278096-5171-4f95-a8e4-64f90d17585e" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="petId" value="007"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getPetById - After Deletion" id="4cce0c55-0ac7-4a50-873a-72dd6ab31841">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet/{petId}" methodName="getPetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getPetById - After Deletion" id="fc5dfa40-c367-4fef-b55d-ccb5f1615e94" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/pet/007</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="0e733777-222e-42c5-aa5a-84cac1345487" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>404</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="c59c5481-c312-49a2-80ab-4b1a63ffb2f1" name="Response SLA">
+              <con:configuration>
+                <SLA>2000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="9fa4c4c5-0924-4de6-8798-a98812f90b1b" name="Validate &quot;No pet Found &quot; in GET Response after Deletion &lt;--JSON PATH MATCH--> ">
+              <con:configuration>
+                <path>$.message</path>
+                <content>"Pet not found"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="petId" value="007"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="cd7cb07b-ee4c-4f46-b777-6f59eaa4833d" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_02_Pet Order E2E - CURD Operations" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="getInventory - BeforeAdd&amp;Delete" id="8994f0cb-12a6-42f6-81e5-74ad09a87c45">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/store/inventory" methodName="getInventory" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getInventory - BeforeAdd&amp;Delete" id="c054ad73-5fe1-421f-9667-d898bac96742" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/store/inventory</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="a4012773-c871-4b22-a8d2-5fdb758d4681" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="placeOrder" id="5908efcf-34d7-4256-b01c-7cc0ca45f7fb">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/store/order" methodName="placeOrder" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="placeOrder" id="56dcc358-08c0-47b6-a27c-daea4a02cd56" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request>{\r
+  "id" : 6,\r
+  "petId" : 6,\r
+  "quantity" : 50,\r
+  "shipDate" : "2020-07-20T15:49:04-07:00",\r
+  "status" : "placed",\r
+  "complete" : true\r
+}</con:request>
+            <con:originalUri>https://mwgd2.corpaa.aa.com/mwg-internal/de5fs23hu73ds/plugin</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="252e17da-598f-4b2e-97b2-99d0eded4963" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getOrderById - After addition" id="8b700168-a6fe-4f1d-81fe-3b11f9428297">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/store/order/{orderId}" methodName="getOrderById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getOrderById - After addition" id="accdd687-4711-4e67-a906-2fa606f224c9" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/store/order/6</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="b33b751e-c840-403d-b980-c6c62d080743" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="125d5606-4549-4616-914d-5279169a2588" name="Validate Place Order RESPONSE with GetorderByID RESPONSE &lt;--JSON PATH MATCH-->">
+              <con:configuration>
+                <path>$</path>
+                <content>${placeOrder#Response#$}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="orderId" value="6"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="deleteOrder" id="8fc229a7-c216-493b-bf5b-0091dc8172f2">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/store/order/{orderId}" methodName="deleteOrder" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="deleteOrder" id="cb08c521-f443-46df-ba5c-e739c9d5b69c" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/store/order/6</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="9fb083e7-83b5-4671-8e1f-6859e778531c" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="orderId" value="6"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getOrderById - After deletion" id="b3d181f5-129d-4531-bb96-71ecb96f1348">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/store/order/{orderId}" methodName="getOrderById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getOrderById - After deletion" id="accdd687-4711-4e67-a906-2fa606f224c9" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/store/order/6</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="b33b751e-c840-403d-b980-c6c62d080743" name="Valid HTTP Status Codes = 404">
+              <con:settings/>
+              <con:configuration>
+                <codes>404</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="125d5606-4549-4616-914d-5279169a2588" name="Validate &quot;Order not found&quot;after Deletion from GETORDERBYID RESPONSE &lt;--JSON PATH MATCH-->">
+              <con:configuration>
+                <path>$.message</path>
+                <content>"Order not found"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="orderId" value="6"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getInventory - AfterAdd&amp;Delete" id="4e1bdccf-0c67-45a1-bc65-939de440d476">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/store/inventory" methodName="getInventory" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getInventory - AfterAdd&amp;Delete" id="c054ad73-5fe1-421f-9667-d898bac96742" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/store/inventory</con:originalUri>
+            <con:assertion type="JsonPath Match" id="fa128a97-df04-4312-affd-72b863af7153" name="Validate the Available count of the Product Remains Unchanges &lt;--JSON PATH MATCH-->">
+              <con:configuration>
+                <path>$.available</path>
+                <content>${getInventory - BeforeAdd&amp;Delete#Response#$.available}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="4c5c14b4-ca82-4d03-8e30-c65c70662fb4" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_03_User Profile E2E - CURD Operations" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="loginUser" id="ddca28fe-8a45-4146-b62d-b6ea0a11aeaf">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user/login" methodName="loginUser" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="loginUser" id="e60bd077-c39f-46b8-902c-6cde1e65ab58" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/user/login</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="2a6268d4-e7d7-483d-a1f3-60893bd607a1" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="password" value="Happiness@143"/>
+              <con:entry key="username" value="${#TestCase#USERNAME}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="createUser" id="46f677da-927c-431f-9f43-c302b62ab96d">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user" methodName="createUser" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="createUser" id="7b35337b-e8e2-48c8-b2c1-408683e61add" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request>{
+    "id": 1,
+    "username": "${#TestCase#USERNAME}",
+    "firstName": "Dhiraj",
+    "lastName": "Kumar",
+    "email": "dhirajkumar643n@gmail.com",
+    "password": "Happiness@143",
+    "phone": "9535802575",
+    "userStatus": 0
+}</con:request>
+            <con:originalUri>http://petstore.swagger.io/v2/user</con:originalUri>
+            <con:assertion type="JsonPath Match" name="Validate Response Message is 1 &lt;--JSON PATH MATCH-->" id="85f97213-47bc-4bc9-b126-107c628264a0">
+              <con:configuration>
+                <path>$.message</path>
+                <content>"1"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getUserByName" id="e28e38da-7633-4d8a-ae07-8ccbf76b47c2">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user/{username}" methodName="getUserByName" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getUserByName" id="a7d52c9e-47f6-47dc-a737-b26413c8eaa1" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/user/DhirajKumar</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="d66b2b30-817a-4be1-91b4-12b042646f45" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="184f5d1a-a50c-4be3-97c0-eca33f75f20a" name="Validate Response Matches with the Create User Request&lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$</path>
+                <content>${createUser#RawRequest}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="username" value="${#TestCase#USERNAME}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="deleteUser" id="83d35aa0-71d2-4b40-bd2d-365ddbd54a44">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user/{username}" methodName="deleteUser" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="deleteUser" id="2f491acf-f89e-4299-bcdd-fa30812419c9" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/user/DhirajKumar</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="9919b98d-aa90-4298-8a5e-179aa21344c6" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="0861d16a-e361-448a-b7ea-3e45ed54f178" name="Validate Same TC Property USER is deleted &lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$.message</path>
+                <content>${#TestCase#USERNAME}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="username" value="${#TestCase#USERNAME}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="createUsersWithArrayInput" id="684163c1-493f-4cbf-9d3e-a91e23ec1a76">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user/createWithArray" methodName="createUsersWithArrayInput" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="createUsersWithArrayInput" id="f0e8ce50-5ecc-4401-a227-a463f20d96f3" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request>[
+  {
+    "id": 1,
+    "username": "${#TestCase#USERNAME}",
+    "firstName": "Dhiraj",
+    "lastName": "Kumar",
+    "email": "dhirajkumar643n@gmail.com",
+    "password": "Happiness@143",
+    "phone": "9535802575",
+    "userStatus": 0
+  }
+]</con:request>
+            <con:originalUri>http://petstore.swagger.io/v2/user/createWithArray</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="87b2efdc-fb15-4447-bc15-4328ea96af3b" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="01a8d8cc-b95b-4364-bdc6-12296474ffb5" name="Validate Response Message is OK &lt;--JSON PATH MATCH-->">
+              <con:configuration>
+                <path>$.message</path>
+                <content>ok</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getUserByName - After Deletion" id="fce91493-29df-48cc-a88e-3cd3f31f692c">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user/{username}" methodName="getUserByName" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getUserByName - After Deletion" id="a7d52c9e-47f6-47dc-a737-b26413c8eaa1" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/user/DhirajKumar</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="d66b2b30-817a-4be1-91b4-12b042646f45" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="184f5d1a-a50c-4be3-97c0-eca33f75f20a" name="Calidate Retrieved Username Matched the TC Property USERNAME&lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$.username</path>
+                <content>${#TestCase#USERNAME}</content>
+                <allowWildcards>true</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="username" value="${#TestCase#USERNAME}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="updateUser" id="81527a70-c136-4780-be94-51c484f10eec">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user/{username}" methodName="updateUser" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="updateUser" id="d0ef11e3-2db6-4556-baa7-a0b99dae1ffd" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request>{
+   "id" : 1,
+   "username" : "DhirajKumar",
+   "firstName" : "Vishal",
+   "lastName" : "Kumar",
+   "email" : "dhirajkumar643n@gmail.com",
+   "password" : "Happiness@143",
+   "phone" : "9535802575",
+   "userStatus" : 0
+}</con:request>
+            <con:originalUri>http://petstore.swagger.io/v2/user/</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="0e8fa886-dbdb-4d1f-9dd4-d164290435b3" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="username" value="${#TestCase#USERNAME}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getUserByName - After Updation" id="d8f4a3fe-46ef-4665-9857-e1c67443ea47">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user/{username}" methodName="getUserByName" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getUserByName - After Updation" id="a7d52c9e-47f6-47dc-a737-b26413c8eaa1" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/user/DhirajKumar</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="d66b2b30-817a-4be1-91b4-12b042646f45" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="184f5d1a-a50c-4be3-97c0-eca33f75f20a" name="Calidate Retrieved Username Matched the TC Property USERNAME&lt;--JSONPATH MATCH-->">
+              <con:configuration>
+                <path>$.username</path>
+                <content>${#TestCase#USERNAME}</content>
+                <allowWildcards>true</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="username" value="${#TestCase#USERNAME}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="logoutUser" id="6d37e409-0eaa-4572-8523-6d6a543e5f04">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/user/logout" methodName="logoutUser" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="logoutUser" id="44f9bb72-7607-49f7-b282-7f9c0b37d42a" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/user/logout</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="47435fba-5a1f-47ec-a152-2bdb3014d5b1" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>USERNAME</con:name>
+          <con:value>DhirajKumar</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>684163c1-493f-4cbf-9d3e-a91e23ec1a76</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="78dba7be-1ea7-4a9e-b7f4-968086e6ef33" name="TS_02_Upload/Add Attachments">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="df15e135-4e33-47ef-b9cc-7b1feecd6808" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_01_Add Dog Image to Pet-Dog" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="uploadFile" id="9ab7b394-9ec8-42ea-a1ac-f64881236dd0">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet/{petId}/uploadImage" methodName="uploadFile" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="uploadFile" id="fdab2ede-8b9b-4e55-bc42-8baae1eb1f61" mediaType="application/x-www-form-urlencoded" postQueryString="true">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://petstore.swagger.io/v2/pet/7/uploadImage</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="db3edb28-226e-4b9a-b1ac-0679feb0724d" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>415</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:attachment>
+              <con:name/>
+              <con:contentType>text/xml</con:contentType>
+              <con:size>586</con:size>
+              <con:contentId>CME_API_Automation-workspace.xml</con:contentId>
+              <con:data>UEsDBBQACAgIAICLyVAAAAAAAAAAAAAAAAAgAAAAQ01FX0FQSV9BdXRvbWF0aW9uLXdvcmtzcGFjZS54bWx90ltvwiAUAOD3JfsPhHcKrVqVeIlxW7IHN5PVtyaGwVG7WSAFLz9/aBtdzFzCA3Dg8J0TBuNjuUV7qFxh9BDHEcMItDSq0OshXmQvpIfHo8eHgTSaOyPsriAHU307KyQgLUoY4nllvkB6h1Fz4JIujdgpoSxUmKertC06LQKxaJF22knJZ6y6ZNXtQQK9mMUKMAoa7bg8Xd54bzmlsC8OooJImpLW+WkIr4o1DiyEahh4H8COXrdsjWqIU6N1WM0gA1G65WT++gHVvpAQ0Fvh/LsFDQGZsIQRloaRsT5PurzDoqTVJ6zNGcOjKacLF4qjym1EVQqd0CcjdyVo7+h09rxssk523pTChx7Q+y9HodYB/WW94uFohVagsgrgzShw59BNZVb4TaiM52dSfiHlF1L+Jyn/n4SbJtJ7kDpy+xdGP1BLBwhtK90qQwEAAEoCAABQSwECFAAUAAgICACAi8lQbSvdKkMBAABKAgAAIAAAAAAAAAAAAAAAAAAAAAAAQ01FX0FQSV9BdXRvbWF0aW9uLXdvcmtzcGFjZS54bWxQSwUGAAAAAAEAAQBOAAAAkQEAAAAA</con:data>
+              <con:id>a6ce9f3e-3bc0-4f7c-96e2-b699f71f59a9</con:id>
+            </con:attachment>
+            <con:attachment>
+              <con:name>DogDP.jpg</con:name>
+              <con:contentType>image/jpeg</con:contentType>
+              <con:size>19503</con:size>
+              <con:contentId>DogDP.jpg</con:contentId>
+              <con:data>UEsDBBQACAgIAMGLyVAAAAAAAAAAAAAAAAAJAAAARG9nRFAuanBnlLt1WF29ti+8cIeFLdzd3a24O8Xd3YsXW7i7FHd3d9eFF4fiUEqB4sVaLu/e5+x77vd894+bOZOMjDFmZvIkc+QXmW/rb3sAoIKMvAwACgoKIPd+Ad62AJIAeFg4eDhYeHg4eAQEeERkIDIyEhIyDjoGKhAPBx8fDwcEIiShISMkoiIGgciZyalo6RgYGQjIWNhZ6Nlp6Bno/8kECgEBARkRGRsZGZueEERI///s3oYBmIjQAKgPMFCUAGhMKBhMqLdRABEAAA3zT2n/46CgATDv5UV4FxJA/dsB/qf0Xfi2CUCFgQJAA2GA75w7ZzSQBgc8Eiw1cAoGigI2DEueOQVajubdI1IDgkMB0HDa6vaePNzU7EnDkkio5Owp+DCIqOQR5GEAdjVUEC45JYBRnBw3DfFMOyG9WR5VK+79ioclROQG0piOmS7KU8NiAYFIULDBsABcckY4S1CHpKTWoplcO054OLKABIcGPg1WM34tfml5LDQgAoAKQITSpcenD22SaEJMRomXsT9UV1RGNbalBUt+HC8BKUzeNOrahzdX6jHCFScZM8AdJBm3RjvjFPnMlYfPlKfNhf/IU/7OnSk3Q6U+wWQ3xuRvarnj2tRtbvdJKXiVE3Gdk6HRAr4pXrkmjkiGgnYxjnCNsrx1MmJ0MqJ1Sq/WY0UoNt35HrVwlRN2iwPssWe7sy7fecDRaBnRlSBf+/5knF6Ve7UDATeqoGBNRJ4or4f9YfaXmjmsu0KQNlZosBdWU3379LhVeVTmtG7rGmfrCkoZsxFjhh4jkmktFfiCL6Cg/M7rftXJ9Wy4zJyANGj8j0pVYhKG7Mmje3C0xHqblp3TT3jPRcsw5gq/8wjXmyovJl6cev4mmLSGD5eXz6LpMAMOxzI6WvIujqsQy9qVRe3jXtkO1FcfP1EEdMR25vQUJ86NPC1HDvWuunoIsx1axAovpzZrtFyXta1BKvW9scP63U5toD+byt+DOesuZwGH9IcrfRGJ2B6PGvRLEM9GS14xxlx/bMrN09J5RSTqzYYSs+EpiJ2ZuTBl2XRBV1AembJbLuYn0QsBj5//Y5DVxtqaBFSOiVhFquDTL1nvnIuC4odAgztiQVGPPkhkp+a8ixdJhuvr2kIva0CXdEs+kzYUR2FjSisacARupRgTUCvl3aHSIEuSv6uyo5rZU++/1bumOr82wGUbzlKikdvH+jGHtGa6xamEj3esWee6f2SO/2oo35mnrqaSkHhdPnixmIMdKjgC66d/ngu2t7kfT1DB5dPON1F9tM9cP0TIqJY9djXOBYX/eP6YrSgny1w6snfuI+LVMVfT1jXG8Jhxn+CVnwhDT8Ei1DCLGipMEnf6C1kMKHDpFxFUpLpbstipyLgVvZ2wMTZqt25xcZh7Rv8sRNhy/l16rA0B92at0O84gZFKA7XtKfHzUG5vWptwb3FnsO4grTinVLNf/Zrxa8dLh6ukU7wiaNSW4JLp2GdAovDJ+g2g+r3r7pfLTR6z8euxaMuUEMvwmqJnhbknD216YLbAXbFvPVnbift8KqxP86IlNxwK00TxpeXiXbdOQ17Pp2ClrfzyGv0eaRqZdG0T5RirobWUa0+qg7b2vO8i+qm8eQ7u62dbU3LtOsr3J6/35q9/lXFLzWsVM7Xz66prTj+t6eTvKd7NrOjwLLZgFwUJLJpIuZ2vct3447fUuWsL6Zh2Chrm8CGvMycyNWZw1C7Co6A2ZI+75I06nvthSO/dPTecrjJx5xmjq2QiEFWMflbRc9yV4WbazgiAzP7RIf1FtqsTaKa1YiV3byFzhj8Qv6wofJmfh/X97PpZvZyme4Z6OUwNVmeuD0FozfXYo8SPz1K3ncd1/+ZZM6OgAixTdu++RSLEe7RYS3guGG1qwHn+/Y5Lu0OaHBV8eLYKWsvUqOAibKrm4/2ymYst1/Axl3RXLLDJKV1IqihjRsiHgFc8kujXVcfrfLmIcYPAVxOz1RvjHMLlZROrzrsbnhw/4fx67q5NsDRLa2bJLzraNoGicW7n+mWKuZhpzB+f6q179X/HY6Iu228aVPn4zPwdQf8YYHBeILp8KzInVmQStHprdOm3VcNy3xC5OlF7+zu2yWFpvpKYh4sZv4qxQVpaYaPFi/jSiMleuo35+Gy2pNzRXsWuOTK2WMFwk0H4e+5vbvNHv8/uxLvSw19zznh8+zI8G77r2Yg/df/UVDdf/0CQPiyOxkehrNcQNWSdXYO1i+UgvHVr+zPMb1zmXF/7Jhx68KPRpLrRPQH73enYUG0/S47Hz6VvMNppu05lVApIIEXLej3HqpowP/7i+6yuu80nx9klTO84Pw+jrS9fre08PPk3y3628TowN8mTM1VvStWfHZho16411aZzU2nHeugbMZLPF3c5eMKcdLCklbvlGUa4/iw+/31G2DDWb79uUM5jGht/O15bc+rp2p3ne4az/GXc3EheH8r0G/pHPT9FHxFfT0lcx4+s3OuCiJoZfz8sT89SyleudKBnmiiXPXJvfS0IbclTJTU6TKQ1Lk/g2OnufuSdWjs+acs5Hys83Zj+umJ3O+Iizm+XKbvhQ6Y49/ve/PBhrdRZzyi7icB7Rrje+6soiZDm8K+zltkBM9S0u+bDTxejKb+OnG67vk9k31nEh9+OmVWt/NALDNSo0Y8a4D3/YlDExL9VX+nZHq2q5OawbXposPGtJoOrYm1ucdZJkH0qqPg2suyu/Wmro7vF8fB6vngIAnI+9xUN7+7S51/j1cm0Snc4NrYv0dhaLC8aW6hgifjrq5hH+ORXNt/D0nhPdBMS596d5unH/+V0gMJqneXMPb5beKQ8w4NRME2xqHIlAvLp5j5+9mvkJ257RYavY4sGazZigrs5ygHHn8k4zu7tZGoIFqW7dIwgFTl5TulnXJo1XDQnsfoQrsWj+/JcoY6vfUcbsuIC956exLN4W04e0to3l1+V5jm4eTx2K5wsatpk+Ka2PnmggX5kV1sSpvk58bTDz1kPbzbMENn3gXBbv4l3LzsEtk/XEa0o24HikanB2uT4xT2j1hUalD/auZWtnXuFrty/W+eWDS1qKHpsQqzS9TI4yvt+vn80zt36fpu1MBLUBgqcSZP1K8lJ9JWTMZQQ27qWMol2+2J1HoejDj6JHA7Otfo4t/Qp35zqLa+qIr7abqNuKS+iRUp7qUZFufZOG1kDaoE2OTBzFBQNj4lcqc6X4daWd7DCBARAwUJBw0NDvwOaf2OVd2iDiQVLAcQmp+TghBOnYsdR4/oggfsOXxDfQQ0UHHSL18d0Kz3tfwKDGsbp5rp3ukb737x/0rX/R0Bdw/f7D4OJzfxdWdDi7R++jXe/u3u3+874x5d9LuAbfwMsDizar9Ro1+m32aZ/nphHOfwn1RBfs/9f3H9HU5bNeswZitQYbrf/MJr1mP4j+7eEJmXqfxDSk10I3tjfHP5P7v+NYH1X5/lz6e31/5Uy/f/nLlWsqXrk0VNn+a8i1KbXvCv+b6m2pkXyNAvsnNiTqsar4wXWBPV7Mc8YBo7cLtuCyldqdMbf/TA9dbr4dXzlXnww1MJD2+HH62S5NkE9U2+DoMlfgaB/Mn7c/XhtQXxb+vgQtbnayvQzhXdSVPLwG+aZzRPZr69B7YhPiUt2G9iCnDrDz+iHx9z891zf/v7RqtIoU0hn/DjIkjkuw2knPTx0oEDCN3gpqipnFiQpsiO0wqhVBQj+L7XTx5djgRdZPStZnhRkPVQHVS4rJ0YTPecJ3TYu2EV7ck9OHVDCb//qf9RN6sB0UrCOT2zJzundaFItvLQ94KRUXNaijgoHcHGgOLC+NDG8zpDS58jMogqYc/krMOTFk3laR+zaoRXLnvqxIZFQF6CVjz2+y2qMMOKgB7E8d7drPBZylknYkirHvWmslqJ9f5cbWY8Cx9euHmnCtiw9fUZxC50ybK43AFM/CfemzWnpNIMyT11zfs5xtXY0pb+bu0vPnzfAwvjXFz1srxTTRdoKr5msuzXKpt0Mluv1r6hkAh80GCZh5wjHDwVdWvreAJ+YcdzyzVw4jTx7o7LrsMWyiGWm6cofn+0RG4w+CAhTRu106j9Rcio/eHdcIkSkd/AA+k0TD8YN14IorUjr5mLlhheGQ+1FMaJFDolg1W/v1ExojspfhLYeJipSpPEmcF9pD4mJK4TrHEYiirGx95MibYsdcGyhO+AqOn1Eg4/Jr4TzyaRxawM1aF96tu55+QRki9MPyBIcND/YapXbVVmP2Rs5Z/eOELMgM/BFhW2rXY0KTwaRpvoafS+61PrOIunm59LTN6CSj83U+uw1vnm2/IOAc9W2NAqC6a8IkbLwUbBHKvFG1s+TdY7+9ld2VZHacodfMYHIoXWVeBhIMvfwB7Ox94c5phRyf3E+hDAxAXa+ghxkeiEETlNtD0NO3k2QqRQyntJKpCnkL4Irl1ktGhY398E+rOjZqouf2lSmj+O/FFOmGyduEyTJK/E33KCO5/Xu5J6s6HWd4qWZxpOvinJjuNAY6enrvsPkjS6cF2YxkTuUa6WTWioNa5W6TmxG1S3GVEaqdKNvaLlY3mUHrG9rp3YZvyJALSjDy3+GdeLmtvjgVgpNQqN9+XCW+K1acgP/ePTrTvQlAnhKfTqkVcI9fqJgYb8lIMxvXrKvWxJJXer8UFMgoGIyCLcA90Yw+sThgfUSfUukzW910NOv8h7VxR5O8YA37tEEj9gKIeqUhPVhHwc9WboQqZsX9puQxDGyOR2LLOTHU1IA7RfJBkt/i34h7V0uTPdIHWbWRYd7dzGlG6nv7RSbPnwJ7ZQHa9NdCepyxjnj6Z4YbA+mbWVLjpNgPxuoerM+/2APzwWeXtFhD+0a1dSSx9N6evxBaQb/GPqi4eV8djhRHuDYrPcPqh7JCpxFyQr9q7XT7O3sFoXWHe5QUarfsuXNzjwjgCbJO7uSOblxlh9uRVXhLYRojpSQ3RivIk6ppYaiv9wn85IxVpP69PxubZ+lP58aDHrO/YGk7kQsnPEQRcc3a7oK9xQyPBCKIdZodyTLbMsiSfRDoZd8V6FHr1MX/i7k2Ow9hU2a/eWk8l49fcbOOaozokYyog3ywR87t4OhqfyODK5VTTLek4OvWiaST8MIamkgm7fF5wReREo8wSsk72pB2a28nLJNSBBLvysbvg1q9ViuZucZA5BzWG3NsycxTiJ/sWa3xQxWOaSN4sWFeYh/iIyobU+y/LK8mhCyetUh/m41+8ksJjD64XDuq1OxLu9DIEmShV6MDPDiEEa8oFJPYbd6UEPk7h9yH+PDomm5L3dm1vDQyydY6FmVQ/YOP3jGIOwr8/bfY+20I0+9wTSCDz9e3gAlw4uShSULRyeFCnYM8c2rrPpoWzjQE3cO2bElgRKLjAsHu/Q1UuX5qYNXFMAm8ShLbGQ7ZXF0WLd3C141rhTeSk1RvCAsr+7KMIZ3OeEomPhBGZHHPJiCBx1vsORYn4agSvRzYSoNU20YcO+wN5AF5+geJonxWfVdTf+btytC6VU/ljn2WKVBDEMl7VXaEgI4xj8meUyaRSCxyX7ljhSOD4IMyzIgLi1yl8chVdg/kbYM1O+EgI260iwtf7lzbKYwS4EI18id5M4cjJxmmKRNULblJLuy2hk9/V3rCTzlPV8Yw2GcETyOobHVdFTdHe+eLC8dwV8sd0i2arlnuZriRwVE9eEtqDlmlaJH6131HjJjT+Ly7YQjJedeXfndqcStt+vwan+j68E5TOfzdqmiLvSLrnTR8gG+eNu7ojs3W+T2m6Oz+UfwbaFXgOxp53iJTQM6mwm6rm/CbA9Wu/arEq3shSzS521jZDFnPbKmEBPlHkRJUNNWe5xkyi5W5J/wN9wdyp19oYmYXD4yWBcLwIAVHgoYDVf5LUuCvMoWx8GhAa8tzEONEC6po4M9x8/xEO+AjDyCQcf1QUe3iBVvIloxwVgPYqOsV7v3qZzyYLR5KtZGuN0AxZKcvby9vImHOO32jFLryeBt5g0+fL5BjCzztwrf5YzMMw6sGR5WbCAYnPUbsYAphyu8fP1TRQp6Yw8arLvIzXqaRnK4DAf+Q2tbMd+RNQ/5BB/qMuWWsIQ894u0GFc28W6cMsQib3M/RxFFJc2CtiqL47utGFbmxpekhSlOr6rSKlKkedoPdotPMTLbfzMVDMFFviNik4ctNA7wBVrfz3xz17N9RbZ+efB3JWNMfjcvSCDQHLQzsErkVL9g8uKzURBA85otJv4YwTxzhXAJY6np1coPso32yBFwH1fKI6jgb+JZzV2EsImNwwzkhfWbUCEuc8ylcA5avCoruVUo6G4Jt8daNtPiQmExGDorsFgwCEGkQcTy2zLu+bLefYVnUTsbcU05GMdU4JmIVGpW62Il7Qh5Eq5iq2Qlh9gsqUSKrM7x7xM3nM2gDl8eQdluHQnSri2Zh6Tb6EGTRe41pW3uTff1yV9ZrczJv+M5b1Nfs3Ed/kr6/4UoFjA1uaQLeAVUgDra6aP0f4uBZGeIKyQeh7Q0eQ2qahENT6pyv1Jz07COXY4pwmaP6+WGJFiwZUVdRCdMQ3Rvm74BKk9W0uP88z9WNDS094M3zNn1SbdzncxLYvEQspWSAHo+jFoxheoic7H9/JeyTSNa7p3kHtT+xAc71miSYxcoWvXlY5QpuSVb4TX0T747K++4C15dR/YyFLWVsnS1uEpHhWHEmvvkA7qjo8SIJKYNiO8T7UlH4xd6Mu1JeTiLJns0rSbpHG7apzKT8sc0td8TvXAKqanTNu7rlGrfgE2jbSQjPZrGzAJqTDhqB2LyZ/T+nd5M2rlRHw6i+8kb6NkQl47DoCTL3wDKd7vQOb+oepr1yH00kqt6WDojCpevwGpkP/J5Y+x+JQlREldNIpAjF+cS506QTzC6o7k7VbsP1iKP1iqMVjPGFDcxYb3fwYwx5MVLlf8wKouXmtzHJiOpUghs3tE4JSYABvAPFH+P/nvpEBMaSM6ORQHD8UFczfRfIBwGCkoM6g1AwK8CDDtEWhNiUNA4y/Qse4/SKpKPNNL+RZXhNTtjkPJV4EpFV0oQWPi7SiwTrlLJ+HgakxFG/fWMtEthFx2PW/6saOyqx9y6s7Bx84laxKxi4uj5JPmwWxwvI/BFixxS/rBG7Me65qA/UU9KvUm/unr6vERGN+tWPPvjL8r0G8A4o2BfAv8uoidjQ5UKsng8heetJjFpLfmz55n+D6mMANpvY28d5ahJSTxEcSBYP3TU3kMuDIsCqVOckqAesZRC8PRPvB0wb+C97tSY7zWHgn2fhcBA/WfZFBMIg0VOwc4hjk35QV3tX7WH/nftu6wef/GaJECYezcCidhAelYH11YZxsz92noB7U3lsWz0zRDmZsg+/nphJgLOBOH0sbQVK6R4HDKW2FS9H3D+leQFuF7gUyCR9AZIPlVyATkzb+v5RJbsW4glLHrOqsxL6VX3Rz9qYIkx0SFAIfrYyi3fUT6NKCjpO3H4j1c8hYdHKN+x6usL9SUvxvk4U8dgBtBV2FYfllV0GjIXbbLh2phLjO4HmFfT1bOhWcWyhcb2+hOxIaZA9gO478QW7cZwh8OeR/YlDksq7m/csY9JJ6YY9Xw2C1pupdU61SIPtmLZuHVyep3Znp18SkevLfAYrziiJC2SyiQCHAdyd4uiJJ3unC1SignzEtWb7LnunwMr/aLiMg40Np2Z006VWlwXogducdRPpVG36a5i2wWcHwLz1HuaojuLztC/8nGydYumS+Ki1nL0h30mOjVPwDpVP7XCXU860gZe/ybjOJfyI5qDECvUCqBL78KrxfDGwJo78UabHUQ03v5EaWYHfeFN37dC5y+SmZ9Rrx3Ae28+TiAAGgALgwADAwsN85/mo+AAYonDkFOyq5u5cX5Qww5JppLQKDJtMndd/K/5JLwY9BugYm2U7Tb8GuUA+JcEY3//RiwycvLPLLkN1nSiPsOo2+AaIxnVwzZ7QeUUPabTlFS5qs3glDSa4A3FjZjoklqRSPEBDfLRNA239cYq2mNAsu+DO4uxlWzrBqNDH0YKm+j06E2/Z3Y+meS3yCm8ApujNJqfPUKpBpcgfuMjUbneF+pE2AaiBfU25lWmeHmCvSCn8Q6heKFDjOSnB728IiI6NHOQi/YvmOl9ilCRirOacvoinyZnluIxjA2+1yh13o5iGVuqGFCigd09CPuba1Mt8E88oo4kt676pde2a9JI/5XkA54UdfRp9Lx7wM4jxQvGh6owSTfDXNaoqc+lihESszpz4XuRc/tKB5blJ8Y+VhbpOho0mdyYRihgBvPvzjZxwCdP6egLxilm6yaHKryL5L3+n/gdO4gBNWrFu3XPqZExWInnVpsM3rS5YxI1BClh/s10IGxdihtLxXSRnBdiNWJGqTYQGwFnlokvRjKl8+t04o9UyKPYnSHnELPNdEDcuvd33Vz6BoEbnMYY0dcu5/nc3wsRkvA9y/wZx305O41VYaLylR5S55GgRcmU5W/5i1PYoZVljdkiJ10N7mWxZpioono8ntqgNJ76n1/ulk1UbZuDivFS/Gm1X6NrUk6E6TCV17avUagnMr2W/XLVJB/po6M/PcTl7Fr669ThDQREnylKBFR29GCddAwwB8TTObr0gX45Tb2wrnegLY7O63NJYhUZbWLMcTNdEq8hoUZEpS7mujDQ5+6fM+AwdU77d3GrmwlJWXmdsRbn0OvsfS+Ss0HifgNQ5uC5vwHgRuO6bF0zBHF9tBqE2LoGRGT6KRqu8a5aj2o75VwPeVmzeml6FHO16AoLjJWRD1mOun+CVatQiAjpQpXSKCWN2GPo87GHWMvNRqvpjdtxmiANlLh2C/sRrp9kvdRB3yLwPxGkr0eyho1HI42qYPK3MuEi6zSmr5ZmI4kgfUux1DPfv3RjPOU3JquwxVVHX8LQr8amqbtyKArQeRXbwVY23Td3jsse7fTLTvcDSlXXcpQ0fRy+J2EpMkfLeclRimsbbWUVjm5X9sH6M7k/uxLtZ1w5x9fqENNGPqX76Vw+lbfpE6dtY0jeEs5rjIjRJA5fDx0X13KmBr2VIqeBmKwEWvHyxkh9hV38G0AiBk8FHK+hMqr33KRYxC1RpkytankkiWuYJ7vWNdybQoPJ5642z6ex5BqVy8vkro5yxkdTeP4tyv2rDXLlclyes3UEg2jYrRuZuWa+PfCRIqNUXVkbnB5RTKHZeMBCxdRMG5XMMFWL053M/fdw5RN55BNDUoLd1RcFbRyN4QZUyG34Gf2XqnSqLmran+vFIyU4ytcpy8l2nfJzfZEYl/rZ+svJqRJRW/Tdhqk+EhDs5dmX6DF3+Of1PsoYDbyvDr2wd+nw1T25n1S+n54XZet4hKcFKKl4cNaQIBanC8YWSRnXXipFVaE7kDQmO1NJHPhGpB7QtEWoU4LDzxI/+uMxWIVPlYu3hIGneLBSFmq9pIo7fkcWu8ZQdUnzLajg2xsf5UfoqW+nMTETsso60iYc2Cq0kd2cKWp2oWt2Ccenxrpn0mDSV3+eTFO3rpIJ57dbViyLaWLuMjNZn1jWxOLCPvu0/ZnD4GsyVZSbISQlT1UrUfvMvYoFfmw91jgOAmfuHZXIrG6V3iqp8RJbPa4IysfbNXgg48Bk3NVUv7EKm/ZPEzW8SlZ1j7w6DUKPlPHT+xEUOtPCDOFaer/nFZkhIKtYzrFsa72M9/hdoNvC/E7+K51t7WeydzcwhIEyIPlujRmA/wYS7yMq3H9tRUL9Y4zF3+1wMnlRCHvT0P714ge1/17UE6PwPDKWYaM4F4lsfCAdWTehWvfHMDNWNTtnmvon/IeNe/SPxB/D9PUfnaEnDLNzm8ZAGekWBGYHTmDuEDDsb9iBB9KT2DDQYn95U0XnDRA8MVLUapLyBri0EOt1fF17A3C9FqD6HbiIMig+7uDtS78Bhh8DOGJNkluwsd9RyxtAtuF095SXVz3OUZUsueXpnWmsc/cvPPNPUGJhxaDAy16wzRtEidNLn5WtQPtvydV7oN6PEXIlSmuC+3no/UE2ZJNB8k4GX7YjvLHbVyHm5scsswh8iwv4lzgx+BhEVp4/ZC9HYpOygyN7ZhFk5C+Hv8SKoHCA4oGmZDAYVwiPIRl6ZjcEBR9ER54BauKweHcwWWZ/yQPY4jP0rDKnAgs/p5J9/4yDKY36BqAXhccPhCPFptv6TDa3H1/LWLE3Xmp05Fi2f/VH/vevL2ldbNwDURpXARgUHexCs8JRVB6BwI4w4EJuEKy4qjl+gKAoTpRtEBh/QPMl8SH2vBffECUmM/y97uwbds5EDCjW0cWZJfrAJqQ0c3PfybmCRneTx4TbR47oe/gC8mILCyugkpIh27w/O2oMMOeK8pGIE9hEiPTVdiE6GqQd84dmb2fqCLw++hx5LvAzrTIUkTzmMAANsUdLnrcA0eworwUxQ6k84oCIouiH9UyTWfSe73BUVtjl6VLBFZIWt3jJXbioGb/dkIeWmkkw+4hMq3ZbKBn78allSYcEu6vVj0i2EJmAekFTC167Uzn5XUGcRJ99+MRqlAfYLlzEwlApYDIiN0c8pso2ezwzKON7KTZGdYEkAUcWpdqxaHRa/TPR7ENEA8joKABFD8fWTl0lu5z9EeUO7kVCCgsLGAoMY9XHf3xasJkkRf1qjUuHmqHEj/VgNpQsW8NhILmKOAiWMphTdgsVdZz8MOYP/CvPnJV8N++M0ST2OWo9KbdeENhlMbm8PnWy3v0GmMIoChmeQkOSsIBXx7CHQB6ERcjTo+xYeZ9BDa5VVzbD6pY+jTxIcSTBlBtfwRKfK86bEOVMYvDwIofdjuZc56LxVMLBjO535CBfK/fY2qxjpyZyPXql7UCM5GrmxZ1JSsY97WWp+8XCu4AJKuxfspdNSK6dG0jJFGxD+bMUxvn05ceBiCJ2YbHuK3NjCevzojFtBAowQc9c2JNZrAmL0o8L/dLjiGiVjRQIC35iTii/o5GA/+Bl2AHYGpy+1yKbPwxRlNkj2KzUfUlIJpSEJmWSEk60VrPYaJZijh3kJY5DCJ3svkKYwUHLeVxcHuiosrGUtOUnyhi7En+O8PbhnupWbxjWEiIqfecy83ZTEF0zdKzP2HCLWIbLfW8owlxEYvJH5gltleHXmp5hNG6pYBPSRGVsFSevQ5Jjpow+BS++0P/5PvwKDJ/OnalWv2FSCmQNC5PqnNQwEOQhnD93Coi1beoA83/hjDxYXSpiIMjiig7RhJzOMxUVZg6KXeA/xmLayYcywXjTfvqeuCHmH8YKHED1PwKKJY0YUkvu2U5SR8ObPzyTXNtQhvMWxoi7oIFOb2E/BpneU4WQFySHQPZZ97syEVUpDdFQsSplv8BT91v8jqJmxWMGI8rfPObhKBXv00dzHjAvtpyIT2o7BkzSvZBSMMRoXZkSqj5y9IdSeMhXpViFdZpMJjnALxj4SFrfJK6TJ/Mb7oVaO0UIyDDFqCPlocUKkSBZSxBh0u1nIjwh7gZiYdl7sV+KZME98Cq9T5BXJ6DHeVHDPK1jHIvbjv40zFol6tC0zzNBSuRaQnGUOkk9eVGO0jGC1wvPU+98JMkwxUlQJkcSukz/HDbPjzRhG4TRgEhIObl6OiU/nhtalueyR4nSfhk5WMKZHB29HVxYzKGkbxqxwEpAuHCTeuri0rwxLwzjY5cQtGz5llEsEfWTkrl9Csu0GIs264aGwO6LKMK5dAKMClAudAJpfoiJ7Py7nMydbeila+UT9aIPevPE6V9FLmMfGS01SSrO7FSrqOyd8WqQLscdqmxv/JELPi6Fra/ENheSzH5Sp6NDiyV+8/yO+QO18DB+ZD0hNWlT7N2QxhVKqjpseE7SB1aOkZhbQR1rwT6jZ0Q6+83smw+1V+RHqXu2fJjlUtfD8OwZRmi2dqniLeb4nK4z0J/DfXCGG6DoG1m1FIm45Bds9PWZUzSkkxmx4ZIHBjGYbLb05alOm+gk/cnTdHEUiwg3VmENOlCwGXAXavDIKAMeDI6ASTIUJEjR1xqByPiCahr24RgwZFQfsfLRxljcl1iVEcI8hQlBTSpOlp4LFYaVzZKSQpxO6vZyxWyImzHMmxdCFKyYUpabEmtUW0M6KZMf63nFS74+Jcvs/R7F5ebH/Fp86uNLVqQywQbtGRrgKB6lCcEsjFHHCjmmn0j9iuJJEtFCPH/q9HUhF3uegGLsV0ze0banAhXlXwnLrnzoOjR12EMl2aGFXpbKzmJBUFi/FIcVA+tGWNqy3Os3inE1PifK/VgMszM9kNqspYrjQoTAOR9cWUqh5WwTli6wU5/7KG4rlIYseJuFdEYHli+EgzPxR8kTlCSOWf9ihl15eNtpmH5fN+00xUE7pR+8qLgbvgc1qypVRtbGDQZCWjZ52KfpVWvTMQFETYuPiKsJN+bsvUUkQLsoJwUfzsrrMy1RU6UmnG9blN1htTRTchbiPfheqoDUKiQUYqeUzIxq7ht1U1tzsyIherPqWWIJK3qlcjDhXpW2KmYdE1bLdsmN0Fe/9SC1cGBrRoZ9ZOf4r3gUegXEXlbNNG/KleQa6awxaKQdEggeHD6HzLilfYaAFmm7yMLI2CPhyBCnQmurn4uEJgWTfBO7jiG+Yb1aBwzlRnAnEYM7rVo7N3bcgmMiZC9fpjyC23qqA04bvvENEJJrTjbFiR1GJ7XQC3e+qNJZRrCwI8sUptsg6csW+p1KB7wYUq5UDr20mLPPzznGgms7FTIhqojqSAEnkoI32EhGwYrKh/ixGTpQ6spKxtfCIstVlTPG33Wil4gMJIIVzUtzxSyTxUARO2JtrgS7CYxhnmyLxuaDebR4wqpNJKSOEEYV6DJ0ZyFDO1qLLOlN2oH44RWmnBpLVJneZqSVyITj74xaK7hqntuUUKERYtC3aQhil3p6hiV3AyPCDYnx4ErYLawjsyR2CTjsWMdOVScQy23FaX4vOEA26hWEwSNDGVUJ40K6edg6kyl8VsLSygL93LIB4V7S2uHfQs1S4JTcNInG0SDix2o3bRQUP9xNvRPQxGGnNfjZhlQm5SaNKUhHUFFIffBJxy2bGhoXtf0/AJdP/d1rCXSmieUVf8N+7yKmdUx4VR9U6ddL9CqLA2Hja+XjbSDnRTsGSNspvQFouYHK/Wnr91gR6cdX5U6OhBSKkkVH1Dejbq0WlszPSLue+Fz+RJLhAu8zJ0WkWdCIBEOKdEDRarcV8hedDM/wjD+oxbjWzCN051njtAzfYbZZ3OO2Z7lmWj3gVayvZsD852qrKD/2zDbOxAMQp2gVppmT0fdeuSrh4kMlzg6/oZ0K7lnmZdjlYSXeIS0bNUCvNPeDkb4HuFNMZ0ugppdMivTRBFFABOmbFB23CO947rNN4CfBU3Tmq9mSLcyy1oT8NGV15xmfWvC9JOn5JE7H1I7WkZc+w9IHBSc+DpdGCHGLtjOaztaqSnKmrCUHJQZvIagmH2kEDT6Dee1d85jNJuy7NmJQzDeJ3Kt6r0TvjBfGpUuozhby+rWpAnmXaAUc0FFd3Kfny7m3ZwoyGD0a/kLb25tEeRtxmn/LAa14hUpSVYrBMS4J5rzgl4XhLe8PvgHQpN4A0EOEf8I45R7WmqG7DVmOYsBvAFyCminwj6LNkcv8EW5exNuQUruaxWzGLXrbwZ1ASUb2kwm/hLg8NE4ff0rHJ2/y2j8pD9rCT1JEDgKg2VMR3zQWTx11CXVXFn+K6BuzVcdGlcVzA8Hh02e6AytspRYXZLLJSSPMjgZzRmOMMVBa53T25pT6nt/4iE189ZfzgHHtuGzOZorz7LzomgfKhLGi24AEc4qSTy+cbKF/EoNxR0mKTe1zvalItvFnaTddRm6MuWV1ApWonAaoBaIc0IJS4rGJv8KqYzY+kZ+ydVhbRgSZl+WaOsePtViYyZ5HW+M5fsa8Wm+6or3rBrX8mtruJo9orBOFbLVHsYAx1kVSGPq+mrV6mYSwhnE5mf7+ajkWvrIRT1oEt362VzwlvHgsfGQRorWfVVMs3hDKOlJ6AxoXJzrSp/icvxi3rUko18u5oXCD9zFbo60IrSEiJkgSO58lo1Vg/KIYhbIP3YXEIRB4H8/KGieRY/v3gGQ8hAHPmoGkm+BcUHlLn0lUYrV1lAuPdYlKJY/I7TpVOMPMWXNEovhHNdfepH8M6qwxj3iwhQVwfpMdRbJ6BN9aPlyOiCs5rlUpo9UxlbaLYL1Lz6fjMxrIYpHvBQvZhudBjFBS/u9pbuxOszzWM3oYneSCcrR8BxFovYiGyzqvSDNaELV5WnL566JMt2LzDq7KGOq51swKRURAZPxYLVcnHa1URni61kkcngWGme1E6134VPOhq/VYqtZVxJF5lF0+u64eb3Ts0hTIiMQmz3QMjltZPPuoI+qBPEPzEZlHY9ifd6psYZZJVoBENg4vA9PRF+d2kdjRmUyAizpfa+5y2EOfefEOTiXIXBcEpi1ptdvPlKGIHWtGegMgVAPrgn+YUeD7Chq6oornLMSj5d7YHWnFK8l0m/GONarjnkqTpOGpfA2EwuYzv95Hjrj8EQrMNqHImKe297QhGkfoukpQnbhyguuoZeJYswmJTeULIXdQleYEugVvhGYRgStQ47pYJhDtdSd3nKKUkFXxP8d8mcoZTKYwdbSP/xgi7eSG8yS7esjbL7mZeCSFZ6k9IVwsmyqCW06bgo9jz2c2bD5jyoy3/m2JwN0XQYFy0qoplXJGOa6A0BzUmeRCZTHZy3Fuc1PE2ZFhNdlIrms5GAtWRs+q6iYsAqZpKTYffHClhfvC14yU2jDkPgM/rs7xK/GyWIzDRkjL6NpbvdRB6oG/Cw+fzTwWxqJ4+Akk02jbEmpufpJWgiHcASu4/4L4QsseL3OGy/kTek4pg1+9+SestgKlqjBQYr+oKE1JSZIIm4gNddCxBUxmbmrwSnZKXfAk+7y++QbAz3wDJA1PLLMPDNMM1Hq9ARBv3331wChvXX+i2AIb0+kbIE6nY+ENsER2jfEY+Wr2ZCL7CvUGKMV7loR8Rpl7pnoDQB31Jz5NvB6SPb631l7QHMkbYDDoLCLxdRQ2hNU60+K/zw3/a08AmAJpj7ZuRsI0j7Gt72H+kqLEXTJEH9s1aC4eT/NwIeUhL612lFTZqMW5haOnXioeKfbZJX9J5yNZNJrvxCIWqNA+sfcN8OejSQV4hr1C4G5ltfBj4InHXdMnpxgXGi1+Y93anz+cbW4t45g4bDETQLitNwTtMccizOQTQkwvCfMYJgPlznx52PPw1wbqtOAlnHnOeyRUNRWC3WcGSlbsTL8dSD02vrJsFgEwlr9+lGDzTushmXP4IiL6VwwPcx25thfmEn3i1YBVvu2Mpc/A3/R0zYSWZafv7t9Y6i07LSFHc0+6siNlon2BSDIt/N6YyAbJmRR3bwChFfZIemk1vGjqFgWjs606P13otMJosqfCT8elzAyM3wvWWU0Izz3zDrKYtL1n3MaTxT+kGmEvibDBlxPyuVL7V3THo71C0TsdJdWIVAh9WMsZNnSijhJi6jP63PeFcaVC90I8SclcoIDQ7aepaOd0yE8+FLsoKHxWapwZBhESh2me1jdAWmgQiWlYjZxV4kRvOELFKN8vgE2u+nNRsyMOufTk1WrJQ/KAYWo2EaY9zGTB1w+Vf6iQ01pp5UsY7eZARZ34sQ7Xfca27hAmnzdA2Tep3+4bRJXqIvpGaFnh9idflL4gdMnzuGfDXGYXvo0CyDD/fYYc5j8nyaEAmEAKcg5xdXY1s/9sAwHfAHkF3wuOM/Ss8iD8EOZD5pY9Tgjzj/d0hgdzS1wzhN9b0akghMvPUQz+NbBq5hX1R6B+1zH739oW8GsymY/UwQ6I1y1Hxo0D/m4ZWskDvISU/at9Yzsp8QA1U/SwLsfWzub3Aed13x3BbzXOkLXjqo6MFz28Kqv2EacBjLZCSydMWnn0XakLigquLaE8uD4Wq6QHFaTnBK49CH8cxg5ePT4xMzboe/MTjOmIKAG6vOr1ULTqFI1Jv8PoaYFFj/UoZWD7Dl5ZL9WvAim0OCjq5tkU5kSBJA8KdjFTkC9zyVoT63mxpS/Dw0wIhihd08KNiFUE15LozS1a7xzboOxKydkfrF9kLfAGqb+ajktfMagqDgIPTYeNCjpBFxkeplvM+djf3j8yNtVrfMt87Guya4EKcbp5/1yLSzxw/YdZ89kUg0BYbyIiq1olJ1ifvAOOQ7bbHH+X5gfTYV02AuCEI90LVShaQQ8pWg/ecc9RINV4wHUkkIDrK8Wh/WRS4FDqeUHLT1rxz6Jb+bK1c/mTigHgJ8b+ofM/g04N5fNHtpNRV/1rm9cTNWe6fao1koTeBUQ/z3iYv7ob+62nCFDLtv0MTrSJGmcjEmwpQgTqjYJriVF1p8iYA6XQSfh71gr+d1/4H78VvPcFCiCHOLk6u5nbfzbFgFtB+wN3W07tYoftW3+c2rdOti63Xi/anzGu+y+aH7c+8zkbvHOd2t8AFO3P/6JGfvSTyTzuYpQEWEOc2jfu0Nq3oF/DBgRXagzMald/zb1efovQY1voDMjYxSULEBb77Bj1ad8JyFpL5TXOjGrti8r5e/AcD8WJ5kv6lgWW+4+NQCrS1NEpYND5fX7ouM2j9uUI+Qn17uUoTFwuq64JqA68Fzjz0j5hvTDAlOhc2nruhf9DJODGuWH5nqV5vo84niXrc3aSP8MTEi9Ir7/iV1zHhuBjtzj2FleH8lY+vPwT8Jsh7eED1nlf5rL5axS+wSuJNNWfjBuNI9NxWqgbtCvRiHa3AMt+kBzLOlmHrBg5VSknBmwm2wBdJNW+d41qEsUvat4NZ8lDl3apP83Krq0XMOGJEP+gfbrvYA5aQSN54g5f/vzPsSIYTukb7mghVMwD1oGSZwTUvBO50bcngaPoAXcuVM2/KcTMIoBLcsy/BUSt59WXBi0Y3FFudgaFqdoVk4b9JhIVESCGF5Hn4n8xNALISGWvco6QMLKtutAf12+WyFCGPl83W/v2UxNwSug/A95HDZRLU6u5Cf8DOeZ6YbG49Wcc2tIKm4dPGMOfMJIGHiWHWW6eor81eg4bWg7gz20RGskprWPLI2xh03kzE4d+MQjrXBtWwZOR6gZjRBOJjaIXmGVRH3CEgbn+pIQaFKQkr2FLqrOSJNQrCs5CkpT/5NuPBDUBnZDW4iM1BLsCEBfpVqVTApLRd42a3cI3zvQuBwPkt94Amq9ODGI2OmaBEn7bFOiSj5Dmvhund36m0gn1j+OKG1UcPuD5axh2pyNbD/kRc+ANtkcjeYYpxClC75bmr0L7RUFyNI7vBEt6i+hRJsTlvR/TAd9HMSjYf23y/semUbxbNDOgW3JIUdMV+eL+0PV/lqSByyK+BacVVLfojpcjqeiO53PnAo1H75TSxdzM+dz2xUgqqZJv49HcjK9HC+m7eMa3JT2RVzj7W26cL8cbwF54N/tvtTNZljcf14kZLBBIATMYyqiFiFWmcNWAnE5G42Plw0Epg0+q8GT6ZAbFNFz44coHSaNMIYRRq0qdRiH95BB/Os5K9hHmcujmUasSKBwKDBMLYRqTHZPhiLPAnxjZT8wFX5phIICH90/2hjLhDbvcLFjZcq76US3wH0XdftPNDIUBpYdCIWGoGsdDVxp7kDjd5jcAGP/RAke3eOygH+eJjNwHkfyqk3NvDMyKitrlfgzJZOVwP9w3H7tBpe81gS6gvAaKwyLB03MeQ8AgVOFEF4TBkQOzCPygECX2J9Vh4UrqFAwKsSiMW+7H7ACXq5E9qkfs39lVIh6LohSiHw+EpRKAXpFBCJbCHU+g34nBXbb+sq2/81qavebWH/LyLe66vgmVP7Xc8ikvHOVfh/rbWJ7nNf4SMtuOtLsQKdkUOdzOPzqn2vRXWf+dv3hBevROPOSFnVP9FJL/JoS0JWTjuOMVaL2P4XtB+nWTpGjTf25qS4jO8jzS9uFd/z0HL9nWi7ymC4Lfecm/SK9/kd4203F1e/1Li/Hk6R0JKRvtZv1OtP2df7vjP2/3nuN7CZpfJ3opLkS+D+yIVLwnv276K97izVwk2m2IVHj+ymtp5+MomUh8fk7FDnr2MV789f4e/5HeiyuvuY0N9Pesvm7+680dSap/JEKMY9NWWh2t/DMUY7nbR6uNtHgYv33R4/94HxsTjYuve1DQelTQ4oKPx7U1GALDChQ17coAn/hP9JpwGD6yzNguxkGEJMZg1RMZF5kwce0cCwvRGKmCr+j+HlD/CR/X8oCeisXZ4EbtQI4xNPdJCZxvDqzqLcXyuqnIpU7hfcRAOeENiWbDz/oUMYyPsa7Vy7Bvip/I1RrPhw63bFfloKdUPlh9qzYkJrNdUNkG/ouc9wYIVjBggQqHBDDrAI8w3EJiBdHtBfNm6hu5i0BNu01VJidiHo+Nsn9TTxN71WqjSb/bJ5zGV+lFBpuqLvym+uO039rOzJdtJBsZPeqyD95jGunRLGod9gttjv8zR9viREv97UcpibLNmYsQuYd0vfcSMmllnmr0PfCTBxSKLhAF39yx1/a18O4KY2GH79TjxNQ3UwqD3PPKT6UAQ4v1NSai+pkzlnHBwBvbAcdQMUGWdy9qdexURXNRB/kXF91c5SYq5BMPfp1VOxWk7sDgplKgL+rFVIlGcgQHTU9eQrY0wGSdr6DTZY/8CilxPxnmcYHiilUqKRQN02uatxqVpJb4wIBpu1fprk/ycFCxglaunVBEQq59BbWFkfKiNciVntusts56HOwbqxrLah1rmUi5s2eamB35qSQZnM4o8vTxD5rNZc6j6h5OyBH7YPoBcDQXhr/JjbP6Qh8oiQwoLrTqSE0L+ZCV7QN0h/gsn/dZ2Pq74ocsTeHVpURrjSHrIwpiYxZcBavVIQ8rUk5JbtMbo27MeRDzWEO01xtg7LaewPcdoQhpsIjkksNmR2bcjIin1U2zMmixQPsZKhy110K11vhc0hN0Wj3MHEFX6el2+OSxwUUGe4x+CtVrAVq30b0+60OkXvfgRIf+1ErtsOaXkqbP6aP2TNtz/F++cLjS9LKF/LX50WUKniRwtRrbE8U7mOWwPikttOv9uPH3A1a1ZFejKUwNlHYjn1b/znF0ZSJ6clXuy2x0KRmxccpWi9qqBqZzZwgq6voU9GWs+ghmwoBChJR6LX8EF0+buifR6ImdAK3JNR58uOL1HyKfIAPvSQx4hOAbCgxosoe4k6KW7GCGb0oBhLKNfOAvALUd2KU0fASNONW5j1rI+lwkKoBR6iLB0WEHItoJQeOvDselS9Yg+jRmRi5CbE2ZphemAzXixqFdzo4XLST14i81PAdBdb1PBcc3CEnC0KrQRfudTNpmV31S/K3+Qw9LHJxlWaLJcLKInNPS2urrwSSWUHccrVU20MMHx5TlDlVud6x7CiGhHdnjGWoOQmSXJjCywrPoNenw1zPL9pifa3+JXRWA2Y9+zAMXQcRKCPYWQ7XovWTlJwHzN4Pi0LBy4iGMpIyw/FVltbjcrOvwW6ERGIy4+bh5Raxcv5b1fkg4t/jof4Qu6zQbLVRyJeagfDZiY6n/qIbOMKyIZWV/rSnvwLQE11KvM4MswKj7KZMg5jGkzPS+dsNmlUvHSlM0eD4U1YCV9reP7H0H3YWAlQ+sMAaNwm8kXmI8AD+LIJabHW0YlHkhucg4KLQNTQOtxgkUpuy/fHC7TP8TesGY5oc6PPh0R89imZhNqrIUr27lgiQDCNxPO690cmMwbvvIg5ug57k5/QmGc/xiVIctCghSHWK4JXv+AJXpBhOOErWBWsERuf/X9Mkkq2AQ+CGsU8367hxfw1s6y3Z/EXsACiMy45V8WkMj2FKRplAiNoi9jE6yvefxy0q5/kt0L8uGJH2dXfpQ+Djc2SeY7N57iY0yBRYDzPZIk/bPVPIpi5/uIuLGVOVlVq+jGqu8iMdHP0h+j5aTxS/48AbgugwqoP5wXekDJOrlQVTQbD5p2SNFeqXQOreoqYsafkmTLszIkKDtBi5ZFcWcOsZ66c9F4PPFdGKndQXES63YX45OLTHi1lFj5wTXDxTrm9bZpel0VZoK/XAJZudB64jPWqkNWiLLfPoLpeZDFXEow2qddwyvI66lTNO3rdcM3IV7VIBDQo/PphFw5jJZJSdh/bKRoU1UOE0peEQ8uNa2VGdabZWFpGAjMSOr+812dEGTXuQJcMXOQm9VchmUrRYWAFwwLDRvzpTj5zFF2j7SLu1GrOyIul7XJ8gOY4DKzhKl7fqbHVKzxlisSbg6R8kUGloofqXCfzWLKB15EOZf4Pc6FgGDKB26lsliwJCvTGHeCbI/9mbIqCp2cDjEdam0uC2oAPL1kftw0tw2qPFwD9XqfAuYixApXJGteJ8AxtDTJpdMIjiuqiCkDGBd0YuM3bwBOA/3MCJgHCgPoAbjZrXQMkiG8MR7YOunKrCqztSIFDCiJM6b64inv4sqxaEk5X24zMSfis0u7w6O/kPztz1j635JA4VE3G34MTLkgw/yF7SsY8mopAKq16FoaMRwM8Lt8RgKnehLC93Tb/CdOc8pRZsH7hNajlmGBxpWU1wEowYRJPJZq18UeVtloZZ9wRaaQK4OntKpD1jZLcQgDmHDwedZLxZrDQsN+oqWCyG3E3PXXwccQSoBeBPFMQHwhFR/lF+l3wCp5JLLrTVpzxE/uDnuMj+wFsv3tF2w0kaJAMm1YEKaSXfVYcDlVh0hLtFlTD2jqzxotmRn6oTTwHOX6A8w2gjSghnVcFsa39ujRcMBP7lz5s2wVboHK0b7SuIW2+Pq+ExvFLmaUASVpJaYQfnQyBLapkqJLjMfkOskRvmaP4QUyFHs0XwuF1+J6GtZorQnHpop2lJ0YLb0iw35cQgXzwz9tZxzexdvU72RHQ5wGqwD3sDWgBHSovwxyuIgkBNKYzDTv+/lRFTh8CV3nxaOudNmQbRwSydab0v3MZ68KsKNFZojNqxcu/ZliODSc5RYAnwEgy5zCv8si6EnVO08eFFHPATd/gKJDoZwSVAj49eZX8dhlDL5xW13/8Zp2B6Bj9/L8Cu4eoxNhBdN5W7qCIMO4dLQksLaJ4NVBceGUaOanJjlAG+QbFEHY9cVSRcq78RLWSJH2ynb05WJNNVj/5aA42YPDB22w2xXEWuXh9fPS7J/JwdksH4Tw3qJjqrWn/YKA4X8zj+Dj2pPDqPntsLqUZQ6QVWFM0MG64vqvqIMRnKOo5n/fJBaZooC+ZVsC28iOqZ/2Mg5Aerz3UvEI0ybnpwXCLKNlrI1W45Bwh2slsEINbFZowxHSzvlRdk7UcBCn8DYFIyjbLKsbbfDSqCamQVUaP4uJuRKLfZ4/FsHV46QcgtULoflVMQKJ+FyO88lfHHLukRmW310T1nPEM5A3mAFCUkvrXya0othS9PP8G7elXaeqJWaFc/olATGKwVXaDGU4FHLjVpm7wNjpCukQ3pv/6A0xJQvda8T207RphvDrLAUQ6i3TO5jZ9CF13dxse1xpT+MpIsIYjiGIZGlc0tJ9pU7boQTql1iDexEeOpuzumfSn3uwdogttED0a7uEzgONAwYxC4PAQYlH3w0IMeBoZmwgGtkSVc0YmfzokxxlzEkqlXXNQvXgASScYrgfPwSDmWuOPuRMOKjyU+YvxLodzIuzg6GY1v19vBnxbgksCJZUTGsrRKh0BjkilmIljxS0tbmNtv1Dr9zMVB9BjHcG73ZRYKAlmwAf94o3L7YMky8Pm6m+UvaWqmcLlqC9sZChRL+jDrdfSfoUG17QtspqFYHXfaP81nQHGpNUZE3gMhY7zjbD4PunahBgDiNQN2hDTJ+kl50NE3RBssAZVc4rbnFgXbY9BU7TsbsNqm1ShDoPH0LzjFsxP6UJqXRPm552CsEDSfSJ/zLCNP2ZWdiaycpLJYGJabhPQPqcQTz0AlREfSJrezN2F5kiJ2PTUf8Dj73eMrPcVoZKjrkdOX47eHvrmadXR1caBJ34YzjZzXLY9bC2Jsi4XSj+MIw+JQ/6mPciDxatRH98g+eMMtIz8CIFGAYocFyM8bhOA12s2xsZQfOkJivtncLc3uLxawSlZ8i4WoRNmCikIpaWPon478qC1FQfwRbYJREm+7a/tayd8hur9k+MsSo4ekqoLmDViOuWGoa2iscBI+ODMoulAz5FZ7PnjhTzLxYC8QnlgorwqYva/2vAOcJGPbknyATC5j5CtNEPk3k4iVWqz6RcFvVRcbIG84lpfVM+6lIWWBmVym66QoQyUHyBfA+ggvZhtPQTSYnNTqkHAk1R87RtNZrCB4Ls7+JE6GWaETYXnEBKUTWtbPcvZF1hnsPyS+pfvRiPaCzEOyrPMCxyjRkRmQoZSX1j7YTmaz/ALHwBqeJEVnhJ6R4NANDlmK1P2mgs+jOd94DtGCuz3OZ9JccNkFkHXSW8zbSZOt/Wp0LjoQal9NoDeHyxfYZ0n1EDSyaACe0y1ujbU6O5hArIvWFy2WppodygoXxMqO0CblWMy+3uO40LRh3uE27sIZwXAgMJCYHyjk+6l6QoXuxbY/1CS8gUbW4bGoBuhofEVpRR1l9cxLuZ1PxPo+4jk6leSXy4qLD5mI8U4McRoaZVWN9bxfQR0jXE9qqPU7vV6MHp7gcXybXT4hE1BlXSJioBd9xphsZMzCCkdpnYFdTEArDjMp2LSjpBm1LrCTkGlHUgYGt7AS4KhbqcxW082H6ytQoqUrvDLr24X7iI4CTDpETWvc0Hdg2YlRtlHkiClpEzmad6DvTmXF3SE5gcu0G3aV/5d7wYrqNtTrmX0vilx0L35hZNXHMSAc6ZzNy6+svTh2XLJLPxckTUYRKw9kJY3moFZnsmlMCWb1W2UmYjI08sSr02VKLK+4wakToTNyiaXc0pnHWrOsvw6wxUUxLCyKa3BZJuNmSFGl4Hci7Hkt4OF1BgDmLLyMJU3ZImo3GxENoF52xEQ68hllxpYuFbu4UvKBZLcBGhK7UwRRo5fJtGUkqDTljSmTBrBUADAAf+sJX1wB2Jz5CzAppaDGgKn2i33pGYAT8m66lEWik1ZqRs9rUMI1lgMCCN5RzKxxAu0K7RhoADYJdKkQvMDo/9i2JzbOA+35hMoqWs2SmCwlaYXyIoYEuwN2LZXcAYZQq4eiDM7MsIkYRw7s/v2jY17qyujMB8+7MsRI6LBqQKr0AvYIev7Aqlg6g4ou2U9LrAbVgaqqRe7OYUHQAOpDJNmY7gZZtfDlVxubKxqU3+sJLFptz3+kwLiqEZV/pmUFzVQgmPdhhauE2x5pVbm/tBCViRZs+YCI0oA2I0UpoB1W9Q8iIZPm9wheNGdojU9i9/pKIXa3UnAcyuXb02jz9ZfPKNbMOQJBuMH2lEsDXxr1LJqNvgfEeCtG+yvjMDYVtGgRNSs8guL+kHUUVPcMX0Ph1D8MDVbhdHbiFZwzFq8YmSaC4teI8coSFlo1ZsL1KBWjM3ccRhAvQEgajrMoJuWU/E1Rop9BhARyiq1eoy7S7QLfLUwkXZObMI1CzkZSi4mxKAyBALhfobXtKoL0A6jK5NAwq00+sVRZSZXpGFVBkjgOI21MVY4J+YmDEPZvCSYLqsuNu5qRxURArJXUeE9wdlqdjlL7OAiwun2jZCgI0M4llGtYzOu1hC9ve0MDBVkX2/uNsYWLxcAHague0KYrhdXZ6mbVES1lfvUxTbhO5VOgKWnVmE9wsWW7EBa3oKW5HONKbS/SAIdE0gzjiwwuY8KqitIdSm7WtGkaiWdvbeItBiaX1BurVpaVG16MTkpMy7YLpHRJRmrcNGXyS0AP8ELU1yWtoHbMs10Kpd3pEy76yUGhfuCjCC4qsUuZqhMNYiSSANk4g85A7t5iH2IH5IpYlpM2vMO0g6aU2VBA0lf5KNxk450PqyyKhVNe0LR1XoYIiNssXwQA5mcFjaLKDrdywbTBsUbIRt6NU2d/iZQu0sZSLCta1oGFQs6nQgpvUqidMo2BWNjFA8UvFD2e4sweEWm+SZ6wFi1mXbYvVLpkBZoxxCjCUpRQchZ3uQgNNDiNFlvByQ6oEvllGtEscy3G4dszB2gtKs1jshS5dozO0OlOjY93/AJAVemdTGnvqUBpGmPbeYdSo4uuKzUbo9egDr/kzbWaYA9QJUu8F4lK4Feo9Qpo1LxEqyh4MbKo2OCDKB7Fgcf3NAJ2BxRFSqzpwjMNRkXoQO0sAarNjXVxNOFYPEDH2VgGWAWTWtJRMIauGHgahw33NYK1G5AmNlLdZqE0UWjBoziw2owc5kLKpl8CKdXCVGVqX3MjZtuFhyy4Yg6meKWrKFjltGbtqWQUHXKsfJ1eRNo+SpqbEt1qjOhD2UA2DzESkyXkLJSvI1BqvGucxNFuU0h+WstxrRpVueYyMd1T8dQYWIqRHs/EcKYVy+a/MeBlLujbOAsWQldFYoiqHjeBcykHQZ1gYwXuNPUCz9YKxG1YpKvSGGrb7mKkqHKUjcsAlAGjR7iamXESqqtq2KRiPWmaDOz3mZJlB1IcuVkXk8LxvGy9ZdARU3tosgSuvky7ylJS2rbN/bJodzBrWr0ZbuWaYBF222MwY05yjiX0oNe4qtuzxEr6am7LrbqWxAVnSPEpmjUbt/iXxQKIzzECbuhFyqdALLvWkwY3m9P8AFw1s/wCwJReAMvuWZFll7Nj1M25JgIDdUboi9lx2+5nJFXmblpQEd1FK6eoVqtoDaKKBcCm7mD0jYtVETFjTRC2Wt6qamtJh0Ggbw0vMEmvlllVk1l0dve4Ara0ViVVexjSVFOTbFw0LWChkhAZoQMULCzLcfbvBGWiHtWVYZu3BK7Mrhiah95ln8TIzBF0y6QidXBdiPg2A01mHfgLUvWW4pK9Lw9A7m7lJQuDOrGxVQTQd8QctsDVCa64Mdyy7IxFs961qyzYF6OULmGcQN6ZZcACS+iHHMNe46mn5mgWZjLw6xwazoSot9CaJHwLDR4msMOsPVD3NNrmUDKfaUxi4IFDJ2l2N2qw7nvIxNXH/AGW6/wB9KcCz5jiKjiUyh738uWUtDD8TX621Ew34I63VnT3AytQXhTh4mQs3YZVLl3RZqEtnNGxTMstbcqCwKxE0jviDkhnZo1WWUD9fqYLy6wixmI2oR1elmO2vjnxS9UmhCUW2J9WZJVOhP9iVCrZbKpgbQgsFBFERbH8BwgfDSH+m1l0rqqzubQQ4JrdvFTURRNZh/hNZoi7OTmaDH0iU1PCPvlNCNXMBX/uDjNREPtHwqjnwA7BHViHlvAgJUPFj4vyZ4DhRv62sLkW/MRwhBFx6lkdwqwMrMfobwC31RMtHlGI6mPRIKrTKU28JPgqhUK84oxh4XzpIm/iJLhz9NzE1f/Sd87PKg7KzOKSqHFRY+YJpMJUf7DwAKLzGyPGGGGP8CHlShlXl2CHzBJ8X4n+ZcVF9HzP9Jh+onxOBfXBn5s3v6vPzp5SsnvP+2swn3MzAPrlO++mhs9p/a1P9eh/vof2tP9On/vof76bP3k/26P8Arp/p0/06f6d4e/tpP9Oj/ro/66H97f1D+1o/66f32n+zz+ws/tlP9a/qWynk2C/U/9lQSwcI9CN9VAJLAAAvTAAAUEsBAhQAFAAICAgAwYvJUPQjfVQCSwAAL0wAAAkAAAAAAAAAAAAAAAAAAAAAAERvZ0RQLmpwZ1BLBQYAAAAAAQABADcAAAA5SwAAAAA=</con:data>
+              <con:id>123cc51b-bfcc-4ea9-b8b8-b5f37d2b14dd</con:id>
+            </con:attachment>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="petId" value="7"/>
+              <con:entry key="file" value="DogDP.jpg"/>
+              <con:entry key="additionalMetadata" value="image/jpeg"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
+    <con:xmlTemplates/>
+    <con:parameters/>
+    <con:parameters/>
+  </con:reporting>
+  <con:reporting/>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to SoapUI Pro tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>

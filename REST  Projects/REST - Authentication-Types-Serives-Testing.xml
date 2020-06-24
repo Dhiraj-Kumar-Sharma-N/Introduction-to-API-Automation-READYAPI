@@ -1,0 +1,2143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="eba9fa80-6a8a-401e-a2e0-5c10c5a96dcb" created="3.2.7" activeEnvironment="Default environment" name="REST - Authentication Types Service Testing" resourceRoot="" updated="3.2.7 2020-05-27T19:48:04Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="682061d6-a1d3-4e73-9555-51390adbec44" name="Smart Bytes-Rest APIs" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="http://localhost:8080/v2/api-docs" basePath="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:description>Rest APIs for students to practice on local machine. 
+ Download the API operations to Postman/Soap UI using URL : http://localhost:8080/v2/api-docs</con:description>
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8080/v2/api-docs">
+      <con:part>
+        <con:url>http://localhost:8080/v2/api-docs</con:url>
+        <con:content>{"swagger":"2.0","info":{"description":"Rest APIs for students to practice on local machine. \n Download the API operations to Postman/Soap UI using URL : http://localhost:8080/v2/api-docs","version":"1.0","title":"Smart Bytes-Rest APIs","termsOfService":"Terms of service","contact":{"name":"Sashi R","url":"http://v-logics.com","email":"trainingatsmartbytes@gmail.com"},"license":{"url":"http://v-logics.com"}},"host":"localhost:8080","basePath":"/","tags":[{"name":"Customer API","description":"Operations related to Customers"},{"name":"Authorization API","description":"Operations for User Authorization"},{"name":"Employee API","description":"Operations related to Employee"},{"name":"Product API","description":"Operations related to Products"},{"name":"Country API","description":"Read countries information"}],"paths":{"/api/country/country/get/all":{"get":{"tags":["Country API"],"summary":"list","operationId":"listUsingGET","consumes":["application/json"],"produces":["application/json"],"responses":{"200":{"description":"OK","schema":{"type":"object"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/country/get/iso2code/{alpha2_code}":{"get":{"tags":["Country API"],"summary":"findByISO2Code","operationId":"findByISO2CodeUsingGET","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"alpha2_code","in":"path","description":"alpha2_code","required":true,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"type":"object"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/country/get/iso3code/{alpha3_code}":{"get":{"tags":["Country API"],"summary":"findByISO3Code","operationId":"findByISO3CodeUsingGET","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"alpha3_code","in":"path","description":"alpha3_code","required":true,"type":"string"}],"responses":{"200":{"description":"OK","schema":{"type":"object"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/customer/add":{"post":{"tags":["Customer API"],"summary":"Add a customer","operationId":"savecustomerUsingPOST","consumes":["application/json"],"produces":["application/json"],"parameters":[{"in":"body","name":"customer","description":"customer","required":true,"schema":{"$ref":"#/definitions/Customer"}}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/ResponseEntity"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/customer/delete/{id}":{"delete":{"tags":["Customer API"],"summary":"Delete a customer","operationId":"deleteUsingDELETE","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"path","description":"id","required":true,"type":"integer","format":"int64"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/ResponseEntity"}},"401":{"description":"Unauthorized"},"204":{"description":"No Content"},"403":{"description":"Forbidden"}}}},"/api/customer/list/json":{"get":{"tags":["Customer API"],"summary":"List customers as JSON","operationId":"list1UsingGET","consumes":["application/json"],"produces":["application/json"],"responses":{"200":{"description":"Successfully retrieved list","schema":{"$ref":"#/definitions/Iterable"}},"401":{"description":"You are not authorized to view the resource"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}}},"/api/customer/list/xml":{"get":{"tags":["Customer API"],"summary":"List Customers as XML","operationId":"list2UsingGET","consumes":["application/json"],"produces":["application/xml"],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/Iterable«Customer»"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/customer/show":{"get":{"tags":["Customer API"],"summary":"Search a customer with an ID","operationId":"showcustomerUsingGET","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"query","description":"id","required":true,"type":"integer","format":"int64"}],"responses":{"200":{"description":"Successfully retrieved list","schema":{"$ref":"#/definitions/Customer"}},"401":{"description":"You are not authorized to view the resource"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}}},"/api/customer/update/{id}":{"put":{"tags":["Customer API"],"summary":"Update a customer","operationId":"updatecustomerUsingPUT","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"path","description":"id","required":true,"type":"integer","format":"int64"},{"in":"body","name":"customer","description":"customer","required":true,"schema":{"$ref":"#/definitions/Customer"}}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/ResponseEntity"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/employee/add":{"post":{"tags":["Employee API"],"summary":"Add an employee","operationId":"saveemployeeUsingPOST","consumes":["application/json"],"produces":["application/json"],"parameters":[{"in":"body","name":"employee","description":"employee","required":true,"schema":{"$ref":"#/definitions/Employee"}}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/ResponseEntity"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/employee/delete/{id}":{"delete":{"tags":["Employee API"],"summary":"Delete a employee","operationId":"deleteUsingDELETE_1","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"path","description":"id","required":true,"type":"integer","format":"int64"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/ResponseEntity"}},"401":{"description":"Unauthorized"},"204":{"description":"No Content"},"403":{"description":"Forbidden"}}}},"/api/employee/list":{"get":{"tags":["Employee API"],"summary":"List All Employees","operationId":"listUsingGET_1","consumes":["application/json"],"produces":["application/json"],"responses":{"200":{"description":"Successfully retrieved list","schema":{"$ref":"#/definitions/Iterable"}},"401":{"description":"You are not authorized to view the resource"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}}},"/api/employee/show/{id}":{"get":{"tags":["Employee API"],"summary":"Search a employee with an ID","operationId":"showemployeeUsingGET","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"path","description":"id","required":true,"type":"integer","format":"int64"}],"responses":{"200":{"description":"Successfully retrieved list","schema":{"$ref":"#/definitions/Employee"}},"401":{"description":"You are not authorized to view the resource"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}}},"/api/employee/update/{id}":{"put":{"tags":["Employee API"],"summary":"Update an employee","operationId":"updateemployeeUsingPUT","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"path","description":"id","required":true,"type":"integer","format":"int64"},{"in":"body","name":"employee","description":"employee","required":true,"schema":{"$ref":"#/definitions/Employee"}}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/ResponseEntity"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/product":{"post":{"tags":["Product API"],"summary":"Add a product","operationId":"saveProductUsingPOST","consumes":["application/json"],"produces":["application/xml","application/json"],"parameters":[{"in":"body","name":"product","description":"product","required":true,"schema":{"$ref":"#/definitions/Product"}}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/ResponseEntity"}},"201":{"description":"Product added successfully","schema":{"$ref":"#/definitions/ResponseEntity"}},"401":{"description":"You are not authorized to view the resource"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}}},"/api/product/list/json":{"get":{"tags":["Product API"],"summary":"List Products as JSON","operationId":"list2UsingGET_1","consumes":["application/json"],"produces":["application/json"],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/Iterable«Product»"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/product/list/xml":{"get":{"tags":["Product API"],"summary":"List Products as XML","operationId":"list1UsingGET_1","consumes":["application/json"],"produces":["application/xml"],"responses":{"200":{"description":"Successfully retrieved list","schema":{"$ref":"#/definitions/Iterable"}},"401":{"description":"You are not authorized to view the resource"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}}},"/api/product/{id}":{"get":{"tags":["Product API"],"summary":"Search a product with an ID","operationId":"showProductUsingGET","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"path","description":"id","required":true,"type":"integer","format":"int64"}],"responses":{"200":{"description":"Successfully retrieved list","schema":{"$ref":"#/definitions/Product"}},"401":{"description":"You are not authorized to view the resource"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}},"put":{"tags":["Product API"],"summary":"Update a product","operationId":"updateProductUsingPUT","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"path","description":"id","required":true,"type":"integer","format":"int64"},{"in":"body","name":"product","description":"product","required":true,"schema":{"$ref":"#/definitions/Product"}}],"responses":{"200":{"description":"Product updated successfully","schema":{"$ref":"#/definitions/ResponseEntity"}},"201":{"description":"Created"},"401":{"description":"You are not authorized to view the resource"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}},"delete":{"tags":["Product API"],"summary":"Delete a product","operationId":"deleteUsingDELETE_2","consumes":["application/json"],"produces":["application/json"],"parameters":[{"name":"id","in":"path","description":"id","required":true,"type":"integer","format":"int64"}],"responses":{"200":{"description":"Product deleted successfully","schema":{"$ref":"#/definitions/ResponseEntity"}},"401":{"description":"You are not authorized to view the resource"},"204":{"description":"No Content"},"403":{"description":"Accessing the resource you were trying to reach is forbidden"},"404":{"description":"The resource you were trying to reach is not found"}}}},"/api/user/login":{"post":{"tags":["Authorization API"],"summary":"Authorize User","description":"You need to pass X-Username &amp; X-Password as header parameters","operationId":"loginUsingPOST","consumes":["application/json"],"produces":["application/json"],"responses":{"200":{"description":"OK","schema":{"type":"string"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}},"/api/user/logout":{"post":{"tags":["Authorization API"],"summary":"logout","operationId":"logoutUsingPOST","consumes":["application/json"],"produces":["*/*"],"responses":{"200":{"description":"OK","schema":{"type":"string"}},"201":{"description":"Created"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}}},"definitions":{"Iterable«Product»":{"type":"object"},"ResponseEntity":{"type":"object","properties":{"body":{"type":"object"},"statusCode":{"type":"string","enum":["100","101","102","103","200","201","202","203","204","205","206","207","208","226","300","301","302","303","304","305","307","308","400","401","402","403","404","405","406","407","408","409","410","411","412","413","414","415","416","417","418","419","420","421","422","423","424","426","428","429","431","451","500","501","502","503","504","505","506","507","508","509","510","511"]},"statusCodeValue":{"type":"integer","format":"int32"}}},"Employee":{"type":"object","properties":{"email":{"type":"string","description":"Email address"},"firstName":{"type":"string","description":"First Name"},"id":{"type":"integer","format":"int64","description":"The database generated user id"},"lastName":{"type":"string","description":"Last Name"}}},"Iterable":{"type":"object"},"Iterable«Customer»":{"type":"object"},"Customer":{"type":"object","properties":{"city":{"type":"string","description":"City"},"county":{"type":"string","description":"Country"},"email":{"type":"string","description":"Email address"},"firstName":{"type":"string","description":"First Name"},"id":{"type":"integer","format":"int64"},"lastName":{"type":"string","description":"Last Name"},"phone1":{"type":"string","description":"Phone 2"},"phone2":{"type":"string","description":"Phone 2"},"state":{"type":"string","description":"State"},"web":{"type":"string","description":"Web Page"},"zip":{"type":"string","description":"Zip code"}}},"Iterable«Employee»":{"type":"object"},"Product":{"type":"object","required":["price"],"properties":{"description":{"type":"string","description":"The product description"},"id":{"type":"integer","format":"int64","description":"The database generated product ID"},"price":{"type":"number","description":"The price of the product"},"productId":{"type":"string","description":"The application-specific product ID"}}}}}</con:content>
+        <con:type>https://swagger.io/swagger2/specification</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080</con:endpoint>
+    </con:endpoints>
+    <con:resource name="/api/country/country/get/all" path="/api/country/country/get/all" id="d62b5a9c-9e56-4083-b1b4-a856d56173b8">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="listUsingGET" id="c7fecfba-0a3c-41be-96b7-dc74b78c56a9" method="GET">
+        <con:description>list</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="b35c7167-04f0-4351-8055-c8a1eb536da4" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/country/get/iso2code/{alpha2_code}" path="/api/country/get/iso2code/{alpha2_code}" id="016ef85e-fbb3-4fd7-a819-696a5a8aec32">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>alpha2_code</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:description>alpha2_code</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="findByISO2CodeUsingGET" id="733c0e56-cf9b-4985-96d1-4b1c1f0d0979" method="GET">
+        <con:description>findByISO2Code</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="343d8f85-5379-4a5f-b03d-455fe8bcc87e" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/api/country/get/iso2code/IN</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="alpha2_code" value="IN"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/country/get/iso3code/{alpha3_code}" path="/api/country/get/iso3code/{alpha3_code}" id="052aca96-8946-4777-8e05-d3ead5822e1e">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>alpha3_code</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:description>alpha3_code</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="findByISO3CodeUsingGET" id="53fe34d5-453c-4b18-b32a-a46ac9d6d888" method="GET">
+        <con:description>findByISO3Code</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="755f65de-fe36-41c6-88b7-92750e672005" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/customer/add" path="/api/customer/add" id="a7b123ec-9e68-41cf-a358-28d2b7900f26">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="savecustomerUsingPOST" id="e50aa57e-e4c9-42e2-a738-ed00d920b40e" method="POST">
+        <con:description>Add a customer</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "city" : "string",
+  "county" : "string",
+  "email" : "string",
+  "firstName" : "string",
+  "id" : 0,
+  "lastName" : "string",
+  "phone1" : "string",
+  "phone2" : "string",
+  "state" : "string",
+  "web" : "string",
+  "zip" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="30c86a09-0f0a-488d-bec7-df3320d03174" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "city" : "string",\r
+  "county" : "Bangalore",\r
+  "email" : "Dhirajkumar643n@gmail.com",\r
+  "firstName" : "Dhiraj",\r
+  "id" : 7,\r
+  "lastName" : "Kumar",\r
+  "phone1" : "9535802575",\r
+  "phone2" : "123456789",\r
+  "state" : "Karnataka",\r
+  "web" : "string",\r
+  "zip" : "560030"\r
+}</con:request>
+          <con:originalUri>http://localhost/api/customer/add</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/customer/delete/{id}" path="/api/customer/delete/{id}" id="cb68594b-604c-42ca-b49b-9425a864a88c">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="deleteUsingDELETE" id="b0c1ff78-c327-45cb-bb31-d85ed7cd07d4" method="DELETE">
+        <con:description>Delete a customer</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>204</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="f33e15d7-72da-4e7c-8b1f-0d024448d56c" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/customer/list/json" path="/api/customer/list/json" id="bbe65f61-044b-4bc6-9b47-aa911be55a84">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="list1UsingGET" id="c384f328-7f79-4e8f-a1ae-64d10c0a4f4a" method="GET">
+        <con:description>List customers as JSON</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="8ae1ace3-1985-438d-a188-aad7ca1ac363" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/api/customer/list/json</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/customer/list/xml" path="/api/customer/list/xml" id="591fb7a7-ee35-4c5c-b550-eb5df2fdaae6">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="list2UsingGET" id="d550d68d-ad49-45a0-bd77-ba02c27c3766" method="GET">
+        <con:description>List Customers as XML</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="d0a64a78-e742-4708-90e0-94aa13a53f7e" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/customer/show" path="/api/customer/show" id="9b029e93-ab13-40c0-b85f-b5238acd4b52">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="showcustomerUsingGET" id="ce2c0e96-6c89-470b-9f2c-b641f5eaa35d" method="GET">
+        <con:description>Search a customer with an ID</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>id</con:name>
+            <con:style>QUERY</con:style>
+            <con:dataType>integer</con:dataType>
+            <con:description>id</con:description>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "city" : "string",
+  "county" : "string",
+  "email" : "string",
+  "firstName" : "string",
+  "id" : 0,
+  "lastName" : "string",
+  "phone1" : "string",
+  "phone2" : "string",
+  "state" : "string",
+  "web" : "string",
+  "zip" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="c1175f00-0ce7-4479-ac53-ed2258a43639" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>Authentication_Profile</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/customer/update/{id}" path="/api/customer/update/{id}" id="c6cc4631-a61e-48e6-809d-e133ff6e3c61">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="updatecustomerUsingPUT" id="84005238-49b1-4eb9-ae05-a7061860b3fb" method="PUT">
+        <con:description>Update a customer</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "city" : "string",
+  "county" : "string",
+  "email" : "string",
+  "firstName" : "string",
+  "id" : 0,
+  "lastName" : "string",
+  "phone1" : "string",
+  "phone2" : "string",
+  "state" : "string",
+  "web" : "string",
+  "zip" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="1bf21bae-5b67-427b-898d-ae42fd4fcc19" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "city" : "string",\r
+  "county" : "string",\r
+  "email" : "string",\r
+  "firstName" : "string",\r
+  "id" : 0,\r
+  "lastName" : "string",\r
+  "phone1" : "string",\r
+  "phone2" : "string",\r
+  "state" : "string",\r
+  "web" : "string",\r
+  "zip" : "string"\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/employee/add" path="/api/employee/add" id="01bfacf3-628c-4d21-9b6d-5cca063de4a3">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="saveemployeeUsingPOST" id="f32c0dad-db2a-4d1c-b8d9-462c84062314" method="POST">
+        <con:description>Add an employee</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "email" : "string",
+  "firstName" : "string",
+  "id" : 0,
+  "lastName" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="ca489c86-706e-4145-8669-913baae805ac" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "email" : "string",\r
+  "firstName" : "string",\r
+  "id" : 0,\r
+  "lastName" : "string"\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/employee/delete/{id}" path="/api/employee/delete/{id}" id="cba3752d-e428-46cc-bb23-7482e4a8b36c">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="deleteUsingDELETE_1" id="c00eb26b-95f6-4925-9872-6c60acac08db" method="DELETE">
+        <con:description>Delete a employee</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>Username</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+          <con:parameter required="true">
+            <con:name>Password</con:name>
+            <con:value/>
+            <con:style>HEADER</con:style>
+            <con:default/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>204</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="c41e1f1f-e5d3-42d8-8bd2-5ae98e98aa15" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+          <con:parameterOrder>
+            <con:entry>id</con:entry>
+            <con:entry>Username</con:entry>
+            <con:entry>Password</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/employee/list" path="/api/employee/list" id="a5be2966-e3bf-4a3c-afe0-885ff353527c">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="listUsingGET_1" id="a3c7f352-8bbd-431e-882f-8d201e73709b" method="GET">
+        <con:description>List All Employees</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="eea091e9-c9c3-461e-8c63-64aa0b6c2d46" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/api/employee/list</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/employee/show/{id}" path="/api/employee/show/{id}" id="81169dc8-437c-4707-92d8-1e9981bb2107">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="showemployeeUsingGET" id="5d5939af-381d-4aa7-b084-ab7e00aa0e39" method="GET">
+        <con:description>Search a employee with an ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "email" : "string",
+  "firstName" : "string",
+  "id" : 0,
+  "lastName" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="cb21e143-4f52-48b7-ad5d-64e7151c9b3a" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/employee/update/{id}" path="/api/employee/update/{id}" id="5cbb84ab-98c4-4074-8dad-1e72b3eecb87">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="updateemployeeUsingPUT" id="8600e9fb-320f-4319-8089-54dcec659f8f" method="PUT">
+        <con:description>Update an employee</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "email" : "string",
+  "firstName" : "string",
+  "id" : 0,
+  "lastName" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="2529f10e-8a22-4bbf-9c1e-429ef05abbdd" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "email" : "string",\r
+  "firstName" : "string",\r
+  "id" : 0,\r
+  "lastName" : "string"\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product" path="/api/product" id="a3e022b2-2a45-493c-abf1-a27a00238806">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="saveProductUsingPOST" id="73752d24-17be-4b56-92c7-512b6b9290f7" method="POST">
+        <con:description>Add a product</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "description" : "string",
+  "id" : 0,
+  "price" : 1.5,
+  "productId" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<ResponseEntity>
+   <Body/>
+   <statusCode>100</statusCode>
+   <statusCodeValue>0</statusCodeValue>
+</ResponseEntity>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+          <con:sampleContent><![CDATA[<ResponseEntity>
+   <Body/>
+   <statusCode>100</statusCode>
+   <statusCodeValue>0</statusCodeValue>
+</ResponseEntity>]]></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="46d02b3c-7fd4-4126-8af4-5201919f0706" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "description" : "string",\r
+  "id" : 0,\r
+  "price" : 1.5,\r
+  "productId" : "string"\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product/list/json" path="/api/product/list/json" id="6b047cec-34e3-4c7a-8a58-0b8430a74337">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="list2UsingGET_1" id="662ce8a9-fa86-4fd1-bffe-67e6a77bb9db" method="GET">
+        <con:description>List Products as JSON</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{ }</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="f6b1336a-78ec-453e-a50f-3ac998cd3e80" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product/list/xml" path="/api/product/list/xml" id="5ecce2c3-bd54-4b71-929d-12e2e1670384">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="list1UsingGET_1" id="e4463dc1-f25f-42a8-b1d6-a3cd6c8df42a" method="GET">
+        <con:description>List Products as XML</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>&lt;Iterable/></con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="1ea20599-4bb0-4c2e-945a-6b7559cb1504" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/product/{id}" path="/api/product/{id}" id="28ea92e1-0616-487a-814c-b7ff96b1baab">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter required="true">
+          <con:name>id</con:name>
+          <con:style>TEMPLATE</con:style>
+          <con:dataType>integer</con:dataType>
+          <con:description>id</con:description>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="showProductUsingGET" id="cd773763-6d76-4291-b7d4-81a41597062d" method="GET">
+        <con:description>Search a product with an ID</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "description" : "string",
+  "id" : 0,
+  "price" : 1.5,
+  "productId" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="9986cc33-c975-4571-a879-fd3f487b7787" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="updateProductUsingPUT" id="21ef7b5e-544b-4d07-9827-e74eafe4a9da" method="PUT">
+        <con:description>Update a product</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+          <con:sampleContent>{
+  "description" : "string",
+  "id" : 0,
+  "price" : 1.5,
+  "productId" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="d784b550-de0d-4290-a1fc-abd05098a57e" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{\r
+  "description" : "string",\r
+  "id" : 0,\r
+  "price" : 1.5,\r
+  "productId" : "string"\r
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="deleteUsingDELETE_2" id="2ca7c1ec-2600-4e48-8389-16663c7668bb" method="DELETE">
+        <con:description>Delete a product</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>{
+  "body" : { },
+  "statusCode" : "100",
+  "statusCodeValue" : 0
+}</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>204</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="8fbca14e-60ba-48c7-97a4-c78eebdfa654" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/user/login" path="/api/user/login" id="ca153322-36e4-4a8b-b1f3-70e85a482669">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="loginUsingPOST" id="66348cd1-0f04-4ba4-9935-a35dda4cce60" method="POST">
+        <con:description>You need to pass X-Username &amp; X-Password as header parameters
+Authorize User</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>"string"</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="b2c3a3fb-6def-482b-815a-b79340c5727e" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/api/user/logout" path="/api/user/logout" id="775a470e-3245-4234-93bb-31c34f274b62">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="logoutUsingPOST" id="89fb0d77-5dd9-4583-8910-e2295821edb4" method="POST">
+        <con:description>logout</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>403</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>*/*</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="1104c5d2-3e68-498d-a662-58798799e71a" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:interface xsi:type="con:RestService" id="c9620179-ab52-4418-b9ce-bda5ab2eda78" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://gorest.co.in" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart=""/>
+    <con:endpoints>
+      <con:endpoint>https://gorest.co.in</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Users" path="/public-api/users" id="1e451aa6-da3d-4c11-8e22-76747e6447ec">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="Users" id="de5a69e8-f132-4622-9a11-ac7ec0a84b00" method="GET">
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>access-token</con:name>
+            <con:value>P0NGGpIi-rMRmT-LrsiWMjgk_KdensPT5Rs8</con:value>
+            <con:style>QUERY</con:style>
+            <con:default>P0NGGpIi-rMRmT-LrsiWMjgk_KdensPT5Rs8</con:default>
+            <con:path xsi:nil="true"/>
+            <con:description xsi:nil="true"/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:user="https://gorest.co.in/public-api/users">user:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="d6952b3a-44a5-4e60-a5f2-d30ac9ed90bb" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>https://gorest.co.in</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="access-token" value="P0NGGpIi-rMRmT-LrsiWMjgk_KdensPT5Rs8"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>access-token</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="9c4b3942-83a7-4033-955d-9bf721b603ae" name="TS_01_Country API : Read countries information">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="6ae7dc6d-ba00-430c-a8ca-1b089054df16" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_01_Retrieve all Country Details" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="REST Request" id="4db6f093-6222-45b4-b6cd-4a89295f0f38">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/country/country/get/all" methodName="listUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="REST Request" id="b35c7167-04f0-4351-8055-c8a1eb536da4" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/country/country/get/all</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="e79ae6c8-3b91-473d-9d87-53f65eb2c1e1" name="Validate Response is a Valid HTTP Status Code(200) &lt;--VALID HTTP STATUS CODE-->">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="b6d3870c-85b0-4c47-9467-b4d625b551b9" name="Validate Response is obtained within 200ms &lt;--RESPONSE SLA-->">
+              <con:configuration>
+                <SLA>200</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XQuery Match" id="8768090e-1c29-4577-891a-53f1cecbb3f2" name="Retrieve all the station Names &lt;--XQUERY MATCH-->">
+              <con:configuration>
+                <path>declare namespace ns1='http://localhost/api/country/country/get/all';
+&lt;CountryNames>
+{
+for $countryName in //ns1:e
+return  &lt;Name> { data ($countryName/ns1:name/text( ) ) } &lt;/Name>
+}
+&lt;/CountryNames></path>
+                <content><![CDATA[<CountryNames>
+  <Name/>
+  <Name>Afghanistan</Name>
+  <Name>��land Islands</Name>
+  <Name>Albania</Name>
+  <Name>Algeria</Name>
+  <Name>American Samoa</Name>
+  <Name>Andorra</Name>
+  <Name>Angola</Name>
+  <Name>Anguilla</Name>
+  <Name>Antarctica</Name>
+  <Name>Antigua and Barbuda</Name>
+  <Name>Argentina</Name>
+  <Name>Armenia</Name>
+  <Name>Aruba</Name>
+  <Name>Australia</Name>
+  <Name>Austria</Name>
+  <Name>Azerbaijan</Name>
+  <Name>Bahamas</Name>
+  <Name>Bahrain</Name>
+  <Name>Bangladesh</Name>
+  <Name>Barbados</Name>
+  <Name>Belarus</Name>
+  <Name>Belgium</Name>
+  <Name>Belize</Name>
+  <Name>Benin</Name>
+  <Name>Bermuda</Name>
+  <Name>Bhutan</Name>
+  <Name>Bolivia (Plurinational State of)</Name>
+  <Name>Bonaire, Sint Eustatius and Saba</Name>
+  <Name>Bosnia and Herzegovina</Name>
+  <Name>Botswana</Name>
+  <Name>Bouvet Island</Name>
+  <Name>Brazil</Name>
+  <Name>British Indian Ocean Territory</Name>
+  <Name>Brunei Darussalam</Name>
+  <Name>Bulgaria</Name>
+  <Name>Burkina Faso</Name>
+  <Name>Burundi</Name>
+  <Name>Cabo Verde</Name>
+  <Name>Cambodia</Name>
+  <Name>Cameroon</Name>
+  <Name>Canada</Name>
+  <Name>Cayman Islands</Name>
+  <Name>Central African Republic</Name>
+  <Name>Chad</Name>
+  <Name>Chile</Name>
+  <Name>China</Name>
+  <Name>Christmas Island</Name>
+  <Name>Cocos (Keeling) Islands</Name>
+  <Name>Colombia</Name>
+  <Name>Comoros</Name>
+  <Name>Congo</Name>
+  <Name>Congo (Democratic Republic of the)</Name>
+  <Name>Cook Islands</Name>
+  <Name>Costa Rica</Name>
+  <Name>C��te d'Ivoire</Name>
+  <Name>Croatia</Name>
+  <Name>Cuba</Name>
+  <Name>Cura��ao</Name>
+  <Name>Cyprus</Name>
+  <Name>Czechia</Name>
+  <Name>Denmark</Name>
+  <Name>Djibouti</Name>
+  <Name>Dominica</Name>
+  <Name>Dominican Republic</Name>
+  <Name>Ecuador</Name>
+  <Name>Egypt</Name>
+  <Name>El Salvador</Name>
+  <Name>Equatorial Guinea</Name>
+  <Name>Eritrea</Name>
+  <Name>Estonia</Name>
+  <Name>Ethiopia</Name>
+  <Name>Falkland Islands (Malvinas)</Name>
+  <Name>Faroe Islands</Name>
+  <Name>Fiji</Name>
+  <Name>Finland</Name>
+  <Name>France</Name>
+  <Name>French Guiana</Name>
+  <Name>French Polynesia</Name>
+  <Name>French Southern Territories</Name>
+  <Name>Gabon</Name>
+  <Name>Gambia</Name>
+  <Name>Georgia</Name>
+  <Name>Germany</Name>
+  <Name>Ghana</Name>
+  <Name>Gibraltar</Name>
+  <Name>Greece</Name>
+  <Name>Greenland</Name>
+  <Name>Grenada</Name>
+  <Name>Guadeloupe</Name>
+  <Name>Guam</Name>
+  <Name>Guatemala</Name>
+  <Name>Guernsey</Name>
+  <Name>Guinea</Name>
+  <Name>Guinea-Bissau</Name>
+  <Name>Guyana</Name>
+  <Name>Haiti</Name>
+  <Name>Heard Island and McDonald Islands</Name>
+  <Name>Holy See</Name>
+  <Name>Honduras</Name>
+  <Name>Hong Kong</Name>
+  <Name>Hungary</Name>
+  <Name>Iceland</Name>
+  <Name>India</Name>
+  <Name>Indonesia</Name>
+  <Name>Iran (Islamic Republic of)</Name>
+  <Name>Iraq</Name>
+  <Name>Ireland</Name>
+  <Name>Isle of Man</Name>
+  <Name>Israel</Name>
+  <Name>Italy</Name>
+  <Name>Jamaica</Name>
+  <Name>Japan</Name>
+  <Name>Jersey</Name>
+  <Name>Jordan</Name>
+  <Name>Kazakhstan</Name>
+  <Name>Kenya</Name>
+  <Name>Kiribati</Name>
+  <Name>Korea (Democratic People's Republic of)</Name>
+  <Name>Korea (Republic of)</Name>
+  <Name>Kuwait</Name>
+  <Name>Kyrgyzstan</Name>
+  <Name>Lao People's Democratic Republic</Name>
+  <Name>Latvia</Name>
+  <Name>Lebanon</Name>
+  <Name>Lesotho</Name>
+  <Name>Liberia</Name>
+  <Name>Libya</Name>
+  <Name>Liechtenstein</Name>
+  <Name>Lithuania</Name>
+  <Name>Luxembourg</Name>
+  <Name>Macao</Name>
+  <Name>Macedonia (the former Yugoslav Republic of)</Name>
+  <Name>Madagascar</Name>
+  <Name>Malawi</Name>
+  <Name>Malaysia</Name>
+  <Name>Maldives</Name>
+  <Name>Mali</Name>
+  <Name>Malta</Name>
+  <Name>Marshall Islands</Name>
+  <Name>Martinique</Name>
+  <Name>Mauritania</Name>
+  <Name>Mauritius</Name>
+  <Name>Mayotte</Name>
+  <Name>Mexico</Name>
+  <Name>Micronesia (Federated States of)</Name>
+  <Name>Moldova (Republic of)</Name>
+  <Name>Monaco</Name>
+  <Name>Mongolia</Name>
+  <Name>Montenegro</Name>
+  <Name>Montserrat</Name>
+  <Name>Morocco</Name>
+  <Name>Mozambique</Name>
+  <Name>Myanmar</Name>
+  <Name>Namibia</Name>
+  <Name>Nauru</Name>
+  <Name>Nepal</Name>
+  <Name>Netherlands</Name>
+  <Name>New Caledonia</Name>
+  <Name>New Zealand</Name>
+  <Name>Nicaragua</Name>
+  <Name>Niger</Name>
+  <Name>Nigeria</Name>
+  <Name>Niue</Name>
+  <Name>Norfolk Island</Name>
+  <Name>Northern Mariana Islands</Name>
+  <Name>Norway</Name>
+  <Name>Oman</Name>
+  <Name>Pakistan</Name>
+  <Name>Palau</Name>
+  <Name>Palestine, State of</Name>
+  <Name>Panama</Name>
+  <Name>Papua New Guinea</Name>
+  <Name>Paraguay</Name>
+  <Name>Peru</Name>
+  <Name>Philippines</Name>
+  <Name>Pitcairn</Name>
+  <Name>Poland</Name>
+  <Name>Portugal</Name>
+  <Name>Puerto Rico</Name>
+  <Name>Qatar</Name>
+  <Name>R��union</Name>
+  <Name>Romania</Name>
+  <Name>Russian Federation</Name>
+  <Name>Rwanda</Name>
+  <Name>Saint Barth��lemy</Name>
+  <Name>Saint Helena, Ascension and Tristan da Cunha</Name>
+  <Name>Saint Kitts and Nevis</Name>
+  <Name>Saint Lucia</Name>
+  <Name>Saint Martin (French part)</Name>
+  <Name>Saint Pierre and Miquelon</Name>
+  <Name>Saint Vincent and the Grenadines</Name>
+  <Name>Samoa</Name>
+  <Name>San Marino</Name>
+  <Name>Sao Tome and Principe</Name>
+  <Name>Saudi Arabia</Name>
+  <Name>Senegal</Name>
+  <Name>Serbia</Name>
+  <Name>Seychelles</Name>
+  <Name>Sierra Leone</Name>
+  <Name>Singapore</Name>
+  <Name>Sint Maarten (Dutch part)</Name>
+  <Name>Slovakia</Name>
+  <Name>Slovenia</Name>
+  <Name>Solomon Islands</Name>
+  <Name>Somalia</Name>
+  <Name>South Africa</Name>
+  <Name>South Georgia and the South Sandwich Islands</Name>
+  <Name>South Sudan</Name>
+  <Name>Spain</Name>
+  <Name>Sri Lanka</Name>
+  <Name>Sudan</Name>
+  <Name>Suriname</Name>
+  <Name>Svalbard and Jan Mayen</Name>
+  <Name>Swaziland</Name>
+  <Name>Sweden</Name>
+  <Name>Switzerland</Name>
+  <Name>Syrian Arab Republic</Name>
+  <Name>Taiwan, Province of China [a]</Name>
+  <Name>Tajikistan</Name>
+  <Name>Tanzania, United Republic of</Name>
+  <Name>Thailand</Name>
+  <Name>Timor-Leste</Name>
+  <Name>Togo</Name>
+  <Name>Tokelau</Name>
+  <Name>Tonga</Name>
+  <Name>Trinidad and Tobago</Name>
+  <Name>Tunisia</Name>
+  <Name>Turkey</Name>
+  <Name>Turkmenistan</Name>
+  <Name>Turks and Caicos Islands</Name>
+  <Name>Tuvalu</Name>
+  <Name>Uganda</Name>
+  <Name>Ukraine</Name>
+  <Name>United Arab Emirates</Name>
+  <Name>United Kingdom of Great Britain and Northern Ireland</Name>
+  <Name>United States of America</Name>
+  <Name>United States Minor Outlying Islands</Name>
+  <Name>Uruguay</Name>
+  <Name>Uzbekistan</Name>
+  <Name>Vanuatu</Name>
+  <Name>Venezuela (Bolivarian Republic of)</Name>
+  <Name>Viet Nam</Name>
+  <Name>Virgin Islands (British)</Name>
+  <Name>Virgin Islands (U.S.)</Name>
+  <Name>Wallis and Futuna</Name>
+  <Name>Western Sahara</Name>
+  <Name>Yemen</Name>
+  <Name>Zambia</Name>
+  <Name>Zimbabwe</Name>
+</CountryNames>]]></content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="2f51dbd3-d601-453c-b1aa-04d8588f127e" name="Retrieve Details for INDIA &lt;--JSON PATH-->">
+              <con:configuration>
+                <path>$.RestResponse.result[102]</path>
+                <content>{
+   "name" : "India",
+   "alpha2_code" : "IN",
+   "alpha3_code" : "IND"
+}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="ec727d9d-7a86-4213-acf9-feac8032d454" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_02_Retreive Country with 2 DigitCode -IN" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="findByISO2CodeUsingGET" id="df6f2a95-53a8-4cab-9e2b-70e1b3727bea">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/country/get/iso2code/{alpha2_code}" methodName="findByISO2CodeUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="findByISO2CodeUsingGET" id="343d8f85-5379-4a5f-b03d-455fe8bcc87e" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/country/get/iso2code/IN</con:originalUri>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="alpha2_code" value="${#TestSuite#2_ISOCODE}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="0b97da0d-d28f-4f3e-b9df-dfad6b0ab470" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_03_Retreive Country with 3 DigitCode -USA" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="findByISO3CodeUsingGET" id="5afc787c-6424-4812-a701-846f7cf7e740">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/country/get/iso3code/{alpha3_code}" methodName="findByISO3CodeUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="findByISO3CodeUsingGET" id="755f65de-fe36-41c6-88b7-92750e672005" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/country/get/iso3code/USA</con:originalUri>
+            <con:assertion type="JsonPath Match" id="f764d8c0-635f-4870-8d8f-339743aae379" name="Validate name is &quot;United States of America&quot;  &lt;--JSON PATH-->">
+              <con:configuration>
+                <path>$.RestResponse.result.name</path>
+                <content>"United States of America"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="alpha3_code" value="${#TestSuite#3_ISOCODE}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="c3b17b32-f6cb-40b5-8c7e-f26930c01854" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_04_E2E_ValidateResponse of 2 Digit with 3 digit Response" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="findByISO2CodeUsingGET" id="4c847808-a65b-4b74-8e10-6e9774e27a4f">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/country/get/iso2code/{alpha2_code}" methodName="findByISO2CodeUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="findByISO2CodeUsingGET" id="343d8f85-5379-4a5f-b03d-455fe8bcc87e" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/country/get/iso2code/IN</con:originalUri>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="alpha2_code" value="${#TestSuite#2_ISOCODE}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="findByISO3CodeUsingGET" id="2a4ed4f9-8038-43dd-8d23-24e6e8cef774">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/country/get/iso3code/{alpha3_code}" methodName="findByISO3CodeUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="findByISO3CodeUsingGET" id="755f65de-fe36-41c6-88b7-92750e672005" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/country/get/iso3code/USA</con:originalUri>
+            <con:assertion type="JsonPath Match" id="f764d8c0-635f-4870-8d8f-339743aae379" name="Validate Responsde of 3 Digit Matches with 2 Digit Response &lt;--JSON PATH-->">
+              <con:configuration>
+                <path>$.RestResponse.result</path>
+                <content>${findByISO2CodeUsingGET#Response#$.RestResponse.result}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="alpha3_code" value="${#TestCase#3_ISOCODECHECK}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>3_ISOCODECHECK</con:name>
+          <con:value>IND</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties>
+      <con:property>
+        <con:name>2_ISOCODE</con:name>
+        <con:value>IN</con:value>
+      </con:property>
+      <con:property>
+        <con:name>3_ISOCODE</con:name>
+        <con:value>USA</con:value>
+      </con:property>
+    </con:properties>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="82bebb8c-8a9f-4f18-87e3-221c0f8ad779" name="TS_02_Types Of Authentications">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="f81ba0d7-5dd2-42f5-9ab5-25ca7a123bb4" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_01_Access Token as Query Parameter = QUERY PARAM" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="Users" id="125941b7-6df9-4c32-9fa2-cc1b4f26f4a5">
+        <con:settings/>
+        <con:config service="https://gorest.co.in" resourcePath="/public-api/users" methodName="Users" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Users" id="d7a0600c-a1d7-4239-b5d8-cb8bc2f87eb3" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>https://gorest.co.in</con:endpoint>
+            <con:request/>
+            <con:originalUri>https://gorest.co.in/public-api/users</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="be223874-412c-4e0d-91f6-c2d340f5f753" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+            <con:parameterOrder>
+              <con:entry>access-token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="483f9d20-27af-4423-a169-6886c4879be5" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_02_Windows Basic Authentication = BASIC AUTH" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="savecustomerUsingPOST" id="29282158-5c42-4c03-8041-a536da7a6dd7">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/customer/add" methodName="savecustomerUsingPOST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="savecustomerUsingPOST" id="30c86a09-0f0a-488d-bec7-df3320d03174" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{\r
+  "city" : "string",\r
+  "county" : "Bangalore",\r
+  "email" : "Dhirajkumar643n@gmail.com",\r
+  "firstName" : "Dhiraj",\r
+  "id" : 7,\r
+  "lastName" : "Kumar",\r
+  "phone1" : "9535802575",\r
+  "phone2" : "123456789",\r
+  "state" : "Karnataka",\r
+  "web" : "string",\r
+  "zip" : "560030"\r
+}</con:request>
+            <con:originalUri>http://localhost/api/customer/add</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="71cbd618-a636-476c-a58e-4de7903244be" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="list1UsingGET" id="9d977da3-b50f-43a1-bed2-55da98345854">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/customer/list/json" methodName="list1UsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="list1UsingGET" id="8ae1ace3-1985-438d-a188-aad7ca1ac363" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/customer/list/json</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="6ee357be-f097-4e8a-be5d-34f7321d2723" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="showcustomerUsingGET" id="a5092ad0-2957-4fa4-bff0-9bab1f6ab7ff">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/customer/show" methodName="showcustomerUsingGET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="showcustomerUsingGET" id="c1175f00-0ce7-4479-ac53-ed2258a43639" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/customer/show</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="3200e7bb-427b-402f-8211-e4cf05bd656a" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>Authentication_Profile</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="id" value="7"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="97b11e0a-d7a7-4d4f-be80-e3998a32425d" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_03_UN &amp; PASS as Header Parameter = HEADER PARAM" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="deleteUsingDELETE_1" id="53291801-e3c3-450b-8c7f-def72171e2b8">
+        <con:settings/>
+        <con:config service="Smart Bytes-Rest APIs" resourcePath="/api/employee/delete/{id}" methodName="deleteUsingDELETE_1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="deleteUsingDELETE_1" id="c41e1f1f-e5d3-42d8-8bd2-5ae98e98aa15" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/employee/delete/7</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="b8e8e544-0f0f-4a4d-9c5b-fc7ed84f8200" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>401</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="Username" value="${#TestCase#UN}"/>
+              <con:entry key="id" value="7"/>
+              <con:entry key="Password" value="${#TestCase#PASS}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>id</con:entry>
+              <con:entry>Username</con:entry>
+              <con:entry>Password</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>UN</con:name>
+          <con:value>Dhiraj Kumar</con:value>
+        </con:property>
+        <con:property>
+          <con:name>PASS</con:name>
+          <con:value>123456789</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="453e6920-9b8c-43eb-819a-437896680f84" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_04_Access Token as 2.0 0AUTH  = 2.0 0AUTH" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="restrequest" name="Users" id="6b132585-8c23-4ef6-a036-f6435a49a258">
+        <con:settings/>
+        <con:config service="https://gorest.co.in" resourcePath="/public-api/users" methodName="Users" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Users" id="d7a0600c-a1d7-4239-b5d8-cb8bc2f87eb3" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>https://gorest.co.in</con:endpoint>
+            <con:request/>
+            <con:originalUri>https://gorest.co.in/public-api/users</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="be223874-412c-4e0d-91f6-c2d340f5f753" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>AccessAdmin</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+            <con:parameterOrder>
+              <con:entry>access-token</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer>
+    <con:oAuth2Profile>
+      <con:name>AccessAdmin</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:accessToken>P0NGGpIi-rMRmT-LrsiWMjgk_KdensPT5Rs8</con:accessToken>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:accessTokenStartingStatus>ENTERED_MANUALLY</con:accessTokenStartingStatus>
+      <con:oAuth2Flow>AUTHORIZATION_CODE_GRANT</con:oAuth2Flow>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+      <con:jwtConfiguration/>
+      <con:responseType>id_token</con:responseType>
+    </con:oAuth2Profile>
+  </con:oAuth2ProfileContainer>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
+    <con:xmlTemplates/>
+    <con:parameters/>
+    <con:parameters/>
+  </con:reporting>
+  <con:reporting/>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to SoapUI Pro tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository>
+    <con:basicAuthEntry>
+      <con:name>Admin Profile</con:name>
+      <con:type>Basic</con:type>
+      <con:username>DhirajKumarAsAdmin</con:username>
+      <con:password>0987654321</con:password>
+      <con:domain>Https://LocalHost:8080</con:domain>
+      <con:preemptive>true</con:preemptive>
+    </con:basicAuthEntry>
+    <con:basicAuthEntry>
+      <con:name>Authentication_Profile</con:name>
+      <con:type>Basic</con:type>
+      <con:username>DJ</con:username>
+      <con:password>Dhiraj123</con:password>
+      <con:preemptive>true</con:preemptive>
+    </con:basicAuthEntry>
+    <con:oAuth20AuthEntry>
+      <con:name>AccessAdmin</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:accessToken>P0NGGpIi-rMRmT-LrsiWMjgk_KdensPT5Rs8</con:accessToken>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:accessTokenStartingStatus>ENTERED_MANUALLY</con:accessTokenStartingStatus>
+      <con:oAuth2Flow>AUTHORIZATION_CODE_GRANT</con:oAuth2Flow>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+      <con:jwtConfiguration/>
+      <con:responseType>id_token</con:responseType>
+    </con:oAuth20AuthEntry>
+  </con:authRepository>
+  <con:tags/>
+</con:soapui-project>

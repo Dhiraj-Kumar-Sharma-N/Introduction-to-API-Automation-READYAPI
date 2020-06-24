@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="3b77ec4e-d10b-4d65-9b58-e30d74b43375" activeEnvironment="Test Environment" name="Managing Multiple Enviroments" resourceRoot="${projectDir}" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" encryptionMode="Not encrypted" updated="3.2.7 2020-05-27T19:48:04Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="430df3d5-19dd-4ad5-a19e-d6f7afd780fd" wsaVersion="NONE" name="BLZServiceSOAP11Binding" type="wsdl" bindingName="{http://thomas-bayer.com/blz/}BLZServiceSOAP11Binding" soapVersion="1_1" anonymous="optional" definition="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl">
+      <con:part>
+        <con:url>http://www.thomas-bayer.com/axis2/services/BLZService?wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://thomas-bayer.com/blz/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://thomas-bayer.com/blz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>BLZService</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://thomas-bayer.com/blz/">
+      <xsd:element name="getBank" type="tns:getBankType"/>
+      <xsd:element name="getBankResponse" type="tns:getBankResponseType"/>
+      <xsd:complexType name="getBankType">
+        <xsd:sequence>
+          <xsd:element name="blz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getBankResponseType">
+        <xsd:sequence>
+          <xsd:element name="details" type="tns:detailsType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="detailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bezeichnung" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="bic" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ort" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="plz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBank">
+    <wsdl:part name="parameters" element="tns:getBank"/>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part name="parameters" element="tns:getBankResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="BLZServicePortType">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="tns:getBank"/>
+      <wsdl:output message="tns:getBankResponse" wsaw:Action="http://thomas-bayer.com/blz/BLZService/getBankResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BLZServiceSOAP11Binding" type="tns:BLZServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceSOAP12Binding" type="tns:BLZServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceHttpBinding" type="tns:BLZServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getBank">
+      <http:operation location="BLZService/getBank"/>
+      <wsdl:input>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BLZService">
+    <wsdl:port name="BLZServiceSOAP11port_http" binding="tns:BLZServiceSOAP11Binding">
+      <soap:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceSOAP12port_http" binding="tns:BLZServiceSOAP12Binding">
+      <soap12:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceHttpport" binding="tns:BLZServiceHttpBinding">
+      <http:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>${#[Project#bankEndpoint}</con:endpoint>
+      <con:endpoint>http://localhost:8089/BLZ_MockService</con:endpoint>
+      <con:endpoint>http://sys-PC:8088/mockBLZServiceSOAP11Binding</con:endpoint>
+      <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:endpoints>
+    <con:environmentSpec>
+      <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+    <con:operation id="4000b280-7fb8-498d-90bb-5d453a31c901" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4a91a21b-d162-4db2-a8a8-ed56f8d9ce7c" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <blz:getBank>\r
+         <blz:blz>gero et</blz:blz>\r
+      </blz:getBank>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+        <con:environmentSpec>
+          <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:call>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="017a7694-82e5-4a07-bbc0-810ededa0f57" wsaVersion="NONE" name="BLZServiceSOAP12Binding" type="wsdl" bindingName="{http://thomas-bayer.com/blz/}BLZServiceSOAP12Binding" soapVersion="1_2" anonymous="optional" definition="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://www.thomas-bayer.com/axis2/services/BLZService?wsdl">
+      <con:part>
+        <con:url>http://www.thomas-bayer.com/axis2/services/BLZService?wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://thomas-bayer.com/blz/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://thomas-bayer.com/blz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>BLZService</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://thomas-bayer.com/blz/">
+      <xsd:element name="getBank" type="tns:getBankType"/>
+      <xsd:element name="getBankResponse" type="tns:getBankResponseType"/>
+      <xsd:complexType name="getBankType">
+        <xsd:sequence>
+          <xsd:element name="blz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getBankResponseType">
+        <xsd:sequence>
+          <xsd:element name="details" type="tns:detailsType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="detailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bezeichnung" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="bic" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ort" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="plz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBank">
+    <wsdl:part name="parameters" element="tns:getBank"/>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part name="parameters" element="tns:getBankResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="BLZServicePortType">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="tns:getBank"/>
+      <wsdl:output message="tns:getBankResponse" wsaw:Action="http://thomas-bayer.com/blz/BLZService/getBankResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BLZServiceSOAP11Binding" type="tns:BLZServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceSOAP12Binding" type="tns:BLZServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BLZServiceHttpBinding" type="tns:BLZServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getBank">
+      <http:operation location="BLZService/getBank"/>
+      <wsdl:input>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getBank" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BLZService">
+    <wsdl:port name="BLZServiceSOAP11port_http" binding="tns:BLZServiceSOAP11Binding">
+      <soap:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceSOAP12port_http" binding="tns:BLZServiceSOAP12Binding">
+      <soap12:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+    <wsdl:port name="BLZServiceHttpport" binding="tns:BLZServiceHttpBinding">
+      <http:address location="http://www.thomas-bayer.com/axis2/services/BLZService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:endpoints>
+    <con:environmentSpec>
+      <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+    <con:operation id="b528755d-5ebb-4c7d-b7ab-3c1ce7ef8d2f" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="5b21e0cb-24c3-42b2-8d62-d2099678f054" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <blz:getBank>\r
+         <blz:blz>gero et</blz:blz>\r
+      </blz:getBank>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+        <con:environmentSpec>
+          <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:call>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="ca443b47-4c42-4419-8c0b-b3929528ef80" wsaVersion="NONE" name="MediCareSupplierSoap12" type="wsdl" bindingName="{http://www.webservicex.net/}MediCareSupplierSoap12" soapVersion="1_2" anonymous="optional" definition="http://www.webservicex.net/medicareSupplier.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT"/>
+    <con:endpoints>
+      <con:endpoint>${#[Project#supplierEndpoint}</con:endpoint>
+      <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+    </con:endpoints>
+    <con:environmentSpec>
+      <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+    <con:operation id="b49f03fe-80e9-4cd1-9a2a-a0120e2101d8" isOneWay="false" action="http://www.webservicex.net/GetSupplierByCity" name="GetSupplierByCity" bindingOperationName="GetSupplierByCity" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="5d1d0e4a-d8d8-4441-945e-74b8c01162b8" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://www.webservicex.net/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <web:GetSupplierByCity>\r
+         <!--Optional:-->\r
+         <web:City>gero et</web:City>\r
+      </web:GetSupplierByCity>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/MediCareSupplierSoap/GetSupplierByCityRequest"/>
+        <con:environmentSpec>
+          <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:call>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:operation>
+    <con:operation id="429d2d58-e12e-46c5-b09c-59d1a8a8deaa" isOneWay="false" action="http://www.webservicex.net/GetSupplierBySupplyType" name="GetSupplierBySupplyType" bindingOperationName="GetSupplierBySupplyType" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="64d4b576-bb8a-46c2-9e24-82d3c29657c6" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://www.webservicex.net/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <web:GetSupplierBySupplyType>\r
+         <!--Optional:-->\r
+         <web:description>gero et</web:description>\r
+      </web:GetSupplierBySupplyType>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/MediCareSupplierSoap/GetSupplierBySupplyTypeRequest"/>
+        <con:environmentSpec>
+          <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:call>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:operation>
+    <con:operation id="001cf37f-d31f-460e-a264-2e00a1a7a8dc" isOneWay="false" action="http://www.webservicex.net/GetSupplierByZipCode" name="GetSupplierByZipCode" bindingOperationName="GetSupplierByZipCode" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="2be79e60-34e4-471a-bb11-48ac0ae64d22" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://www.webservicex.net/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <web:GetSupplierByZipCode>\r
+         <!--Optional:-->\r
+         <web:zip>gero et</web:zip>\r
+      </web:GetSupplierByZipCode>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/MediCareSupplierSoap/GetSupplierByZipCodeRequest"/>
+        <con:environmentSpec>
+          <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:call>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="9d964038-2756-43b4-b73d-4e5afa22d849" wsaVersion="NONE" name="MediCareSupplierSoap" type="wsdl" bindingName="{http://www.webservicex.net/}MediCareSupplierSoap" soapVersion="1_1" anonymous="optional" definition="http://www.webservicex.net/medicareSupplier.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://www.webservicex.net/medicareSupplier.asmx?WSDL">
+      <con:part>
+        <con:url>http://www.webservicex.net/medicareSupplier.asmx?WSDL</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.webservicex.net/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.webservicex.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This section provides names, addresses, and contact information for suppliers that provide services or products under the Medicare program. A supplier is an individual or entity that has agreed to provide health care equipment, items, or services under Medicare. A supplier may provide items such as: Durable Medical Equipment (wheelchairs, walkers, oxygen), Prosthetics (artificial limb replacements or dentures) or Orthotics (mechanical devices used to assist in mobility or supplement the joints and limbs). In addition, a type of supplier can also be Pharmacy/Drug Stores and Optometry/Opticians.This Supplier Directory lists Medicare enrolled pharmacies and suppliers.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webservicex.net/">
+      <s:element name="GetSupplierByZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierByZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierByZipCodeResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SupplierDataList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierDatas" type="tns:ArrayOfSupplierData"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRecords" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSupplierData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SupplierData" type="tns:SupplierData"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SupplierData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ZipPlus4" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IsSupplierParticipating" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSupplierByCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierByCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierByCityResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierBySupplyType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierBySupplyTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierBySupplyTypeResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSupplierByZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierByZipCode"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierByZipCodeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByCitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierByCity"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByCitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierByCityResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierBySupplyTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierBySupplyType"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierBySupplyTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierBySupplyTypeResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="MediCareSupplierSoap">
+    <wsdl:operation name="GetSupplierByZipCode">
+      <wsdl:documentation>Get Supplier details by Zip Code</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierByZipCodeSoapIn"/>
+      <wsdl:output message="tns:GetSupplierByZipCodeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <wsdl:documentation>Get Supplier details by City</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierByCitySoapIn"/>
+      <wsdl:output message="tns:GetSupplierByCitySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <wsdl:documentation>Get Supplier details by Supply Type</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierBySupplyTypeSoapIn"/>
+      <wsdl:output message="tns:GetSupplierBySupplyTypeSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MediCareSupplierHttpGet"/>
+  <wsdl:portType name="MediCareSupplierHttpPost"/>
+  <wsdl:binding name="MediCareSupplierSoap" type="tns:MediCareSupplierSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSupplierByZipCode">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierByZipCode" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierByCity" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierBySupplyType" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierSoap12" type="tns:MediCareSupplierSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSupplierByZipCode">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierByZipCode" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierByCity" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierBySupplyType" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierHttpGet" type="tns:MediCareSupplierHttpGet">
+    <http:binding verb="GET"/>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierHttpPost" type="tns:MediCareSupplierHttpPost">
+    <http:binding verb="POST"/>
+  </wsdl:binding>
+  <wsdl:service name="MediCareSupplier">
+    <wsdl:documentation>This section provides names, addresses, and contact information for suppliers that provide services or products under the Medicare program. A supplier is an individual or entity that has agreed to provide health care equipment, items, or services under Medicare. A supplier may provide items such as: Durable Medical Equipment (wheelchairs, walkers, oxygen), Prosthetics (artificial limb replacements or dentures) or Orthotics (mechanical devices used to assist in mobility or supplement the joints and limbs). In addition, a type of supplier can also be Pharmacy/Drug Stores and Optometry/Opticians.This Supplier Directory lists Medicare enrolled pharmacies and suppliers.</wsdl:documentation>
+    <wsdl:port name="MediCareSupplierSoap" binding="tns:MediCareSupplierSoap">
+      <soap:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierSoap12" binding="tns:MediCareSupplierSoap12">
+      <soap12:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierHttpGet" binding="tns:MediCareSupplierHttpGet">
+      <http:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierHttpPost" binding="tns:MediCareSupplierHttpPost">
+      <http:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://sys-PC:8088/mockMediCareSupplierSoap</con:endpoint>
+      <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+    </con:endpoints>
+    <con:environmentSpec>
+      <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+    <con:operation id="792b9980-b8a7-41d8-b07a-f9f39a16623a" isOneWay="false" action="http://www.webservicex.net/GetSupplierByCity" name="GetSupplierByCity" bindingOperationName="GetSupplierByCity" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="60b1ce99-5670-4be5-9ce9-50e6448c5fb4" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:GetSupplierByCity>\r
+         <!--Optional:-->\r
+         <web:City>gero et</web:City>\r
+      </web:GetSupplierByCity>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierByCity"/>
+        <con:environmentSpec>
+          <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:call>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:operation>
+    <con:operation id="6692f781-d353-4d2e-b561-cfcc9eed293a" isOneWay="false" action="http://www.webservicex.net/GetSupplierBySupplyType" name="GetSupplierBySupplyType" bindingOperationName="GetSupplierBySupplyType" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="17077b92-ea40-4785-a72a-7c56e9875382" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:GetSupplierBySupplyType>\r
+         <!--Optional:-->\r
+         <web:description>gero et</web:description>\r
+      </web:GetSupplierBySupplyType>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierBySupplyType"/>
+        <con:environmentSpec>
+          <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:call>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:operation>
+    <con:operation id="fbb220ee-3173-465f-8a58-697c01bd36db" isOneWay="false" action="http://www.webservicex.net/GetSupplierByZipCode" name="GetSupplierByZipCode" bindingOperationName="GetSupplierByZipCode" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="43de1971-bbb3-44f1-969f-c68c2287667c" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:GetSupplierByZipCode>\r
+         <!--Optional:-->\r
+         <web:zip>gero et</web:zip>\r
+      </web:GetSupplierByZipCode>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierByZipCode"/>
+        <con:environmentSpec>
+          <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:call>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:operation>
+  </con:interface>
+  <con:testSuite id="8b0d57d6-4bf8-40ec-aa84-652959cc331a" name="TS_01_Test Different Environments  - SETUP SCRIPT">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="96c2b0fd-ee06-4168-95e5-ff19b9ee9159" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_get bank data" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="a51afc65-6083-442c-a79f-f4d7faecacb4" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="c79c3984-725f-43a5-996f-90dcd3f2c856">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>20010020</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="ededf464-2f78-4ae2-b367-084f782171cf" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="8b634fc3-9e09-4d3c-a8c2-d979aa6fea90" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace ns1='http://thomas-bayer.com/blz/';
+//ns1:getBankResponse[1]/ns1:details[1]/ns1:bezeichnung[1]</path>
+                <content>Postbank (Giro)</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+            <con:environmentSpec>
+              <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+                <con:authProfile>Inherit From Parent</con:authProfile>
+              </con:entry>
+              <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+                <con:authProfile>Inherit From Parent</con:authProfile>
+              </con:entry>
+            </con:environmentSpec>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:testCase>
+    <con:properties/>
+    <con:setupScript>String env = context.expand('${#Project#env}')
+
+log.info "Environment is $env"
+
+//load the configuration file based on environment (dev, or prod)
+
+String filePath = "C:\\Users\\dsharman2\\Music\\Introduction to API Testing - ReadyAPI\\REST  Projects\\config Files\\"+env+".properties"
+
+log.info "Loading file $filePath"
+
+Properties props = new Properties()
+
+//loop through file content and load properties.
+
+File configFile =new File(filePath)
+
+
+configFile.withInputStream{
+	
+	line->
+	
+	props.load(line)
+}
+log.info props['bankEndpoint']
+
+log.info props['supplierEndpoint']
+
+testSuite.project.setPropertyValue('bankEndpoint',props['bankEndpoint'])
+
+testSuite.project.setPropertyValue('supplierEndpoint',props['supplierEndpoint'])</con:setupScript>
+    <con:reportParameters/>
+    <con:environmentSpec>
+      <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:testSuite>
+  <con:testSuite id="31cfa3fa-0af2-4e3b-a00c-5fa6d3a398ce" name="TS_02_Test Different Environments  - CONFIGURE ENV">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="b540187d-7a4a-47e9-8c91-6db49200510e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_get bank data" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="c14ebdfd-f2be-4f9a-87a2-b11746c63744" name="getBank">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>BLZServiceSOAP11Binding</con:interface>
+          <con:operation>getBank</con:operation>
+          <con:request name="getBank" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="c79c3984-725f-43a5-996f-90dcd3f2c856">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>${#Project#bankEndpoint}</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBank>
+         <blz:blz>20010020</blz:blz>
+      </blz:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="ededf464-2f78-4ae2-b367-084f782171cf" name="SOAP Response"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://thomas-bayer.com/blz/BLZServicePortType/getBankRequest"/>
+            <con:wsrmConfig version="1.2"/>
+            <con:environmentSpec>
+              <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+                <con:authProfile>Inherit From Parent</con:authProfile>
+              </con:entry>
+              <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+                <con:authProfile>Inherit From Parent</con:authProfile>
+              </con:entry>
+            </con:environmentSpec>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:testCase>
+    <con:properties/>
+    <con:setupScript/>
+    <con:reportParameters/>
+    <con:environmentSpec>
+      <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:testSuite>
+  <con:mockService id="ad3a7ef9-abcc-4507-b7cc-bbdf4b4bf08b" port="8088" path="/mockBLZServiceSOAP11Binding" host="localhost" name="BLZServiceSOAP11Binding MockService" bindToHostOnly="false" docroot="">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+    </con:settings>
+    <con:properties/>
+    <con:constraints>
+      <con:congestion>0</con:congestion>
+      <con:inputBandwidth>-1</con:inputBandwidth>
+      <con:outputBandwidth>-1</con:outputBandwidth>
+      <con:maxThreadPoolCapacity>20</con:maxThreadPoolCapacity>
+      <con:coreThreadPoolCapacity>5</con:coreThreadPoolCapacity>
+      <con:virtError>
+        <con:start>0</con:start>
+        <con:endless>true</con:endless>
+      </con:virtError>
+    </con:constraints>
+    <con:dataSources/>
+    <con:headerValidator type="NONE"/>
+    <con:mockOperation name="getBank" id="73a8ce60-2ba2-46ee-ad06-0122585cbf6a" interface="BLZServiceSOAP11Binding" operation="getBank">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchXPath/>
+      <con:routeScript/>
+      <con:response name="Response 1" id="febc43e8-7713-43ff-a52d-63de5fb73cdc" httpResponseStatus="200" encoding="UTF-8" dataSource="" compressedBodyContent="aced00057372002f636f6d2e657669776172652e736f617075692e696d706c2e737570706f72742e436f6d7072657373656456616c7565000b8b02c748eeab0200025a000a636f6d707265737365645b0004646174617400025b4278700070">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns1:getBankResponse xmlns:ns1="http://thomas-bayer.com/blz/">
+         <ns1:details>
+            <ns1:bezeichnung>Postbank (Giro)</ns1:bezeichnung>
+            <ns1:bic>PBNKDEFF200</ns1:bic>
+            <ns1:ort>Hamburg</ns1:ort>
+            <ns1:plz>22280</ns1:plz>
+         </ns1:details>
+      </ns1:getBankResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="{http://schemas.xmlsoap.org/wsdl/http/}//thomas-bayer.com/blz/BLZService/getBankResponse"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+  </con:mockService>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties>
+    <con:property>
+      <con:name>env</con:name>
+      <con:value>dev</con:value>
+    </con:property>
+    <con:property>
+      <con:name>bankEndpoint</con:name>
+      <con:value>http://localhost:8088/mockBLZServiceSOAP11Binding</con:value>
+    </con:property>
+    <con:property>
+      <con:name>supplierEndpoint</con:name>
+      <con:value>http://localhost:8088/mockMediCareSupplierSoap</con:value>
+    </con:property>
+  </con:properties>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:beforeRunScript/>
+  <con:sensitiveInformation/>
+  <con:environment id="1b52a629-566b-4963-923a-f273b850eeec" name="Production Environment" index="0">
+    <con:service type="SOAP" name="BLZServiceSOAP11Binding">
+      <con:endpoint authProfile="No Authorization" wssType="" wssTimeToLive="" outgoingWss="" incomingWss="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:service>
+    <con:service type="SOAP" name="BLZServiceSOAP12Binding">
+      <con:endpoint authProfile="No Authorization" wssType="" wssTimeToLive="" outgoingWss="" incomingWss="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">http://www.thomas-bayer.com/axis2/services/BLZService</con:endpoint>
+    </con:service>
+    <con:service type="SOAP" name="MediCareSupplierSoap12">
+      <con:endpoint authProfile="No Authorization">${#Project#supplierEndpoint}</con:endpoint>
+    </con:service>
+    <con:service type="SOAP" name="MediCareSupplierSoap">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:property>
+      <con:name>env</con:name>
+      <con:value>prod</con:value>
+    </con:property>
+    <con:property>
+      <con:name>bankEndpoint</con:name>
+      <con:value>http://www.thomas-bayer.com/axis2/services/BLZService</con:value>
+    </con:property>
+    <con:property>
+      <con:name>supplierEndpoint</con:name>
+      <con:value>http://www.webservicex.net/medicareSupplier.asmx</con:value>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:environment id="2d653976-d01d-407d-9d31-5310cf8ec679" name="Test Environment" index="1">
+    <con:service type="SOAP" name="BLZServiceSOAP11Binding">
+      <con:endpoint authProfile="No Authorization" wssType="" wssTimeToLive="" outgoingWss="" incomingWss="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">http://localhost:8088/mockBLZServiceSOAP11Binding</con:endpoint>
+    </con:service>
+    <con:service type="SOAP" name="BLZServiceSOAP12Binding">
+      <con:endpoint authProfile="No Authorization" wssType="" wssTimeToLive="" outgoingWss="" incomingWss="" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">http://localhost:8088/mockBLZServiceSOAP11Binding</con:endpoint>
+    </con:service>
+    <con:service type="SOAP" name="MediCareSupplierSoap12">
+      <con:endpoint authProfile="No Authorization">${#Project#supplierEndpoint}</con:endpoint>
+    </con:service>
+    <con:service type="SOAP" name="MediCareSupplierSoap">
+      <con:endpoint authProfile="No Authorization"/>
+    </con:service>
+    <con:property>
+      <con:name>env</con:name>
+      <con:value>prod</con:value>
+    </con:property>
+    <con:property>
+      <con:name>bankEndpoint</con:name>
+      <con:value>http://www.thomas-bayer.com/axis2/services/BLZService</con:value>
+    </con:property>
+    <con:property>
+      <con:name>supplierEndpoint</con:name>
+      <con:value>http://www.webservicex.net/medicareSupplier.asmx</con:value>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:authRepository/>
+  <con:environmentSpec>
+    <con:entry environmentId="1b52a629-566b-4963-923a-f273b850eeec">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="2d653976-d01d-407d-9d31-5310cf8ec679">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+  <con:tags/>
+</con:soapui-project>

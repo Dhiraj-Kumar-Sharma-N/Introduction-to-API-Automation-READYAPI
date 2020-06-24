@@ -1,0 +1,3054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e952d121-dc29-4ac3-9ccd-5784b762afaf" activeEnvironment="Default environment" name="SOAP - MedicareSupplier Service Testing" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" encryptionMode="Not encrypted" updated="3.2.7 2020-05-27T19:48:04Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="2af3434d-6d1d-405c-973c-355428545d37" wsaVersion="NONE" name="MediCareSupplierSoap12" type="wsdl" bindingName="{http://www.webservicex.net/}MediCareSupplierSoap12" soapVersion="1_2" anonymous="optional" definition="file:/C:/Users/sharmand/Desktop/PE/SOAPUI/medicareSupplier.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="file:/C:/Users/sharmand/Desktop/PE/SOAPUI/medicareSupplier.wsdl">
+      <con:part>
+        <con:url>file:/C:/Users/sharmand/Desktop/PE/SOAPUI/medicareSupplier.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.webservicex.net/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.webservicex.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This section provides names, addresses, and contact information for suppliers that provide services or products under the Medicare program. A supplier is an individual or entity that has agreed to provide health care equipment, items, or services under Medicare. A supplier may provide items such as: Durable Medical Equipment (wheelchairs, walkers, oxygen), Prosthetics (artificial limb replacements or dentures) or Orthotics (mechanical devices used to assist in mobility or supplement the joints and limbs). In addition, a type of supplier can also be Pharmacy/Drug Stores and Optometry/Opticians.This Supplier Directory lists Medicare enrolled pharmacies and suppliers.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webservicex.net/">
+      <s:element name="GetSupplierByZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierByZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierByZipCodeResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SupplierDataList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierDatas" type="tns:ArrayOfSupplierData"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRecords" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSupplierData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SupplierData" type="tns:SupplierData"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SupplierData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ZipPlus4" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IsSupplierParticipating" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSupplierByCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierByCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierByCityResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierBySupplyType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierBySupplyTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierBySupplyTypeResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSupplierByZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierByZipCode"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierByZipCodeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByCitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierByCity"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByCitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierByCityResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierBySupplyTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierBySupplyType"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierBySupplyTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierBySupplyTypeResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="MediCareSupplierSoap">
+    <wsdl:operation name="GetSupplierByZipCode">
+      <wsdl:documentation>Get Supplier details by Zip Code</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierByZipCodeSoapIn"/>
+      <wsdl:output message="tns:GetSupplierByZipCodeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <wsdl:documentation>Get Supplier details by City</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierByCitySoapIn"/>
+      <wsdl:output message="tns:GetSupplierByCitySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <wsdl:documentation>Get Supplier details by Supply Type</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierBySupplyTypeSoapIn"/>
+      <wsdl:output message="tns:GetSupplierBySupplyTypeSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MediCareSupplierHttpGet"/>
+  <wsdl:portType name="MediCareSupplierHttpPost"/>
+  <wsdl:binding name="MediCareSupplierSoap" type="tns:MediCareSupplierSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSupplierByZipCode">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierByZipCode" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierByCity" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierBySupplyType" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierSoap12" type="tns:MediCareSupplierSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSupplierByZipCode">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierByZipCode" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierByCity" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierBySupplyType" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierHttpGet" type="tns:MediCareSupplierHttpGet">
+    <http:binding verb="GET"/>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierHttpPost" type="tns:MediCareSupplierHttpPost">
+    <http:binding verb="POST"/>
+  </wsdl:binding>
+  <wsdl:service name="MediCareSupplier">
+    <wsdl:documentation>This section provides names, addresses, and contact information for suppliers that provide services or products under the Medicare program. A supplier is an individual or entity that has agreed to provide health care equipment, items, or services under Medicare. A supplier may provide items such as: Durable Medical Equipment (wheelchairs, walkers, oxygen), Prosthetics (artificial limb replacements or dentures) or Orthotics (mechanical devices used to assist in mobility or supplement the joints and limbs). In addition, a type of supplier can also be Pharmacy/Drug Stores and Optometry/Opticians.This Supplier Directory lists Medicare enrolled pharmacies and suppliers.</wsdl:documentation>
+    <wsdl:port name="MediCareSupplierSoap" binding="tns:MediCareSupplierSoap">
+      <soap:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierSoap12" binding="tns:MediCareSupplierSoap12">
+      <soap12:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierHttpGet" binding="tns:MediCareSupplierHttpGet">
+      <http:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierHttpPost" binding="tns:MediCareSupplierHttpPost">
+      <http:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+    </con:endpoints>
+    <con:operation id="1b102c11-528c-4a4d-b960-bce2036ecc0f" isOneWay="false" action="http://www.webservicex.net/GetSupplierByCity" name="GetSupplierByCity" bindingOperationName="GetSupplierByCity" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="8506f270-e90f-41e8-b759-d6bced942220" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://www.webservicex.net/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <web:GetSupplierByCity>\r
+         <!--Optional:-->\r
+         <web:City>?</web:City>\r
+      </web:GetSupplierByCity>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/MediCareSupplierSoap/GetSupplierByCityRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="0868efcb-3b65-403b-8590-3324d7d3f04d" isOneWay="false" action="http://www.webservicex.net/GetSupplierBySupplyType" name="GetSupplierBySupplyType" bindingOperationName="GetSupplierBySupplyType" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="27889a57-6a30-4839-af0d-c874ef89e431" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://www.webservicex.net/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <web:GetSupplierBySupplyType>\r
+         <!--Optional:-->\r
+         <web:description>?</web:description>\r
+      </web:GetSupplierBySupplyType>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/MediCareSupplierSoap/GetSupplierBySupplyTypeRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="131efc69-c224-4532-b6dd-4d7d0a1cb5d5" isOneWay="false" action="http://www.webservicex.net/GetSupplierByZipCode" name="GetSupplierByZipCode" bindingOperationName="GetSupplierByZipCode" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="de6f7b3f-abb5-4f43-9ca6-6839840a7284" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+        <con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://www.webservicex.net/">
+   <soap:Header/>
+   <soap:Body>
+      <web:GetSupplierByZipCode>
+         <!--Optional:-->
+         <web:zip>?</web:zip>
+      </web:GetSupplierByZipCode>
+   </soap:Body>
+</soap:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/MediCareSupplierSoap/GetSupplierByZipCodeRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="cbc15be5-2417-42d8-9846-54b6bb02b5e4" wsaVersion="NONE" name="MediCareSupplierSoap" type="wsdl" bindingName="{http://www.webservicex.net/}MediCareSupplierSoap" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/sharmand/Desktop/PE/SOAPUI/medicareSupplier.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="file:\C:\Users\sharmand\Desktop\PE\SOAPUI\medicareSupplier.wsdl">
+      <con:part>
+        <con:url>file:\C:\Users\sharmand\Desktop\PE\SOAPUI\medicareSupplier.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.webservicex.net/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.webservicex.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This section provides names, addresses, and contact information for suppliers that provide services or products under the Medicare program. A supplier is an individual or entity that has agreed to provide health care equipment, items, or services under Medicare. A supplier may provide items such as: Durable Medical Equipment (wheelchairs, walkers, oxygen), Prosthetics (artificial limb replacements or dentures) or Orthotics (mechanical devices used to assist in mobility or supplement the joints and limbs). In addition, a type of supplier can also be Pharmacy/Drug Stores and Optometry/Opticians.This Supplier Directory lists Medicare enrolled pharmacies and suppliers.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webservicex.net/">
+      <s:element name="GetSupplierByZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierByZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierByZipCodeResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SupplierDataList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierDatas" type="tns:ArrayOfSupplierData"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRecords" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSupplierData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SupplierData" type="tns:SupplierData"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SupplierData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ZipPlus4" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IsSupplierParticipating" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSupplierByCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierByCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierByCityResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierBySupplyType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplierBySupplyTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupplierBySupplyTypeResult" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierDataLists" type="tns:SupplierDataList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSupplierByZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierByZipCode"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierByZipCodeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByCitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierByCity"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierByCitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierByCityResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierBySupplyTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplierBySupplyType"/>
+  </wsdl:message>
+  <wsdl:message name="GetSupplierBySupplyTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplierBySupplyTypeResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="MediCareSupplierSoap">
+    <wsdl:operation name="GetSupplierByZipCode">
+      <wsdl:documentation>Get Supplier details by Zip Code</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierByZipCodeSoapIn"/>
+      <wsdl:output message="tns:GetSupplierByZipCodeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <wsdl:documentation>Get Supplier details by City</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierByCitySoapIn"/>
+      <wsdl:output message="tns:GetSupplierByCitySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <wsdl:documentation>Get Supplier details by Supply Type</wsdl:documentation>
+      <wsdl:input message="tns:GetSupplierBySupplyTypeSoapIn"/>
+      <wsdl:output message="tns:GetSupplierBySupplyTypeSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MediCareSupplierHttpGet"/>
+  <wsdl:portType name="MediCareSupplierHttpPost"/>
+  <wsdl:binding name="MediCareSupplierSoap" type="tns:MediCareSupplierSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSupplierByZipCode">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierByZipCode" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierByCity" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <soap:operation soapAction="http://www.webservicex.net/GetSupplierBySupplyType" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierSoap12" type="tns:MediCareSupplierSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSupplierByZipCode">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierByZipCode" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierByCity">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierByCity" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplyType">
+      <soap12:operation soapAction="http://www.webservicex.net/GetSupplierBySupplyType" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierHttpGet" type="tns:MediCareSupplierHttpGet">
+    <http:binding verb="GET"/>
+  </wsdl:binding>
+  <wsdl:binding name="MediCareSupplierHttpPost" type="tns:MediCareSupplierHttpPost">
+    <http:binding verb="POST"/>
+  </wsdl:binding>
+  <wsdl:service name="MediCareSupplier">
+    <wsdl:documentation>This section provides names, addresses, and contact information for suppliers that provide services or products under the Medicare program. A supplier is an individual or entity that has agreed to provide health care equipment, items, or services under Medicare. A supplier may provide items such as: Durable Medical Equipment (wheelchairs, walkers, oxygen), Prosthetics (artificial limb replacements or dentures) or Orthotics (mechanical devices used to assist in mobility or supplement the joints and limbs). In addition, a type of supplier can also be Pharmacy/Drug Stores and Optometry/Opticians.This Supplier Directory lists Medicare enrolled pharmacies and suppliers.</wsdl:documentation>
+    <wsdl:port name="MediCareSupplierSoap" binding="tns:MediCareSupplierSoap">
+      <soap:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierSoap12" binding="tns:MediCareSupplierSoap12">
+      <soap12:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierHttpGet" binding="tns:MediCareSupplierHttpGet">
+      <http:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MediCareSupplierHttpPost" binding="tns:MediCareSupplierHttpPost">
+      <http:address location="http://www.webservicex.net/medicareSupplier.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080/services/medicareSupplierService</con:endpoint>
+      <con:endpoint>http://www.webservicex.net/medicareSupplier.asmx</con:endpoint>
+    </con:endpoints>
+    <con:operation id="9e2db923-94cc-4e2a-91d0-4f1c6c4c9754" isOneWay="false" action="http://www.webservicex.net/GetSupplierByCity" name="GetSupplierByCity" bindingOperationName="GetSupplierByCity" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="f89a7b4f-c178-4010-80bc-805a7d931020" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/services/medicareSupplierService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetSupplierByCity>
+         <!--Optional:-->
+         <web:City>MIAMI</web:City>
+      </web:GetSupplierByCity>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierByCity"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="2b6eb232-6016-4798-81da-72d854f0eaab" isOneWay="false" action="http://www.webservicex.net/GetSupplierBySupplyType" name="GetSupplierBySupplyType" bindingOperationName="GetSupplierBySupplyType" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="5816ad26-1b64-46bf-8170-2d9a49f44cca" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/services/medicareSupplierService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetSupplierBySupplyType>
+         <!--Optional:-->
+         <web:description>020</web:description>
+      </web:GetSupplierBySupplyType>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierBySupplyType"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="75b42754-496f-4f2a-9c22-87749d4661a9" isOneWay="false" action="http://www.webservicex.net/GetSupplierByZipCode" name="GetSupplierByZipCode" bindingOperationName="GetSupplierByZipCode" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d515c922-56fe-4860-b863-034965cf5150" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/services/medicareSupplierService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetSupplierByZipCode>
+         <!--Optional:-->
+         
+      <web:zip>75071</web:zip></web:GetSupplierByZipCode>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierByZipCode"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:testSuite id="f25f0ef4-2e44-45cf-b330-40c8a748650d" name="TS01_Get_Supplier_By_City_Operation = ADV ASSERTIONS">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="1dfc3bf0-7004-4e73-a128-00a23fb61d5f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_01_Get_Supplier_By_City - IRVING (Complaince,status &amp; Standard)" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="49c6d89f-8f78-46f5-b55e-43534da6beba" name="GetSupplierByCity">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>MediCareSupplierSoap</con:interface>
+          <con:operation>GetSupplierByCity</con:operation>
+          <con:request name="GetSupplierByCity" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="eefa5f7c-f22b-4d98-8acb-0b1e5c350306">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/medicareSupplierService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetSupplierByCity>
+         <!--Optional:-->
+         <web:City>IRVING</web:City>
+      </web:GetSupplierByCity>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="3407887a-f025-4cf6-9a02-7670e1f6b7db" name="SOAP Response_Default_Assertion_to_Validate_response_is_a_Valid_SoapResponse&lt;--SOAPRESPONSE-->"/>
+            <con:assertion type="Schema Compliance" id="5b1e97b1-35e7-417f-86a5-4c8c886d00d4" name="Validates_SOAPRESPONSE_is_Compliance_to_SCHEMA_in_WSDLFILE&lt;--SCHEMACOMPLIANCE-->">
+              <con:configuration>
+                <definition/>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="SOAP Fault Assertion" id="4e6676e6-3210-419d-b5bf-c83d28ecbf05" name="Validates_SOAPFAULTNODE_doesnotExist_In_SoapResponse_When_Wrong/Invalid_CitySelected&lt;--NOTSOAPFAULT-->"/>
+            <con:assertion type="Not SOAP Fault Assertion" id="035faae7-f0c8-4b7d-80d6-8edbce186401" name="Validates_SOAPFAULTNODE_Exist_In_SoapResponse_When_Wrong/Invalid_CitySelected&lt;--SOAPFAULT-->" disabled="true"/>
+            <con:assertion type="Valid HTTP Status Codes" id="499d18b4-5308-48ab-9fd0-38ede7eb6198" name="Validates if the HTTP Status code for the SOAPRESPONSE is 200 &lt;--VALID HTTP STATUS CODES-->">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Invalid HTTP Status Codes" id="2985df98-586d-4c1c-b595-d62a96291434" name="Validates if the HTTP Status code for the SOAPRESPONSE is NOT 501,404&lt;--INVALID HTTP STATUS CODES-->">
+              <con:configuration>
+                <codes>501,404,300</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="HTTP Header Equals" id="55de279a-34ac-4f15-9dfb-aa73e685ec42" name="Validate HTTP Header against the expected Value &lt;--HTTP HEADER EQUALS-->" disabled="true">
+              <con:configuration>
+                <Header>Content-Type</Header>
+                <Value>application/(json|xml)
+
+[a-zA-Z]{3}.\d{2} [a-zA-Z]{3}</Value>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="HTTP Header Exists" id="b1e98406-aa34-42a5-966a-9be759656d6a" name="Validates if an Header Exist with Specified Name &lt;--HTTP HEADER EXISTS-->">
+              <con:configuration>
+                <Header>Content-Type</Header>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="WS-A Response Assertion" id="97a7e003-1ba4-4d79-8465-9e03f8ea7730" name=" Validate Last Recieved Response contains valid WS -Adressing Headers &lt;--WS-ADDRESSING RESPONSE-->" disabled="true">
+              <con:configuration>
+                <asertWsaAction>false</asertWsaAction>
+                <asertWsaTo>false</asertWsaTo>
+                <asertWsaRelatesTo>false</asertWsaRelatesTo>
+                <assertReplyToRefParams>false</assertReplyToRefParams>
+                <assertFaultToRefParams>false</assertFaultToRefParams>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="WSS Status Assertion" id="f6ce2286-b7cb-4bd6-a073-ab1b331a7cf1" name=" Validate Last Recieved Response contains valid WS -Security Headers &lt;--WS-SECURITY STATUS -->" disabled="true"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierByCity"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="0ff7351e-9acb-44e2-a50c-6d9243a6e775" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC_02_Get_Supplier_By_City - MCKINNEY (Property Content)" searchProperties="true">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="ce5bf36c-e1a7-4f4e-8bb4-e8aae598fea6" name="GetSupplierByCity">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>MediCareSupplierSoap</con:interface>
+          <con:operation>GetSupplierByCity</con:operation>
+          <con:request name="GetSupplierByCity" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="eefa5f7c-f22b-4d98-8acb-0b1e5c350306">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/medicareSupplierService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetSupplierByCity>
+         <!--Optional:-->
+         <web:City>${#TestCase#CITYNAME}</web:City>
+      </web:GetSupplierByCity>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Simple NotContains" id="84e640bf-7015-4a8e-942d-b53e6058a2e0" name="Validate_MEDIPLUS _DoesNotexistIn_Irving_City_&lt;--NOTCONTAINS-->">
+              <con:configuration>
+                <token>MEDIPLUS</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple Contains" id="c0184cbe-7314-4883-85f9-16e5df990204" name="Validate_RKF INC_existIn_Irving_City_&lt;--CONTAINS-->">
+              <con:configuration>
+                <token>RKF INC</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="f544791e-7296-42c5-9a1d-e845190d3398" name="Validate/Retrieve_Number_of_SupplierData_In_SoapResponse_When_Requested_using_GetSupplierByCity=MCKINNEY&lt;--XPATH-->">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.webservicex.net/';
+count(//ns1:GetSupplierByCityResponse/ns1:SupplierDataLists/ns1:SupplierDatas/ns1:SupplierData)</path>
+                <content>16</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="a2ddb330-ee4f-437c-b127-3ed2641be217" name="Validate/Retrieve_Number_of_SupplierData_In_SoapResponse_When_Requested_using_GetSupplierByCity!=MCKINNEY&lt;--XPATH-->">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.webservicex.net/';
+count(//ns1:GetSupplierByCityResponse/ns1:SupplierDataLists/ns1:SupplierDatas/ns1:SupplierData[ns1:City!='MCKINNEY'])</path>
+                <content>0</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="4587ba94-001b-4ca4-8a78-f7b8a3e73ff5" name="Validate/Retrieve_Number_of_SupplierData_In_SoapResponse_When_Requested_using_GetSupplierByCity=MCKINNEY_with_CompanyName=KMART CORP &lt;--XPATH-->">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.webservicex.net/';
+count(//ns1:GetSupplierByCityResponse/ns1:SupplierDataLists/ns1:SupplierDatas/ns1:SupplierData[ns1:CompanyName='JOBERN MEDICAL SERVICES'])</path>
+                <content>1</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XQuery Match" id="6c925cfa-1b12-4a62-9b80-945c21b55ce4" name="Retrieve_ZIPCODES_for_ALL_Suppliers_from_SOAPRESPONSE &lt;--XQUERY-->">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.webservicex.net/';
+
+&lt;zipcodes>
+{
+for $supplier in //ns1:SupplierData
+return   &lt;zip>   { data  ($supplier/ns1:ZipPlus4/text( )) }  &lt;/zip>
+}
+&lt;/zipcodes></path>
+                <content><![CDATA[<zipcodes>
+  <zip>75070</zip>
+  <zip>75071</zip>
+  <zip>75069</zip>
+  <zip>75071</zip>
+  <zip>75070</zip>
+  <zip>75071</zip>
+  <zip>75069</zip>
+  <zip>75070</zip>
+  <zip>75069</zip>
+  <zip>75070</zip>
+  <zip>75069</zip>
+  <zip>75071</zip>
+  <zip>75070</zip>
+  <zip>75070</zip>
+  <zip>75069</zip>
+  <zip>75070</zip>
+</zipcodes>]]></content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XQuery Match" id="9914f685-653e-481b-a518-d7f9cdbf5fdd" name="Retrieve_COMPANYNAME_&amp;_ADDRESS_for_ALL_Suppliers_from_SOAPRESPONSE &lt;--XQUERY-->">
+              <con:configuration>
+                <path><![CDATA[declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.webservicex.net/';
+<SupplierDetails>
+{
+for $supplier in //ns1:SupplierData
+
+return <supplier>
+<CompanyName> { data  ($supplier/ns1:CompanyName/text( )) } </CompanyName>
+<Address>   { data  ($supplier/ns1:Address1/text( )) }  </Address >
+</supplier>
+}
+</SupplierDetails>]]></path>
+                <content><![CDATA[<SupplierDetails>
+  <supplier>
+    <CompanyName>ALAN H UPCHURCH OD</CompanyName>
+    <Address>3705 ELDORADO PKWY</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>WALGREEN CO</CompanyName>
+    <Address>7080 VIRGINIA PKWY</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>ALBERTSONS INC</CompanyName>
+    <Address>1702 W UNIVERSITY DR</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>ALBERTSONS INC</CompanyName>
+    <Address>6800 VIRGINIA PKWY</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>RANDALLS FOOD AND DRUGS INC</CompanyName>
+    <Address>3001 HARDIN BLVD</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>E Z MOBILITY INC</CompanyName>
+    <Address>9929 W UNIVERSITY DR</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>KROGER TEXAS LP</CompanyName>
+    <Address>1707 W UNIVERSITY DR</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>UNITED SUPERMARKETS LTD</CompanyName>
+    <Address>6100 ELDORADO PKWY</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>WAL MART STORES TEXAS LP</CompanyName>
+    <Address>1670 W UNIVERSITY DR</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>WAL MART STORES TEXAS LP</CompanyName>
+    <Address>5001 MCKINNEY RANCH PKWY</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>MCDONALD &amp; SHOCKEY INC</CompanyName>
+    <Address>4510 MEDICAL CENTER DR</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>MCKINNEY EYECARE PC</CompanyName>
+    <Address>2720 VIRGINIA PKWY</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>JOBERN MEDICAL SERVICES</CompanyName>
+    <Address>2316 SHELDON DR</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>ERIC K NEWBERRY</CompanyName>
+    <Address>2301 ELDORADO PKWY</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>RKF INC</CompanyName>
+    <Address>2001 CENTRAL CIR</Address>
+  </supplier>
+  <supplier>
+    <CompanyName>MCKINNEY CVS L P</CompanyName>
+    <Address>6301 ELDORADO PKWY</Address>
+  </supplier>
+</SupplierDetails>]]></content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple Equals" id="ee2f9cee-f029-445e-afe6-f392a950affa" name="Validate Property/Response value to be equal to some other value &lt;--EQUALS-->">
+              <con:configuration>
+                <patternText><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <GetSupplierByCityResponse xmlns="http://www.webservicex.net/">
+         <GetSupplierByCityResult>true</GetSupplierByCityResult>
+         <SupplierDataLists>
+            <SupplierDatas>
+               <SupplierData>
+                  <SupplierNumber>0191800001</SupplierNumber>
+                  <CompanyName>ALAN H UPCHURCH OD</CompanyName>
+                  <Address1>3705 ELDORADO PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>4229</Telephone>
+                  <Description>(972)542-0331</Description>
+                  <IsSupplierParticipating>05</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>0282933819</SupplierNumber>
+                  <CompanyName>WALGREEN CO</CompanyName>
+                  <Address1>7080 VIRGINIA PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75071</ZipPlus4>
+                  <Telephone>5720</Telephone>
+                  <Description>(972)540-2332</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>0483390674</SupplierNumber>
+                  <CompanyName>ALBERTSONS INC</CompanyName>
+                  <Address1>1702 W UNIVERSITY DR</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>3217</Telephone>
+                  <Description>(972)542-9234</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>0483390978</SupplierNumber>
+                  <CompanyName>ALBERTSONS INC</CompanyName>
+                  <Address1>6800 VIRGINIA PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75071</ZipPlus4>
+                  <Telephone>5516</Telephone>
+                  <Description>(972)542-0010</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>0879960004</SupplierNumber>
+                  <CompanyName>RANDALLS FOOD AND DRUGS INC</CompanyName>
+                  <Address1>3001 HARDIN BLVD</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>7489</Telephone>
+                  <Description>(972)547-7110</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>1301270001</SupplierNumber>
+                  <CompanyName>E Z MOBILITY INC</CompanyName>
+                  <Address1>9929 W UNIVERSITY DR</Address1>
+                  <Address2>STE 305</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75071</ZipPlus4>
+                  <Telephone>7441</Telephone>
+                  <Description>(972)542-3008</Description>
+                  <IsSupplierParticipating>01</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>1307140027</SupplierNumber>
+                  <CompanyName>KROGER TEXAS LP</CompanyName>
+                  <Address1>1707 W UNIVERSITY DR</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>3218</Telephone>
+                  <Description>(972)548-9633</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4077810037</SupplierNumber>
+                  <CompanyName>UNITED SUPERMARKETS LTD</CompanyName>
+                  <Address1>6100 ELDORADO PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>5622</Telephone>
+                  <Description>(972)546-5150</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4360370162</SupplierNumber>
+                  <CompanyName>WAL MART STORES TEXAS LP</CompanyName>
+                  <Address1>1670 W UNIVERSITY DR</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>3444</Telephone>
+                  <Description>(972)542-2619</Description>
+                  <IsSupplierParticipating>05</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4360370322</SupplierNumber>
+                  <CompanyName>WAL MART STORES TEXAS LP</CompanyName>
+                  <Address1>5001 MCKINNEY RANCH PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>8601</Telephone>
+                  <Description>(972)542-8362</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4364620002</SupplierNumber>
+                  <CompanyName>MCDONALD &amp; SHOCKEY INC</CompanyName>
+                  <Address1>4510 MEDICAL CENTER DR</Address1>
+                  <Address2>STE 206</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>1601</Telephone>
+                  <Description>(972)542-3321</Description>
+                  <IsSupplierParticipating>03</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4459140001</SupplierNumber>
+                  <CompanyName>MCKINNEY EYECARE PC</CompanyName>
+                  <Address1>2720 VIRGINIA PKWY</Address1>
+                  <Address2>SUITE 100</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75071</ZipPlus4>
+                  <Description>(972)542-3937</Description>
+                  <IsSupplierParticipating>05</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4691680001</SupplierNumber>
+                  <CompanyName>JOBERN MEDICAL SERVICES</CompanyName>
+                  <Address1>2316 SHELDON DR</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>2443</Telephone>
+                  <Description>(214)544-7203</Description>
+                  <IsSupplierParticipating>01</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4781330001</SupplierNumber>
+                  <CompanyName>ERIC K NEWBERRY</CompanyName>
+                  <Address1>2301 ELDORADO PKWY</Address1>
+                  <Address2>STE 200</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>4362</Telephone>
+                  <Description>(972)562-0101</Description>
+                  <IsSupplierParticipating>05</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4872210001</SupplierNumber>
+                  <CompanyName>RKF INC</CompanyName>
+                  <Address1>2001 CENTRAL CIR</Address1>
+                  <Address2>STE 100</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>8230</Telephone>
+                  <Description>(972)548-8818</Description>
+                  <IsSupplierParticipating>01</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4924500001</SupplierNumber>
+                  <CompanyName>MCKINNEY CVS L P</CompanyName>
+                  <Address1>6301 ELDORADO PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>5627</Telephone>
+                  <Description>(972)542-4347</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+            </SupplierDatas>
+            <TotalRecords>16</TotalRecords>
+         </SupplierDataLists>
+      </GetSupplierByCityResponse>
+   </soap:Body>
+</soap:Envelope>]]></patternText>
+                <caseSensitive>true</caseSensitive>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Binary Equals" id="c50a6a55-3792-4b9d-882c-6a7772494f54" name="Validate Binary Identity of Messages &amp; Properties &lt;--EQUALS(BINARY)-->" disabled="true">
+              <con:configuration>
+                <patternFile>C:\Users\dsharman2\Music\Introduction to API Testing - ReadyAPI\SOAP Projects\SOAP - MedicareSupplier Service Testing.xml</patternFile>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="MessageContentAssertion" id="095f8708-e114-4495-af04-d202ea2bd392" name="Validates each and every Response parameter (Complex Content Assertion) &lt;--MESSAGE CONTENT ASSERTION-->">
+              <con:configuration xsi:type="con:MessageContentAssertion">
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:GetSupplierByCityResult[1]</con:xpath>
+                  <con:element>GetSupplierByCityResult</con:element>
+                  <con:type>XmlBoolean</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>true</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>0191800001</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>ALAN H UPCHURCH OD</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>3705 ELDORADO PKWY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75070</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4229</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-0331</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[1]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>05</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>0282933819</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>WALGREEN CO</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>7080 VIRGINIA PKWY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75071</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>5720</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)540-2332</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[2]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>04</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>0483390674</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>ALBERTSONS INC</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>1702 W UNIVERSITY DR</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75069</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>3217</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-9234</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[3]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>04</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>0483390978</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>ALBERTSONS INC</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>6800 VIRGINIA PKWY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75071</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>5516</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-0010</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[4]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>04</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>0879960004</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>RANDALLS FOOD AND DRUGS INC</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>3001 HARDIN BLVD</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75070</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>7489</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)547-7110</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[5]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>04</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>1301270001</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>E Z MOBILITY INC</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>9929 W UNIVERSITY DR</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:Address2[1]</con:xpath>
+                  <con:element>Address2</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>STE 305</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75071</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>7441</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-3008</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[6]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>01</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>1307140027</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>KROGER TEXAS LP</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>1707 W UNIVERSITY DR</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75069</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>3218</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)548-9633</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[7]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>04</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4077810037</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>UNITED SUPERMARKETS LTD</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>6100 ELDORADO PKWY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75070</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>5622</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)546-5150</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[8]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>04</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4360370162</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>WAL MART STORES TEXAS LP</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>1670 W UNIVERSITY DR</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75069</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>3444</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-2619</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[9]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>05</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4360370322</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>WAL MART STORES TEXAS LP</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>5001 MCKINNEY RANCH PKWY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75070</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>8601</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-8362</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[10]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>04</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4364620002</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCDONALD &amp; SHOCKEY INC</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4510 MEDICAL CENTER DR</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:Address2[1]</con:xpath>
+                  <con:element>Address2</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>STE 206</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75069</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>1601</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-3321</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[11]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>03</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4459140001</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY EYECARE PC</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>2720 VIRGINIA PKWY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:Address2[1]</con:xpath>
+                  <con:element>Address2</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>SUITE 100</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75071</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-3937</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[12]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>05</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4691680001</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>JOBERN MEDICAL SERVICES</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>2316 SHELDON DR</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75070</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>2443</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(214)544-7203</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[13]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>01</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4781330001</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>ERIC K NEWBERRY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>2301 ELDORADO PKWY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:Address2[1]</con:xpath>
+                  <con:element>Address2</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>STE 200</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75070</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4362</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)562-0101</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[14]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>05</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4872210001</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>RKF INC</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>2001 CENTRAL CIR</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:Address2[1]</con:xpath>
+                  <con:element>Address2</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>STE 100</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75069</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>8230</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)548-8818</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[15]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>01</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:SupplierNumber[1]</con:xpath>
+                  <con:element>SupplierNumber</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>4924500001</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:CompanyName[1]</con:xpath>
+                  <con:element>CompanyName</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY CVS L P</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:Address1[1]</con:xpath>
+                  <con:element>Address1</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>6301 ELDORADO PKWY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:City[1]</con:xpath>
+                  <con:element>City</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>MCKINNEY</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:Zip[1]</con:xpath>
+                  <con:element>Zip</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>TX</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:ZipPlus4[1]</con:xpath>
+                  <con:element>ZipPlus4</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>75070</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:Telephone[1]</con:xpath>
+                  <con:element>Telephone</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>5627</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:Description[1]</con:xpath>
+                  <con:element>Description</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>(972)542-4347</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:SupplierDatas[1]/ns1:SupplierData[16]/ns1:IsSupplierParticipating[1]</con:xpath>
+                  <con:element>IsSupplierParticipating</con:element>
+                  <con:type>XmlString</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>04</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>false</con:numberType>
+                </con:elements>
+                <con:elements>
+                  <con:xpath>declare namespace ns1='http://www.webservicex.net/';
+//ns1:GetSupplierByCityResponse[1]/ns1:SupplierDataLists[1]/ns1:TotalRecords[1]</con:xpath>
+                  <con:element>TotalRecords</con:element>
+                  <con:type>XmlInt</con:type>
+                  <con:operator>=</con:operator>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>16</con:expectedValue>
+                  <con:hasValue>false</con:hasValue>
+                  <con:numberType>true</con:numberType>
+                </con:elements>
+                <con:originalMessage><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <GetSupplierByCityResponse xmlns="http://www.webservicex.net/">
+         <GetSupplierByCityResult>true</GetSupplierByCityResult>
+         <SupplierDataLists>
+            <SupplierDatas>
+               <SupplierData>
+                  <SupplierNumber>0191800001</SupplierNumber>
+                  <CompanyName>ALAN H UPCHURCH OD</CompanyName>
+                  <Address1>3705 ELDORADO PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>4229</Telephone>
+                  <Description>(972)542-0331</Description>
+                  <IsSupplierParticipating>05</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>0282933819</SupplierNumber>
+                  <CompanyName>WALGREEN CO</CompanyName>
+                  <Address1>7080 VIRGINIA PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75071</ZipPlus4>
+                  <Telephone>5720</Telephone>
+                  <Description>(972)540-2332</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>0483390674</SupplierNumber>
+                  <CompanyName>ALBERTSONS INC</CompanyName>
+                  <Address1>1702 W UNIVERSITY DR</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>3217</Telephone>
+                  <Description>(972)542-9234</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>0483390978</SupplierNumber>
+                  <CompanyName>ALBERTSONS INC</CompanyName>
+                  <Address1>6800 VIRGINIA PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75071</ZipPlus4>
+                  <Telephone>5516</Telephone>
+                  <Description>(972)542-0010</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>0879960004</SupplierNumber>
+                  <CompanyName>RANDALLS FOOD AND DRUGS INC</CompanyName>
+                  <Address1>3001 HARDIN BLVD</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>7489</Telephone>
+                  <Description>(972)547-7110</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>1301270001</SupplierNumber>
+                  <CompanyName>E Z MOBILITY INC</CompanyName>
+                  <Address1>9929 W UNIVERSITY DR</Address1>
+                  <Address2>STE 305</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75071</ZipPlus4>
+                  <Telephone>7441</Telephone>
+                  <Description>(972)542-3008</Description>
+                  <IsSupplierParticipating>01</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>1307140027</SupplierNumber>
+                  <CompanyName>KROGER TEXAS LP</CompanyName>
+                  <Address1>1707 W UNIVERSITY DR</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>3218</Telephone>
+                  <Description>(972)548-9633</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4077810037</SupplierNumber>
+                  <CompanyName>UNITED SUPERMARKETS LTD</CompanyName>
+                  <Address1>6100 ELDORADO PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>5622</Telephone>
+                  <Description>(972)546-5150</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4360370162</SupplierNumber>
+                  <CompanyName>WAL MART STORES TEXAS LP</CompanyName>
+                  <Address1>1670 W UNIVERSITY DR</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>3444</Telephone>
+                  <Description>(972)542-2619</Description>
+                  <IsSupplierParticipating>05</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4360370322</SupplierNumber>
+                  <CompanyName>WAL MART STORES TEXAS LP</CompanyName>
+                  <Address1>5001 MCKINNEY RANCH PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>8601</Telephone>
+                  <Description>(972)542-8362</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4364620002</SupplierNumber>
+                  <CompanyName>MCDONALD &amp; SHOCKEY INC</CompanyName>
+                  <Address1>4510 MEDICAL CENTER DR</Address1>
+                  <Address2>STE 206</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>1601</Telephone>
+                  <Description>(972)542-3321</Description>
+                  <IsSupplierParticipating>03</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4459140001</SupplierNumber>
+                  <CompanyName>MCKINNEY EYECARE PC</CompanyName>
+                  <Address1>2720 VIRGINIA PKWY</Address1>
+                  <Address2>SUITE 100</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75071</ZipPlus4>
+                  <Description>(972)542-3937</Description>
+                  <IsSupplierParticipating>05</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4691680001</SupplierNumber>
+                  <CompanyName>JOBERN MEDICAL SERVICES</CompanyName>
+                  <Address1>2316 SHELDON DR</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>2443</Telephone>
+                  <Description>(214)544-7203</Description>
+                  <IsSupplierParticipating>01</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4781330001</SupplierNumber>
+                  <CompanyName>ERIC K NEWBERRY</CompanyName>
+                  <Address1>2301 ELDORADO PKWY</Address1>
+                  <Address2>STE 200</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>4362</Telephone>
+                  <Description>(972)562-0101</Description>
+                  <IsSupplierParticipating>05</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4872210001</SupplierNumber>
+                  <CompanyName>RKF INC</CompanyName>
+                  <Address1>2001 CENTRAL CIR</Address1>
+                  <Address2>STE 100</Address2>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75069</ZipPlus4>
+                  <Telephone>8230</Telephone>
+                  <Description>(972)548-8818</Description>
+                  <IsSupplierParticipating>01</IsSupplierParticipating>
+               </SupplierData>
+               <SupplierData>
+                  <SupplierNumber>4924500001</SupplierNumber>
+                  <CompanyName>MCKINNEY CVS L P</CompanyName>
+                  <Address1>6301 ELDORADO PKWY</Address1>
+                  <City>MCKINNEY</City>
+                  <Zip>TX</Zip>
+                  <ZipPlus4>75070</ZipPlus4>
+                  <Telephone>5627</Telephone>
+                  <Description>(972)542-4347</Description>
+                  <IsSupplierParticipating>04</IsSupplierParticipating>
+               </SupplierData>
+            </SupplierDatas>
+            <TotalRecords>16</TotalRecords>
+         </SupplierDataLists>
+      </GetSupplierByCityResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:originalMessage>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XQuery Match" name="Retrieve_COMPANYNAMES_for_ALL_Suppliers_from_SOAPRESPONSE &lt;--XQUERY-->" id="4b4f52f7-bafa-4e8a-ad70-cf5e0e6572cd">
+              <con:configuration>
+                <path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.webservicex.net/';
+
+&lt;zipcodes>
+{
+for $supplier in //ns1:SupplierData
+return   &lt;CompanyName>   { data  ($supplier/ns1:CompanyName/text( )) }  &lt;/CompanyName>
+}
+&lt;/zipcodes></path>
+                <content><![CDATA[<zipcodes>
+  <CompanyName>ALAN H UPCHURCH OD</CompanyName>
+  <CompanyName>WALGREEN CO</CompanyName>
+  <CompanyName>ALBERTSONS INC</CompanyName>
+  <CompanyName>ALBERTSONS INC</CompanyName>
+  <CompanyName>RANDALLS FOOD AND DRUGS INC</CompanyName>
+  <CompanyName>E Z MOBILITY INC</CompanyName>
+  <CompanyName>KROGER TEXAS LP</CompanyName>
+  <CompanyName>UNITED SUPERMARKETS LTD</CompanyName>
+  <CompanyName>WAL MART STORES TEXAS LP</CompanyName>
+  <CompanyName>WAL MART STORES TEXAS LP</CompanyName>
+  <CompanyName>MCDONALD &amp; SHOCKEY INC</CompanyName>
+  <CompanyName>MCKINNEY EYECARE PC</CompanyName>
+  <CompanyName>JOBERN MEDICAL SERVICES</CompanyName>
+  <CompanyName>ERIC K NEWBERRY</CompanyName>
+  <CompanyName>RKF INC</CompanyName>
+  <CompanyName>MCKINNEY CVS L P</CompanyName>
+</zipcodes>]]></content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierByCity"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>CITYNAME</con:name>
+          <con:value>MCKINNEY</con:value>
+        </con:property>
+      </con:properties>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="4d813593-d5bc-494a-b1c3-7578dd07e995" name="TS02_Get_Supplier_By_ZIP_Operation = NO ASSERTIONS">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="17aa02d4-e2d3-4f0c-b48a-e3e9d8bd8e97" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_01_Get_Supplier_By_ZipCode - 75070" searchProperties="true" timeout="0" maxResults="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="e8956148-c5f4-40c0-8468-76ae0c550083" name="GetSupplierByZipCode">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>MediCareSupplierSoap</con:interface>
+          <con:operation>GetSupplierByZipCode</con:operation>
+          <con:request name="GetSupplierByZipCode" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="659c9f50-2250-42f5-bda6-c42ab6832684">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/medicareSupplierService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetSupplierByZipCode>
+         <!--Optional:-->
+         <web:zip>75070</web:zip>
+      </web:GetSupplierByZipCode>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierByZipCode"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="3be5064c-2fbc-46be-982d-a57a0835fc8e" name="TS03_Get_Supplier_By_SupplyType_Operation =  BASIC ASSERTIONS">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="b66f308b-da4e-47e5-ac9a-5386a67ef656" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TC_02_Get_Supplier_By_SupplyType - 020 (SLA)" searchProperties="true" timeout="0" maxResults="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="request" id="fc5c63be-cfe3-4e56-bc28-20acb69bfac9" name="GetSupplierBySupplyType">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>MediCareSupplierSoap</con:interface>
+          <con:operation>GetSupplierBySupplyType</con:operation>
+          <con:request name="GetSupplierBySupplyType" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2d1ea546-89d7-4ccd-9d24-edad5dd95252">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/services/medicareSupplierService</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webservicex.net/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetSupplierBySupplyType>
+         <!--Optional:-->
+         <web:description>020</web:description>
+      </web:GetSupplierBySupplyType>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="Response SLA Assertion" id="f1bdc7d0-211d-4249-b195-d977c79bcf95" name="Validate the SOAPResponse is recieved within the Stipulated Time in ms &lt;--RESPONSE SLA-->">
+              <con:configuration>
+                <SLA>200</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.webservicex.net/GetSupplierBySupplyType"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:sensitiveInformation/>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>

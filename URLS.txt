@@ -1,0 +1,14 @@
+CALCULATOR WSDL ENDPOINT :   http://www.dneonline.com/calculator.asmx
+
+BANKING WSDL ENDPOINY : http://www.thomas-bayer.com/axis2/services/BLZService
+
+SWAGGER HTML: http://localhost:8080/swagger-ui.html#/Customer_API
+
+SWAGGER HTML : https://petstore.swagger.io/
+
+SWAGGER HTML : http://localhost:9966/petclinic/swagger-ui.html 
+
+SWAGGER HTML : http://localhost:8080/swagger-ui.html
+
+Rest URI  = http://localhost:9091/api/message
+Token URI = http://localhost:9091/api/oauth/token
